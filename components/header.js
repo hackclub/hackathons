@@ -16,7 +16,8 @@ export default ({
     <Box
       as="header"
       sx={{
-        bg: mode === 'dark' ? 'darkless' : 'red',
+        bg: mode === 'dark' ? 'darkless' : 'snow',
+        color: 'text',
         pt: [4, null, null, null, 5],
         pb: [4, 5, null, null, 6],
         textAlign: centered && [null, 'center'],
@@ -28,7 +29,7 @@ export default ({
         <Heading
           as="h1"
           variant="title"
-          sx={{ color: mode === 'dark' ? 'red' : 'white' }}
+          sx={{ color: 'primary' }}
           children={title}
         />
         {desc && (
@@ -37,7 +38,7 @@ export default ({
             variant="subtitle"
             sx={{
               mt: 3,
-              color: 'snow',
+              color: 'text',
               mx: centered ? [null, 'auto'] : null
             }}
             children={desc}

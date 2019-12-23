@@ -34,7 +34,7 @@ const theme = merge(base, {
   colors: {
     ...palette,
     text: palette.black,
-    background: palette.snow,
+    background: palette.white,
     elevated: palette.white,
     sunken: palette.smoke,
     border: palette.smoke,
@@ -86,6 +86,7 @@ const theme = merge(base, {
     headline: '0.009em'
   },
   sizes: {
+    ultrawide: 2048,
     wide: 1536,
     container: 1200,
     narrow: 512
@@ -112,11 +113,10 @@ const theme = merge(base, {
       fontSize: [4, 5, 6]
     },
     subtitle: {
-      fontSize: [3, 4, null, null, 5],
+      fontSize: [2, 3, null, null, 4],
       fontWeight: 'body',
       letterSpacing: 'headline',
-      lineHeight: 'subheading',
-      my: 0
+      lineHeight: 'subheading'
     },
     headline: {
       fontWeight: 'heading',
@@ -266,6 +266,12 @@ const theme = merge(base, {
     wide: {
       width: '100%',
       maxWidth: ['wide', null, null, null, 'ultrawide'],
+      mx: 'auto',
+      px: 3
+    },
+    narrow: {
+      width: '100%',
+      maxWidth: ['narrow', null, null, null, 'container'],
       mx: 'auto',
       px: 3
     }

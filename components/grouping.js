@@ -1,4 +1,4 @@
-import { Container, Box, Heading, Text, Grid } from '@theme-ui/components'
+import { Container, Box, Grid } from '@theme-ui/components'
 import Header from '../components/header'
 import EventCard from '../components/event-card'
 

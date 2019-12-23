@@ -1,29 +1,33 @@
-/** @jsx jsx */
-import { jsx, useColorMode } from 'theme-ui'
-import { Box, Container, IconButton, Text, NavLink } from '@theme-ui/components'
-import Link from 'next/link'
-import { Moon } from 'react-feather'
+import { useColorMode } from 'theme-ui'
+import { Box, Container, IconButton, Image, Link } from '@theme-ui/components'
+import { Plus, Moon, GitHub } from 'react-feather'
+
+const NavButton = ({ sx, ...props }) => (
+  <IconButton
+    {...props}
+    sx={{
+      color: 'red',
+      borderRadius: 'circle',
+      transition: 'box-shadow .125s ease-in-out',
+      ':hover,:focus': {
+        boxShadow: '0 0 0 2px',
+        outline: 'none'
+      },
+      ...sx
+    }}
+  />
+)
 
 const ColorSwitcher = props => {
   const [mode, setMode] = useColorMode()
   return (
-    <IconButton
+    <NavButton
       {...props}
-      onClick={e => setMode(mode === 'dark' ? 'light' : 'dark')}
+      onClick={() => setMode(mode === 'dark' ? 'light' : 'dark')}
       title="Cycle Color Mode"
-      sx={{
-        borderRadius: 9999,
-        transition: 'box-shadow .125s ease-in-out',
-        ...props.sx,
-        ':hover,:focus': {
-          color: 'accent',
-          boxShadow: '0 0 0 3px',
-          outline: 'none'
-        }
-      }}
     >
       <Moon size={24} />
-    </IconButton>
+    </NavButton>
   )
 }
 
@@ -33,7 +37,7 @@ export default () => {
     <Box
       as="nav"
       sx={{
-        bg: mode === 'dark' ? 'darkless' : 'red',
+        bg: mode === 'dark' ? 'darkless' : 'snow',
         color: 'nav',
         py: 3
       }}
@@ -45,28 +49,33 @@ export default () => {
           alignItems: 'center',
           a: {
             fontSize: 1,
-            color: mode === 'dark' ? 'red' : 'white',
+            color: 'primary',
             textDecoration: 'none',
-            mr: [3, 4],
-            ':focus,:hover': { color: mode === 'dark' ? 'red' : 'white' }
+            mr: [3, 4]
           }
         }}
       >
-        <Link href="/" passHref>
-          <Text
-            as="a"
-            variant="logo"
-            sx={{
-              flex: '1 1 auto'
-            }}
-          >
-            Hackathons
-          </Text>
+        <Link
+          href="https://hackclub.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          sx={{ mt: -3 }}
+        >
+          <Image
+            src="https://hackclub.com/orpheus_flag.svg"
+            sx={{ width: [96, 128] }}
+          />
         </Link>
-        <NavLink href="https://hackclub.com">Hack Club</NavLink>
-        <NavLink href="https://airtable.com/shr42MplImeMkHHWP">
-          Add your event
-        </NavLink>
+        <NavButton
+          as="a"
+          href="https://airtable.com/shr42MplImeMkHHWP"
+          sx={{ ml: 'auto' }}
+        >
+          <Plus size={24} />
+        </NavButton>
+        <NavButton as="a" href="https://github.com/lachlanjc/hackathons">
+          <GitHub size={24} />
+        </NavButton>
         <ColorSwitcher />
       </Container>
     </Box>
