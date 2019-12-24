@@ -213,16 +213,24 @@ const theme = merge(base, {
     sunken: {
       bg: 'sunken',
       p: [3, 4],
-      borderRadius: 'extra'
-    },
-    error: {
-      bg: 'sunken',
       borderRadius: 'extra',
-      p: [3, 4],
-      color: 'text',
-      fontWeight: 'bold',
+    },
+    event: {
       display: 'flex',
-      placeContent: 'center'
+      flexDirection: 'column',
+      placeItems: 'center',
+      color: 'white',
+      textAlign: 'center',
+      textShadow: '0 1px 4px rgba(0, 0, 0, 0.375)',
+      textDecoration: 'none',
+      backgroundColor: 'black',
+      backgroundSize: 'cover',
+      backgroundPosition: 'center',
+      backgroundRepeat: 'no-repeat',
+      borderRadius: 'extra',
+      overflow: 'hidden',
+      p: 3,
+      height: '100%'
     },
     nav: {
       bg: 'elevated',

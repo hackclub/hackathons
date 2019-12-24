@@ -42,21 +42,10 @@ const EventCard = ({
       })}
       itemScope
       itemType="http://schema.org/Event"
+      variant="event"
       sx={{
         display: invisible ? 'none' : 'flex',
-        flexDirection: 'column',
-        placeItems: 'center',
-        color: 'white',
-        textAlign: 'center',
-        textShadow: '0 1px 4px rgba(0, 0, 0, 0.375)',
-        textDecoration: 'none',
-        backgroundColor: 'black',
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundRepeat: 'no-repeat',
-        overflow: 'hidden',
-        p: [3],
-        height: '100%'
+        flexDirection: 'column'
       }}
       style={{
         backgroundImage:
