@@ -73,13 +73,14 @@ const GroupCard = ({ group, events }) => {
           }}
         />
       )}
-      <Heading as="h3" itemProp="name" sx={{ fontSize: 3, mt: 2, mb: 3 }}>
+      <Heading as="h3" itemProp="name" sx={{ fontSize: [3, 4], mt: 2, mb: 3 }}>
         {name}
       </Heading>
       <Flex
         sx={{
           justifyContent: 'space-between',
-          width: '100%'
+          width: '100%',
+          opacity: 0.875
         }}
       >
         <Text as="span">{humanizedDateRange(start, end)}</Text>

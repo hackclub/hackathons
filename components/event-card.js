@@ -3,7 +3,7 @@ import Tilt from './tilt'
 import {
   imageSrc,
   humanizedDateRange,
-  humanizeDistance,
+  // humanizeDistance,
   formatAddress,
   trackClick
 } from '../lib/util'
@@ -20,8 +20,8 @@ const EventCard = ({
   parsed_country_code,
   banner,
   logo,
-  distanceTo,
   mlh,
+  // distanceTo,
   invisible = false,
   inGroup = false
 }) => (
@@ -42,10 +42,7 @@ const EventCard = ({
       itemScope
       itemType="http://schema.org/Event"
       variant="event"
-      sx={{
-        display: invisible ? 'none' : 'flex',
-        flexDirection: 'column'
-      }}
+      sx={{ display: invisible ? 'none' : 'flex' }}
       style={{
         backgroundImage:
           banner &&
@@ -78,25 +75,24 @@ const EventCard = ({
         }}
       >
         <Text as="span">{humanizedDateRange(start, end)}</Text>
-        {distanceTo ? (
+        {/* distanceTo ? (
           <Text as="span">{`${humanizeDistance(distanceTo)} miles`}</Text>
-        ) : (
-          <Text
-            as="span"
-            itemProp="location"
-            itemScope
-            itemType="http://schema.org/Place"
-          >
-            <span itemProp="address">
-              {formatAddress(
-                parsed_city,
-                parsed_state_code,
-                parsed_country,
-                parsed_country_code
-              )}
-            </span>
-          </Text>
-        )}
+        ) : ( */}
+        <Text
+          as="span"
+          itemProp="location"
+          itemScope
+          itemType="http://schema.org/Place"
+        >
+          <span itemProp="address">
+            {formatAddress(
+              parsed_city,
+              parsed_state_code,
+              parsed_country,
+              parsed_country_code
+            )}
+          </span>
+        </Text>
       </Flex>
       <Box sx={{ display: 'none' }}>
         <span itemProp="url">{website}</span>
