@@ -40,7 +40,7 @@ class Root extends App {
         <ThemeProvider theme={theme}>
           <ColorMode />
           <Global styles={theme => ({ body: theme.styles.root })} />
-          <NProgress color={theme.colors.nav} />
+          <NProgress color={theme.colors.primary} />
           <Nav />
           <Component {...pageProps} />
           <Footer />
