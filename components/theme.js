@@ -38,13 +38,14 @@ const theme = merge(base, {
     elevated: palette.white,
     sunken: palette.smoke,
     border: palette.smoke,
-    placeholder: palette.smoke,
+    placeholder: palette.muted,
     secondary: palette.slate,
     primary: palette.red,
     muted: palette.muted,
     accent: palette.blue,
     invertedPrimary: palette.white,
-    invertedText: palette.red,
+    invertedText: palette.white,
+    header: palette.snow,
     nav: palette.white,
     modes: {
       dark: {
@@ -58,7 +59,8 @@ const theme = merge(base, {
         muted: palette.muted,
         accent: palette.cyan,
         invertedPrimary: palette.darker,
-        invertedText: palette.red,
+        invertedText: palette.dark,
+        header: palette.darkless,
         nav: palette.red
       }
     }
@@ -75,11 +77,8 @@ const theme = merge(base, {
     body: 1.5
   },
   fontWeights: {
-    stat: 300,
     body: 400,
-    medium: 600,
-    bold: 700,
-    heading: 900
+    bold: 700
   },
   letterSpacings: {
     title: '-0.009em',
@@ -89,6 +88,8 @@ const theme = merge(base, {
     ultrawide: 2048,
     wide: 1536,
     container: 1200,
+    subcontainer: 1024,
+    narrowplus: 768,
     narrow: 512
   },
   radii: {
@@ -103,11 +104,11 @@ const theme = merge(base, {
   },
   text: {
     heading: {
-      fontWeight: 'heading',
+      fontWeight: 'bold',
       lineHeight: 'heading'
     },
     title: {
-      fontWeight: 'heading',
+      fontWeight: 'bold',
       lineHeight: 'title',
       letterSpacing: 'title',
       fontSize: [4, 5, 6]
@@ -119,7 +120,7 @@ const theme = merge(base, {
       lineHeight: 'subheading'
     },
     headline: {
-      fontWeight: 'heading',
+      fontWeight: 'bold',
       lineHeight: 'heading',
       letterSpacing: 'headline',
       fontSize: 4,
@@ -127,9 +128,8 @@ const theme = merge(base, {
       mb: 3
     },
     subheadline: {
-      fontWeight: 'heading',
+      fontWeight: 'bold',
       lineHeight: 'heading',
-      textTransform: 'uppercase',
       letterSpacing: 'headline',
       fontSize: [1, 2],
       mt: 0,
@@ -143,7 +143,7 @@ const theme = merge(base, {
     logo: {
       textTransform: 'uppercase',
       letterSpacing: 'headline',
-      fontWeight: 'heading'
+      fontWeight: 'bold'
     }
   },
   badges: {
@@ -214,6 +214,7 @@ const theme = merge(base, {
       bg: 'sunken',
       p: [3, 4],
       borderRadius: 'extra',
+      'input, a': { bg: 'header', boxShadow: 'none !important' }
     },
     event: {
       display: 'flex',

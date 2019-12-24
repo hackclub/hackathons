@@ -16,7 +16,7 @@ export default ({
     <Box
       as="header"
       sx={{
-        bg: mode === 'dark' ? 'darkless' : 'snow',
+        bg: 'header',
         color: 'text',
         pt: [4, null, null, null, 5],
         pb: [4, 5, null, null, 6],
@@ -29,7 +29,11 @@ export default ({
         <Heading
           as="h1"
           variant="title"
-          sx={{ color: 'primary' }}
+          sx={{
+            color: 'primary',
+            maxWidth: 'narrowplus',
+            mx: centered && [null, 'auto']
+          }}
           children={title}
         />
         {desc && (
