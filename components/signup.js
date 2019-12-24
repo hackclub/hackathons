@@ -56,7 +56,6 @@ export default ({ stats }) => {
       setSubmitting(false)
       setDone(true)
     } else {
-      console.log('submission not oaky', submission)
       submission = await submission.json()
       setSubmitting(false)
       setError(submission.errors || 'Something went wrong')

@@ -1,7 +1,8 @@
 import React, { useEffect, useRef } from 'react'
 import VanillaTilt from 'vanilla-tilt'
 
-const Tilt = ({ options = {}, ...props }) => {
+// NOTE(@lachlanjc): only pass one child!
+const Tilt = ({ options = {}, children, ...props }) => {
   const root = useRef(null)
   useEffect(() => {
     VanillaTilt.init(root.current, {
@@ -13,8 +14,7 @@ const Tilt = ({ options = {}, ...props }) => {
       ...options
     })
   }, [])
-
-  return <div ref={root} {...props} />
+  return React.cloneElement(children, { ref: root })
 }
 
 export default Tilt

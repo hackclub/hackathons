@@ -6,7 +6,7 @@ import fetch from 'isomorphic-unfetch'
 import { filter, orderBy } from 'lodash'
 import { timeSince } from '../lib/util'
 
-export default ({ stats, emailStats, events }) => (
+export default ({ stats, emailStats, events, groups }) => (
   <Grouping
     title={`Upcoming High School Hackathons in ${new Date().getFullYear()}`}
     header={
@@ -24,6 +24,7 @@ export default ({ stats, emailStats, events }) => (
       </>
     }
     events={events}
+    groups={groups}
     footer={
       <section>
         <Heading variant="headline" sx={{ mt: [4, 5], mb: [3, 4] }}>
@@ -57,10 +58,11 @@ export async function unstable_getStaticProps() {
     filter(events, e => new Date(e.start) >= new Date()),
     'start'
   )
-  return { props: { events, stats } }
+  let groups = await fetch('https://api.hackclub.com/v1/events/groups')
+  groups = await groups.json()
   let emailStats = await fetch(
     'https://api.hackclub.com/v1/event_email_subscribers/stats'
   )
   emailStats = await emailStats.json()
-  return { props: { events, stats, emailStats } }
+  return { props: { events, groups, stats, emailStats } }
 }

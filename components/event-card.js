@@ -21,10 +21,9 @@ const EventCard = ({
   banner,
   logo,
   distanceTo,
-  startYear,
   mlh,
-  invisible,
-  inGroup
+  invisible = false,
+  inGroup = false
 }) => (
   <Tilt>
     <Card
