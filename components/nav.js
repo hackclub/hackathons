@@ -59,21 +59,28 @@ export default () => {
           href="https://hackclub.com"
           target="_blank"
           rel="noopener noreferrer"
+          aria-label="Hack Club homepage"
           sx={{ mt: -3 }}
         >
           <Image
             src="https://hackclub.com/orpheus_flag.svg"
+            alt="Hack Club flag"
             sx={{ width: [96, 128] }}
           />
         </Link>
         <NavButton
           as="a"
           href="https://airtable.com/shr42MplImeMkHHWP"
+          aria-label="Submit your hackathon"
           sx={{ ml: 'auto' }}
         >
           <Plus size={24} />
         </NavButton>
-        <NavButton as="a" href="https://github.com/lachlanjc/hackathons">
+        <NavButton
+          as="a"
+          href="https://github.com/lachlanjc/hackathons"
+          aria-label="View source code on GitHub"
+        >
           <GitHub size={24} />
         </NavButton>
         <ColorSwitcher />
