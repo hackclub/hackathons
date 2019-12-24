@@ -15,7 +15,22 @@ let regions = [
 ]
 
 export default ({ showAll = false, sx = {} }) => (
-  <Grid columns={[1, 2, 4]} gap={[3, 4]} sx={{ mb: [4, 5], ...sx }}>
+  <Grid
+    columns={[1, 2, 4]}
+    gap={[3, 4]}
+    sx={{
+      mb: [4, 5],
+      ...sx,
+      a: {
+        WebkitTapHighlightColor: 'transparent',
+        transition: 'transform .125s ease-in-out, box-shadow .125s ease-in-out',
+        ':hover,:focus': {
+          transform: 'scale(1.0625)',
+          boxShadow: 'elevated'
+        }
+      }
+    }}
+  >
     {showAll && (
       <Link href="/" passHref>
         <Card
