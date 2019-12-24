@@ -30,6 +30,7 @@ const EventCard = ({
       as="a"
       href={`https://api.hackclub.com/v1/events/${id}/redirect`}
       target="_blank"
+      rel="noopener noreferrer"
       onClick={trackClick({
         href: website,
         analyticsEventName: 'Event Clicked',
@@ -44,10 +45,9 @@ const EventCard = ({
       variant="event"
       sx={{ display: invisible ? 'none' : 'flex' }}
       style={{
-        backgroundImage:
-          banner &&
-          `linear-gradient(rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.375) 75%),
-            url(${imageSrc(banner)})`
+        backgroundImage: `linear-gradient(rgba(0,0,0,0) 0%, rgba(0,0,0,0.375) 75%), url('${imageSrc(
+          banner
+        )}')`
       }}
     >
       {mlh_associated && (
