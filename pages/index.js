@@ -10,13 +10,14 @@ export default ({ stats, events }) => (
     title={`Upcoming High School Hackathons in ${new Date().getFullYear()}`}
     header={
       <>
-        <Text variant="subtitle" sx={{ mt: 4 }}>
-          A curated list of high school hackathons with {stats.total} events in{' '}
-          {stats.state} states + {stats.country} countries.
+        <Text variant="subtitle" sx={{ mt: [3, 4], mb: 3 }}>
+          A curated list of high school hackathons with {stats.total}
+          &nbsp;events in {stats.state}&nbsp;states + {stats.country}
+          &nbsp;countries.
         </Text>
-        <Text variant="subtitle" sx={{ mt: 3 }}>
+        <Text variant="subtitle">
           Maintained by the <Link href="https://hackclub.com">Hack Club</Link>{' '}
-          staff. Last updated {stats.lastUpdated}.
+          staff. Last&nbsp;updated {stats.lastUpdated}.
         </Text>
       </>
     }

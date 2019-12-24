@@ -3,7 +3,10 @@ import Header from '../components/header'
 import EventCard from '../components/event-card'
 
 export default ({ title, description, header, children, footer, events }) => (
-  <Box as="main" sx={{ bg: 'background', color: 'text', textAlign: 'center' }}>
+  <Box
+    as="main"
+    sx={{ bg: 'background', color: 'text', textAlign: [null, 'center'] }}
+  >
     <Header
       title={title}
       description={description}

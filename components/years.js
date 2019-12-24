@@ -4,8 +4,8 @@ import Link from 'next/link'
 import { palette } from './theme'
 
 const years = range(2017, new Date().getFullYear() + 2)
-const colors = pick(palette, split('red,orange,yellow,green,cyan,blue', ','))
 
+const colors = pick(palette, split('red,orange,yellow,green,cyan,blue', ','))
 const rainbow = {}
 Object.entries(colors).map(([name, bg], i) => {
   rainbow[`&:nth-of-type(${Object.keys(colors).length}n + ${i + 1})`] = { bg }

@@ -131,7 +131,7 @@ const theme = merge(base, {
       fontWeight: 'bold',
       lineHeight: 'heading',
       letterSpacing: 'headline',
-      fontSize: [1, 2],
+      fontSize: 2,
       mt: 0,
       mb: 3
     },
@@ -139,11 +139,7 @@ const theme = merge(base, {
       color: 'muted',
       fontWeight: 'medium',
       letterSpacing: 'headline'
-    },
-    logo: {
-      textTransform: 'uppercase',
-      letterSpacing: 'headline',
-      fontWeight: 'bold'
+    }
     }
   },
   badges: {
@@ -158,8 +154,6 @@ const theme = merge(base, {
       cursor: 'pointer',
       fontFamily: 'body',
       fontWeight: 'bold',
-      display: 'flex',
-      alignItems: 'center',
       svg: { ml: -1, mr: 2 }
     },
     inverted: {
@@ -168,8 +162,6 @@ const theme = merge(base, {
       cursor: 'pointer',
       fontFamily: 'body',
       fontWeight: 'bold',
-      display: 'flex',
-      alignItems: 'center',
       svg: { ml: -1, mr: 2 }
     }
   },

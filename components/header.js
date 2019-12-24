@@ -20,7 +20,7 @@ export default ({
         color: 'text',
         pt: [4, null, null, null, 5],
         pb: [4, 5, null, null, 6],
-        textAlign: centered && [null, 'center'],
+        textAlign: centered && 'center',
         ...sx
       }}
     >
@@ -32,7 +32,7 @@ export default ({
           sx={{
             color: 'primary',
             maxWidth: 'narrowplus',
-            mx: centered && [null, 'auto']
+            mx: centered && 'auto'
           }}
           children={title}
         />
@@ -43,7 +43,7 @@ export default ({
             sx={{
               mt: 3,
               color: 'text',
-              mx: centered ? [null, 'auto'] : null
+              mx: centered && 'auto'
             }}
             children={desc}
           />
