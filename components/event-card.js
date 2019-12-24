@@ -18,9 +18,9 @@ const EventCard = ({
   parsed_state_code,
   parsed_country,
   parsed_country_code,
+  mlh_associated,
   banner,
   logo,
-  mlh,
   // distanceTo,
   invisible = false,
   inGroup = false
@@ -50,6 +50,22 @@ const EventCard = ({
             url(${imageSrc(banner)})`
       }}
     >
+      {mlh_associated && (
+        <Image
+          src="/mlh-logo-grayscale.svg"
+          alt="MLH is associated"
+          width={96}
+          sx={{
+            position: 'absolute',
+            top: 16,
+            left: 0,
+            bg: 'snow',
+            p: 2,
+            borderTopRightRadius: 'default',
+            borderBottomRightRadius: 'default'
+          }}
+        />
+      )}
       {logo && (
         <Image
           src={imageSrc(logo)}

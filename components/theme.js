@@ -230,6 +230,7 @@ const theme = merge(base, {
       backgroundRepeat: 'no-repeat',
       borderRadius: 'extra',
       overflow: 'hidden',
+      position: 'relative',
       p: 3,
       height: '100%'
     },
