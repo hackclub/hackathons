@@ -5,7 +5,7 @@ import { map, filter, orderBy, startsWith, split, first, uniq } from 'lodash'
 
 export default ({ year, events }) => (
   <Grouping title={`${year} Events`} events={events}>
-    <Years />
+    <Years showAll />
   </Grouping>
 )
 

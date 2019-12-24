@@ -11,8 +11,15 @@ Object.entries(colors).map(([name, bg], i) => {
   rainbow[`&:nth-of-type(${Object.keys(colors).length}n + ${i + 1})`] = { bg }
 })
 
-export default () => (
-  <Grid columns={[1, 2, 4]} gap={[3, 4]}>
+export default ({ showAll = false }) => (
+  <Grid columns={[1, 2, showAll ? 5 : 4]} gap={[3, 4]}>
+    {showAll && (
+      <Link href="/" passHref>
+        <Card as="a" variant="nav" sx={{ bg: 'elevated', color: 'primary' }}>
+          All Events
+        </Card>
+      </Link>
+    )}
     {years.map(year => (
       <Link href={`/years/${year}`} passHref key={year}>
         <Card as="a" variant="nav" sx={{ ...rainbow, color: 'white' }}>
