@@ -29,7 +29,13 @@ export default ({
     <meta key="twitter_img" name="twitter:image" content={image} />
     <meta key="theme_color" name="theme-color" content={color} />
     <meta key="tile_color" name="msapplication-TileColor" content={color} />
-    {/* <link
+    <meta key="app_name" name="application-name" content="Hackathons" />
+    <meta
+      key="apple_title"
+      name="apple-mobile-web-app-title"
+      content="Hackathons"
+    />
+    <link
       key="safari_icon"
       rel="mask-icon"
       href="/safari-pinned-tab.svg"
@@ -55,6 +61,6 @@ export default ({
       sizes="16x16"
       href="/favicon-16x16.png"
     />
-    <link key="manifest" rel="manifest" href="/site.webmanifest" /> */}
+    <link key="manifest" rel="manifest" href="/site.webmanifest" />
   </Head>
 )
