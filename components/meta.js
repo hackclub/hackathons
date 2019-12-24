@@ -7,7 +7,7 @@ const makeTitle = title => (title === name ? title : `${title} – ${name}`)
 export default ({
   title = name,
   description = 'Listing of upcoming high school hackathons',
-  image = 'https://notebook-cards.lachlanjc.now.sh/Hack%20Club%20Hackathons.png',
+  image = 'https://hackathons.now.sh/card.png',
   color = palette.red
 }) => (
   <Head>
