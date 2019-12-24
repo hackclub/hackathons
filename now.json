@@ -1,6 +1,7 @@
 {
   "version": 2,
   "name": "hackathons",
+  "public": true,
   "builds": [{ "src": "next.config.js", "use": "@now/next" }],
   "github": {
     "silent": true

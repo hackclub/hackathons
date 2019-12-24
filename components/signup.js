@@ -1,10 +1,9 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import {
   Card,
   Heading,
   Text,
   Grid,
-  Box,
   Label,
   Input,
   Button,
@@ -22,7 +21,7 @@ const Loading = () => (
   />
 )
 
-export default ({ stats }) => {
+export default ({ stats = {} }) => {
   const [email, setEmail] = useState('')
   const [location, setLocation] = useState('')
   const [submitting, setSubmitting] = useState(false)
