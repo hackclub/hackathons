@@ -2,6 +2,7 @@ import Grouping from '../components/grouping'
 import { Heading, Text, Link } from '@theme-ui/components'
 import Signup from '../components/signup'
 import Years from '../components/years'
+import Regions from '../components/regions'
 import fetch from 'isomorphic-unfetch'
 import { filter, orderBy } from 'lodash'
 import { timeSince } from '../lib/util'
@@ -31,6 +32,10 @@ export default ({ stats, emailStats, events, groups }) => (
           Explore by year
         </Heading>
         <Years />
+        <Heading variant="headline" sx={{ mt: [4, 5], mb: [3, 4] }}>
+          Explore popular regions
+        </Heading>
+        <Regions />
       </section>
     }
   />

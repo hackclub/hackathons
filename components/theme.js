@@ -217,7 +217,9 @@ const theme = merge(base, {
     event: {
       display: 'flex',
       flexDirection: 'column',
-      placeItems: 'center',
+      justifyContent: 'center',
+      alignItems: 'center',
+      minHeight: 128,
       color: 'white',
       textAlign: 'center',
       textShadow: '0 1px 4px rgba(0, 0, 0, 0.375)',
@@ -249,17 +251,6 @@ const theme = merge(base, {
       ':hover,:focus': {
         transform: 'scale(1.0625)',
         boxShadow: 'elevated'
-      },
-      ':after': {
-        content: '"→"',
-        color: 'inherit',
-        fontWeight: 'title',
-        ml: 2
-      },
-      svg: {
-        flexShrink: '0',
-        mr: 3,
-        mb: [3, 0]
       }
     }
   },

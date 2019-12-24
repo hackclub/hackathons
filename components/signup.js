@@ -21,9 +21,11 @@ const Loading = () => (
   />
 )
 
-export default ({ stats = {} }) => {
+export default ({ initialLocation, stats = {} }) => {
   const [email, setEmail] = useState('')
-  const [location, setLocation] = useState('')
+  const [location, setLocation] = useState(
+    initialLocation ? initialLocation.replace('the ', '') : ''
+  )
   const [submitting, setSubmitting] = useState(false)
   const [done, setDone] = useState(false)
   const [error, setError] = useState('')
