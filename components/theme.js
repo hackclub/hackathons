@@ -140,6 +140,12 @@ const theme = merge(base, {
       fontWeight: 'medium',
       letterSpacing: 'headline'
     }
+  },
+  alerts: {
+    primary: {
+      color: 'invertedText',
+      bg: 'orange',
+      fontWeight: 'body'
     }
   },
   badges: {

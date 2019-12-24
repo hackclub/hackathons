@@ -1,11 +1,12 @@
 import Grouping from '../components/grouping'
 import { Heading, Text, Link } from '@theme-ui/components'
+import Signup from '../components/signup'
 import Years from '../components/years'
 import fetch from 'isomorphic-unfetch'
 import { filter, orderBy } from 'lodash'
 import { timeSince } from '../lib/util'
 
-export default ({ stats, events }) => (
+export default ({ stats, emailStats, events }) => (
   <Grouping
     title={`Upcoming High School Hackathons in ${new Date().getFullYear()}`}
     header={
@@ -19,6 +20,7 @@ export default ({ stats, events }) => (
           Maintained by the <Link href="https://hackclub.com">Hack Club</Link>{' '}
           staff. Last&nbsp;updated {stats.lastUpdated}.
         </Text>
+        <Signup stats={emailStats} />
       </>
     }
     events={events}
@@ -36,7 +38,7 @@ export default ({ stats, events }) => (
 export async function unstable_getStaticProps() {
   let events = await fetch('https://api.hackclub.com/v1/events')
   events = await events.json()
-  const stats = {
+  let stats = {
     total: events.length,
     state: new Set(
       events
@@ -52,8 +54,13 @@ export async function unstable_getStaticProps() {
     )
   }
   events = orderBy(
-    filter(events, e => e.group_id === null && new Date(e.start) >= new Date()),
+    filter(events, e => new Date(e.start) >= new Date()),
     'start'
   )
   return { props: { events, stats } }
+  let emailStats = await fetch(
+    'https://api.hackclub.com/v1/event_email_subscribers/stats'
+  )
+  emailStats = await emailStats.json()
+  return { props: { events, stats, emailStats } }
 }
