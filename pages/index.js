@@ -1,17 +1,37 @@
 import Grouping from '../components/grouping'
 import { Heading, Text, Link } from '@theme-ui/components'
+import Meta from '../components/meta'
 import Signup from '../components/signup'
 import Years from '../components/years'
 import Regions from '../components/regions'
 import fetch from 'isomorphic-unfetch'
-import { filter, orderBy } from 'lodash'
-import { timeSince } from '../lib/util'
+import { filter, orderBy, slice } from 'lodash'
+import { timeSince, humanizedDateRange } from '../lib/util'
+
+const title = `Upcoming High School Hackathons in ${new Date().getFullYear()}`
+const eventsPreview = events =>
+  slice(events, 0, 4)
+    .map(
+      event => `${event.name} (${humanizedDateRange(event.start, event.end)})…`
+    )
+    .join('')
 
 export default ({ stats, emailStats, events, groups }) => (
   <Grouping
-    title={`Upcoming High School Hackathons in ${new Date().getFullYear()}`}
+    includeMeta={false}
+    title={title}
     header={
       <>
+        <Meta
+          title={title}
+          description={`${title}. A curated list of high school hackathons with ${
+            events.length
+          } events in ${stats.state} states + ${
+            stats.country
+          } countries. Maintained by the Hack Club staff. ${eventsPreview(
+            events
+          )}`}
+        />
         <Text variant="subtitle" sx={{ mt: [3, 4], mb: 3 }}>
           A curated list of high school hackathons with {stats.total}
           &nbsp;events in {stats.state}&nbsp;states + {stats.country}
