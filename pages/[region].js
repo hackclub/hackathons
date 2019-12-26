@@ -1,8 +1,8 @@
 import Grouping from '../components/grouping'
 import Regions from '../components/regions'
 import Signup from '../components/signup'
-import fetch from 'isomorphic-unfetch'
 import { map, orderBy, find, kebabCase, startCase } from 'lodash'
+import { getGroupingData } from '../lib/data'
 
 export default ({ name, events, groups, emailStats }) => (
   <Grouping
@@ -87,17 +87,10 @@ export const unstable_getStaticProps = async ({ params }) => {
   let { region } = params
   region = find(regions, ['id', region.replace('list-of-hackathons-in-', '')])
   let { name } = region
-  let events = await fetch('https://api.hackclub.com/v1/events')
-  events = await events.json()
+  let { events, groups, emailStats } = await getGroupingData()
   events = orderBy(
     events.filter(event => region.filter(event)),
     'start'
   )
-  let groups = await fetch('https://api.hackclub.com/v1/events/groups')
-  groups = await groups.json()
-  let emailStats = await fetch(
-    'https://api.hackclub.com/v1/event_email_subscribers/stats'
-  )
-  emailStats = await emailStats.json()
   return { props: { name, events, groups, emailStats } }
 }

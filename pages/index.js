@@ -4,9 +4,9 @@ import Meta from '../components/meta'
 import Signup from '../components/signup'
 import Years from '../components/years'
 import Regions from '../components/regions'
-import fetch from 'isomorphic-unfetch'
 import { filter, orderBy, slice } from 'lodash'
 import { timeSince, humanizedDateRange } from '../lib/util'
+import { getGroupingData } from '../lib/data'
 
 const title = `Upcoming High School Hackathons in ${new Date().getFullYear()}`
 const eventsPreview = events =>
@@ -62,8 +62,7 @@ export default ({ stats, emailStats, events, groups }) => (
 )
 
 export async function unstable_getStaticProps() {
-  let events = await fetch('https://api.hackclub.com/v1/events')
-  events = await events.json()
+  let { events, groups, emailStats } = await getGroupingData()
   let stats = {
     total: events.length,
     state: new Set(
@@ -83,11 +82,5 @@ export async function unstable_getStaticProps() {
     filter(events, e => new Date(e.start) >= new Date()),
     'start'
   )
-  let groups = await fetch('https://api.hackclub.com/v1/events/groups')
-  groups = await groups.json()
-  let emailStats = await fetch(
-    'https://api.hackclub.com/v1/event_email_subscribers/stats'
-  )
-  emailStats = await emailStats.json()
   return { props: { events, groups, stats, emailStats } }
 }
