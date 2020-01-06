@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { Container, Grid } from '@theme-ui/components'
+import { Container, Grid, Box } from '@theme-ui/components'
 import Header from '../components/header'
 import Field from '../components/field'
 import EventCard from '../components/event-card'
@@ -126,9 +126,9 @@ export default () => {
           placeholder={50}
         />
       </Grid>
-      <div>
+      <Box sx={{ gridRow: [-1, 'auto'] }}>
         <EventCard {...fields} />
-      </div>
+      </Box>
     </Container>
   ]
 }
