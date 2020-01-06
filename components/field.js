@@ -19,7 +19,7 @@ const Field = React.forwardRef(
     return (
       <Box
         sx={{ gridColumn: [null, half ? 'span 1' : 'span 2'], ...sx }}
-        onClick={type === 'checkbox' && props.onChange}
+        onClick={type === 'checkbox' ? props.onChange : null}
       >
         {type === 'checkbox' ? (
           <Flex sx={{ alignItems: 'center' }}>
