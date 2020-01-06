@@ -1,37 +1,38 @@
-import { useState } from 'react'
-import {
-  Container,
-  Heading,
-  Text,
-  Field,
-  Box,
-  Grid
-} from '@theme-ui/components'
+import { useState, useEffect } from 'react'
+import { Container, Grid } from '@theme-ui/components'
 import Header from '../components/header'
+import Field from '../components/field'
 import EventCard from '../components/event-card'
 
 export default () => {
   const [fields, setFields] = useState({
-    website: 'https://myhackathon.com',
-    name: 'My hackathon',
+    email: '',
+    website: '',
+    name: 'My Hackathon',
     start: new Date().toISOString().split('T')[0],
     end: new Date().toISOString().split('T')[0],
     parsed_city: '',
     parsed_state_code: '',
     parsed_country: '',
     parsed_country_code: '',
-    mlh_associated: '',
+    hackclub_associated: false,
+    mlh_associated: false,
     banner: '',
-    logo: ''
+    logo: '',
+    expected_hackers: 50
   })
-  const onChange = (e, id) =>
-    setFields(data => ({ ...data, [id]: e.target.value }))
+  const onChange = ({ target }) => {
+    let { value } = target
+    if (target.type === 'checkbox') value = Boolean(value)
+    setFields(data => ({ ...data, [target.id]: value }))
+  }
+  useEffect(() => console.log(fields), [fields]) // for debugging
 
   return [
-    <Header title="Add your event" key="header" />,
+    <Header title="Submit your event" key="header" />,
     <Container
-      key="body"
       sx={{
+        px: [3, 4],
         mt: [4, 5],
         display: 'grid',
         gridGap: [4, 5],
@@ -39,40 +40,92 @@ export default () => {
         alignItems: 'start'
       }}
     >
-      <Box sx={{ div: { mb: 3 } }}>
+      <Grid columns={[null, 2]} gap={[3, 4]}>
         <Field
-          label="Name"
-          name="name"
-          value={fields.name}
-          onChange={e => onChange(e, 'name')}
+          label="What’s your email?"
+          name="email"
+          type="email"
+          desc="If we have any questions about your event, we’ll get in touch through this email."
+          value={fields.email}
+          onChange={onChange}
         />
         <Field
-          label="Start"
+          label="Name of the hackathon"
+          name="name"
+          desc="(NOT your name, but the name of your event)"
+          value={fields.name}
+          onChange={onChange}
+        />
+        <Field
+          label="Start date"
+          type="date"
           name="start"
           value={fields.start}
-          onChange={e => onChange(e, 'start')}
+          onChange={onChange}
+          half
         />
         <Field
-          label="End"
+          label="End date"
+          type="date"
           name="end"
           value={fields.end}
-          onChange={e => onChange(e, 'end')}
+          onChange={onChange}
+          half
+        />
+        <Field
+          label="City where it’s being held"
+          name="parsed_city"
+          value={fields.parsed_city}
+          onChange={onChange}
+        />
+        <Field
+          label="State, region, or territory"
+          name="parsed_state"
+          value={fields.parsed_state}
+          onChange={onChange}
+          half
+        />
+        <Field
+          label="Country"
+          name="parsed_country"
+          placeholder="USA"
+          value={fields.parsed_country}
+          onChange={onChange}
+          half
         />
         <Field
           label="Website"
           name="website"
           type="url"
           value={fields.website}
-          onChange={e => onChange(e, 'website')}
+          onChange={onChange}
+          placeholder="https://myhackathon.com"
         />
         <Field
-          label="MLH associated?"
+          label="Are you affiliated with a registered Hack&nbsp;Club or Hack&nbsp;Club Bank?"
+          name="hackclub_associated"
+          type="checkbox"
+          value={fields.hackclub_associated}
+          onChange={onChange}
+          half
+        />
+        <Field
+          label="Are you a registered MLH member event?"
           name="mlh_associated"
           type="checkbox"
           value={fields.mlh_associated}
-          onChange={e => onChange(e, 'mlh_associated')}
+          onChange={onChange}
+          half
         />
-      </Box>
+        <Field
+          label="How many hackers are you expecting at the event?"
+          name="expected_hackers"
+          type="number"
+          value={fields.expected_hackers}
+          onChange={onChange}
+          placeholder={50}
+        />
+      </Grid>
       <div>
         <EventCard {...fields} />
       </div>
