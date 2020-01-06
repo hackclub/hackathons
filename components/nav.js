@@ -8,7 +8,6 @@ import {
   Text,
   Link as A
 } from 'theme-ui'
-import { useColorMode } from 'theme-ui'
 import { useRouter } from 'next/router'
 import Link from 'next/link'
 
@@ -71,6 +70,7 @@ const ColorSwitcher = (props) => {
 }
 
 export default () => {
+  const [mode] = useColorMode()
   const router = useRouter()
   const home = router.pathname === '/'
   return (
@@ -96,20 +96,21 @@ export default () => {
         }}
       >
         {!home ? <BackButton /> : <Flag />}
-        <Button
-          as="a"
-          href="https://airtable.com/shrpYdJpAOphEWXan"
-          aria-label="Apply to list your hackathon"
-          variant="outline"
-          sx={{ ml: 'auto', py: 0, px: 2 }}
-        >
-          <Text as="span" sx={{ display: ['block', 'none'] }}>
-            Submit
-          </Text>
-          <Text as="span" sx={{ display: ['none', 'block'] }}>
-            Add your event
-          </Text>
-        </Button>
+        <Link href="/new" passHref>
+          <Button
+            as="a"
+            aria-label="Apply to list your hackathon"
+            variant="outline"
+            sx={{ ml: 'auto', py: 0, px: 2 }}
+          >
+            <Text as="span" sx={{ display: ['block', 'none'] }}>
+              Submit
+            </Text>
+            <Text as="span" sx={{ display: ['none', 'block'] }}>
+              Add your event
+            </Text>
+          </Button>
+        </Link>
         <NavButton
           as="a"
           href="https://github.com/hackclub/hackathons"
