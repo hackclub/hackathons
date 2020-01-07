@@ -6,7 +6,7 @@ import { getGroupingData } from '../lib/data'
 
 export default ({ name, events, groups, emailStats }) => (
   <Grouping
-    title={`High School Hackathons in ${name}`}
+    title={`High School Hackathons in ${name.replace('USA', 'United States')}`}
     desc={`Find, register, and compete in ${events.length} student-led hackathons around ${name}.`}
     header={<Signup stats={emailStats} initialLocation={startCase(name)} />}
     events={events}
