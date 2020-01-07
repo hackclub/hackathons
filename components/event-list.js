@@ -3,13 +3,13 @@ import GroupCard from './group-card'
 
 const sortingFunctions = {
   'start asc': (a, b) => {
-    const [a_year, a_month, a_day] = a.start.split('-')
-    const [b_year, b_month, b_day] = b.start.split('-')
+    const [a_year, a_month, a_day] = a.fields.start_date.split('-')
+    const [b_year, b_month, b_day] = b.fields.start_date.split('-')
     return a_year - b_year || a_month - b_month || a_day - b_day || a.id - b.id
   },
   'start desc': (a, b) => {
-    const [a_year, a_month, a_day] = a.start.split('-')
-    const [b_year, b_month, b_day] = b.start.split('-')
+    const [a_year, a_month, a_day] = a.fields.start_date.split('-')
+    const [b_year, b_month, b_day] = b.fields.start_date.split('-')
     return b_year - a_year || b_month - a_month || b_day - a_day || b.id - a.id
   }
 }
@@ -36,7 +36,7 @@ const EventList = ({ events = [], groups = [], sortBy = 'start asc' }) =>
       card.type === 'group'
         ? {
             ...card,
-            start: card.events.map(e => e.start).sort()[0]
+            start: card.events.map(e => e.fields.start_date).sort()[0]
           }
         : card
     )
@@ -46,7 +46,7 @@ const EventList = ({ events = [], groups = [], sortBy = 'start asc' }) =>
       card.type === 'group' ? (
         <GroupCard group={card} events={card.events} key={`group-${card.id}`} />
       ) : (
-        <EventCard {...card} key={`event-${card.id}`} />
+        <EventCard id={card.id} {...card.fields} key={`event-${card.id}`} />
       )
     )
 

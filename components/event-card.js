@@ -10,17 +10,16 @@ import {
 
 const EventCard = ({
   id,
-  website,
   name,
-  start,
-  end,
-  parsed_city,
-  parsed_state_code,
-  parsed_country,
-  parsed_country_code,
+  website_url,
+  start_date,
+  end_date,
+  city,
+  state,
+  country,
   mlh_associated,
-  banner,
-  logo,
+  background_image,
+  logo_image,
   // distanceTo,
   invisible = false,
   inGroup = false
@@ -28,14 +27,14 @@ const EventCard = ({
   <Tilt>
     <Card
       as="a"
-      href={`https://api.hackclub.com/v1/events/${id}/redirect`}
+      href={website_url}
       target="_blank"
       rel="noopener noreferrer"
       onClick={trackClick({
-        href: website,
+        href: website_url,
         analyticsEventName: 'Event Clicked',
         analyticsProperties: {
-          eventUrl: website,
+          eventUrl: website_url,
           eventName: name,
           eventId: id
         }
@@ -46,7 +45,7 @@ const EventCard = ({
       sx={{ display: invisible ? 'none' : 'flex' }}
       style={{
         backgroundImage: `linear-gradient(rgba(0,0,0,0) 0%, rgba(0,0,0,0.375) 75%), url('${imageSrc(
-          banner
+          background_image
         )}')`
       }}
     >
@@ -66,9 +65,9 @@ const EventCard = ({
           }}
         />
       )}
-      {logo && (
+      {logo_image && (
         <Image
-          src={imageSrc(logo)}
+          src={imageSrc(logo_image)}
           alt={`${name} logo`}
           loading="lazy"
           sx={{
@@ -90,7 +89,7 @@ const EventCard = ({
           opacity: 0.875
         }}
       >
-        <Text as="span">{humanizedDateRange(start, end)}</Text>
+        <Text as="span">{humanizedDateRange(start_date, end_date)}</Text>
         {/* distanceTo ? (
           <Text as="span">{`${humanizeDistance(distanceTo)} miles`}</Text>
         ) : ( */}
@@ -100,20 +99,13 @@ const EventCard = ({
           itemScope
           itemType="http://schema.org/Place"
         >
-          <span itemProp="address">
-            {formatAddress(
-              parsed_city,
-              parsed_state_code,
-              parsed_country,
-              parsed_country_code
-            )}
-          </span>
+          <span itemProp="address">{formatAddress(city, state, country)}</span>
         </Text>
       </Flex>
       <Box sx={{ display: 'none' }}>
-        <span itemProp="url">{website}</span>
-        <span itemProp="startDate" content={start} children={end} />
-        <span itemProp="endDate" content={end} children={end} />
+        <span itemProp="url">{website_url}</span>
+        <span itemProp="startDate" content={start_date} children={start_date} />
+        <span itemProp="endDate" content={end_date} children={end_date} />
       </Box>
     </Card>
   </Tilt>

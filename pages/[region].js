@@ -88,9 +88,6 @@ export const unstable_getStaticProps = async ({ params }) => {
   region = find(regions, ['id', region.replace('list-of-hackathons-in-', '')])
   let { name } = region
   let { events, groups, emailStats } = await getGroupingData()
-  events = orderBy(
-    events.filter(event => region.filter(event)),
-    'start'
-  )
+  events = events.filter(event => region.filter(event.fields))
   return { props: { name, events, groups, emailStats } }
 }

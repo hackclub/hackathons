@@ -30,9 +30,9 @@ const GroupCard = ({ group, events }) => {
     colorMode === 'dark' ? theme.colors.elevated : theme.colors.sunken
   const [open, setOpen] = useState(false)
   const toggle = () => setOpen(prev => !prev)
-  events = orderBy(events, 'start')
-  const { start } = first(events)
-  const { end } = last(events)
+  events = orderBy(events, 'fields.start_date')
+  const { start_date: start } = first(events).fields
+  const { end_date: end } = last(events).fields
   const { id, website, name, banner, logo } = group
 
   return [
@@ -47,7 +47,7 @@ const GroupCard = ({ group, events }) => {
         backgroundImage:
           banner &&
           `linear-gradient(rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.375) 75%),
-            url(${imageSrc(banner)})`
+            url(https://api.hackclub.com${banner})`
       }}
       sx={{
         cursor: 'pointer',
@@ -61,7 +61,7 @@ const GroupCard = ({ group, events }) => {
     >
       {logo && (
         <Image
-          src={imageSrc(logo)}
+          src={`https://api.hackclub.com${logo}`}
           alt={`${name} logo`}
           loading="lazy"
           sx={{
@@ -93,7 +93,13 @@ const GroupCard = ({ group, events }) => {
       </Box>
     </Card>,
     events.map(event => (
-      <EventCard {...event} key={event.id} invisible={!open} inGroup />
+      <EventCard
+        {...event.fields}
+        id={event.id}
+        key={event.id}
+        invisible={!open}
+        inGroup
+      />
     ))
   ]
 }

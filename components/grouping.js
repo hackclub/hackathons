@@ -1,6 +1,6 @@
 import { Container, Box, Grid } from '@theme-ui/components'
 import Header from '../components/header'
-import EventList from '../components/event-list'
+import EventCard from '../components/event-card'
 
 export default ({ title, desc, header, children, footer, events, groups }) => (
   <Box
@@ -11,7 +11,9 @@ export default ({ title, desc, header, children, footer, events, groups }) => (
     <Container sx={{ mt: [3, 4, 5] }}>
       {children}
       <Grid columns={[1, 2, 3]} gap={[3, 4]} sx={{ mt: [3, 4] }}>
-        <EventList events={events} groups={groups} />
+        {events.map(event => (
+          <EventCard id={event.id} key={event.id} {...event.fields} />
+        ))}
       </Grid>
       {footer}
     </Container>

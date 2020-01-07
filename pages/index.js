@@ -39,7 +39,7 @@ export default ({ stats, emailStats, events, groups }) => (
         </Text>
         <Text variant="subtitle">
           Maintained by the <Link href="https://hackclub.com">Hack Club</Link>{' '}
-          staff. Last&nbsp;updated {stats.lastUpdated}.
+          staff.
         </Text>
         <Signup stats={emailStats} />
       </>
@@ -67,20 +67,16 @@ export async function unstable_getStaticProps() {
     total: events.length,
     state: new Set(
       events
-        .filter(event => event.parsed_country_code === 'US')
-        .map(event => event.parsed_state)
+        .filter(event =>
+          ['US', 'USA', 'United States'].includes(event.fields.country)
+        )
+        .map(event => event.fields.state)
     ).size,
-    country: new Set(events.map(event => event.parsed_country)).size,
-    lastUpdated: timeSince(
-      Math.max(...events.map(e => Date.parse(e.updated_at))),
-      false,
-      new Date(),
-      true
-    )
+    country: new Set(events.map(event => event.fields.country)).size
   }
   events = orderBy(
-    filter(events, e => new Date(e.start) >= new Date()),
-    'start'
+    filter(events, e => new Date(e.fields.start_date) >= new Date()),
+    'fields.start_date'
   )
   return { props: { events, groups, stats, emailStats } }
 }
