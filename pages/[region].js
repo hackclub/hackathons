@@ -6,7 +6,7 @@ import { getGroupingData } from '../lib/data'
 
 export default ({ name, events, groups, emailStats }) => (
   <Grouping
-    title={`High School Hackathons in ${name}`}
+    title={`High School Hackathons in ${name.replace('USA', 'United States')}`}
     desc={`Find, register, and compete in ${events.length} student-led hackathons around ${name}.`}
     header={<Signup stats={emailStats} initialLocation={startCase(name)} />}
     events={events}
@@ -16,6 +16,7 @@ export default ({ name, events, groups, emailStats }) => (
   </Grouping>
 )
 
+/*
 const distance = (lat1, lon1, lat2, lon2) => {
   // https://www.geodatasource.com/developers/javascript
   const radlat1 = (Math.PI * lat1) / 180
@@ -33,47 +34,37 @@ const distance = (lat1, lon1, lat2, lon2) => {
     kilometers: dist * 1.609344
   }
 }
+*/
 
 let regions = [
   {
     name: 'Los Angeles',
-    filter: event => event.parsed_city === 'Los Angeles'
+    filter: event => event.city === 'Los Angeles'
   },
   {
     name: 'Chicago',
-    filter: event => {
-      const position = [41.969649, -87.720643]
-      return (
-        distance(position[0], position[1], event.latitude, event.longitude)
-          .miles < 42
-      )
-    }
+    filter: event => ['IL', 'Illinois'].includes(event.state)
   },
   {
     name: 'New York',
-    filter: event => event.parsed_state_code === 'NY'
+    filter: event =>
+      ['NJ', 'NY', 'New York', 'New Jersey'].includes(event.state)
   },
   {
     name: 'the Bay Area',
-    filter: event => {
-      const position = [37.641045, -122.228916]
-      return (
-        distance(position[0], position[1], event.latitude, event.longitude)
-          .miles < 39
-      )
-    }
+    filter: event => ['CA', 'California'].includes(event.state)
   },
   {
     name: 'the USA',
-    filter: event => event.parsed_country_code === 'US'
+    filter: event => ['US', 'USA', 'United States'].includes(event.country)
   },
   {
     name: 'Canada',
-    filter: event => event.parsed_country_code === 'CA'
+    filter: event => ['CA', 'Canada'].includes(event.country)
   },
   {
     name: 'India',
-    filter: event => event.parsed_country_code === 'IN'
+    filter: event => ['IN', 'India'].includes(event.country)
   }
 ]
 regions = map(regions, region => ({ id: kebabCase(region.name), ...region }))
