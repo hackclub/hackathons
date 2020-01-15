@@ -1,5 +1,11 @@
 import Document, { Head, Main, NextScript } from 'next/document'
+import * as snippet from '@segment/snippet'
 import { extractCritical } from 'emotion-server'
+
+const {
+  ANALYTICS_WRITE_KEY = 'enReVnqn2tVrMigdaSA5py2tRjSzlgHb',
+  NODE_ENV = 'development'
+} = process.env
 
 export default class extends Document {
   static getInitialProps({ renderPage }) {
@@ -16,11 +22,18 @@ export default class extends Document {
     }
   }
 
+  renderSnippet() {
+    const opts = { apiKey: ANALYTICS_WRITE_KEY, page: true }
+    if (NODE_ENV === 'development') return snippet.max(opts)
+    return snippet.min(opts)
+  }
+
   render() {
     return (
       <html lang="en">
         <Head>
           <style dangerouslySetInnerHTML={{ __html: this.props.css }} />
+          <script dangerouslySetInnerHTML={{ __html: this.renderSnippet() }} />
         </Head>
         <body>
           <Main />
