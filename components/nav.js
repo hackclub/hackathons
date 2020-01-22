@@ -3,6 +3,7 @@ import {
   Box,
   Container,
   IconButton,
+  Button,
   Image,
   Link as A
 } from '@theme-ui/components'
@@ -75,7 +76,6 @@ export default () => {
         color: 'nav',
         py: 3
       }}
-      key="nav"
     >
       <Container
         sx={{
@@ -90,14 +90,20 @@ export default () => {
         }}
       >
         {!home ? <BackButton /> : <Flag />}
-        <NavButton
+        <Button
           as="a"
           href="https://airtable.com/shr42MplImeMkHHWP"
           aria-label="Submit your hackathon"
-          sx={{ ml: 'auto' }}
+          sx={{
+            ml: 'auto',
+            bg: 'transparent',
+            border: '2px solid currentColor',
+            py: 0,
+            px: 2
+          }}
         >
-          <Plus size={24} />
-        </NavButton>
+          Submit
+        </Button>
         <NavButton
           as="a"
           href="https://github.com/lachlanjc/hackathons"
