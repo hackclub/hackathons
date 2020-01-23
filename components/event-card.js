@@ -32,7 +32,7 @@ const EventCard = ({
       target="_blank"
       rel="noopener noreferrer"
       onClick={trackClick({
-        href: website,
+        href: `https://api.hackclub.com/v1/events/${id}/redirect`,
         analyticsEventName: 'Event Clicked',
         analyticsProperties: {
           eventUrl: website,
