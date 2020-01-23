@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { useThemeUI } from 'theme-ui'
-import { Card, Box, Heading, Text, Flex, Image } from '@theme-ui/components'
+import { Card, Box, Heading, Text, Flex, Image } from 'theme-ui'
 import { orderBy, first, last } from 'lodash'
 import { imageSrc, humanizedDateRange, formatAddress } from '../lib/util'
 import EventCard from './event-card'

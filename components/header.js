@@ -1,4 +1,4 @@
-import { Box, Container, Heading } from '@theme-ui/components'
+import { Box, Container, Heading } from 'theme-ui'
 import Meta from './meta'
 
 export default ({
@@ -28,7 +28,7 @@ export default ({
         variant="title"
         sx={{
           color: 'primary',
-          maxWidth: 'narrowplus',
+          maxWidth: 'copyPlus',
           mx: centered && 'auto'
         }}
         children={title}

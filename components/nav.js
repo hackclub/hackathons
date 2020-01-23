@@ -1,12 +1,5 @@
 import { ArrowLeft, Plus, Moon, GitHub } from 'react-feather'
-import {
-  Box,
-  Container,
-  IconButton,
-  Button,
-  Image,
-  Link as A
-} from '@theme-ui/components'
+import { Box, Container, IconButton, Button, Image, Link as A } from 'theme-ui'
 import { useColorMode } from 'theme-ui'
 import { useRouter } from 'next/router'
 import Link from 'next/link'

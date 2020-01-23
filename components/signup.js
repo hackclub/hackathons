@@ -9,7 +9,7 @@ import {
   Button,
   Spinner,
   Alert
-} from '@theme-ui/components'
+} from 'theme-ui'
 import { AlertTriangle, Send } from 'react-feather'
 import fetch from 'isomorphic-unfetch'
 
@@ -65,7 +65,7 @@ export default ({ initialLocation, stats = {} }) => {
   return (
     <Card
       variant="sunken"
-      sx={{ maxWidth: 'narrowplus', mx: 'auto', mt: [3, 4] }}
+      sx={{ maxWidth: 'narrowPlus', mx: 'auto', mt: [3, 4] }}
     >
       <Heading as="h2" variant="subheadline" sx={{ mb: 1 }}>
         Want to hear when events are added in your area?

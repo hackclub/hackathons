@@ -1,14 +1,14 @@
-import { Grid, Card } from '@theme-ui/components'
+import { Grid, Card } from 'theme-ui'
 import { pick, split, range } from 'lodash'
 import Link from 'next/link'
-import { palette } from './theme'
+import { colors } from './theme'
 
 const years = range(2017, new Date().getFullYear() + 1)
 
-const colors = pick(palette, split('red,orange,yellow,green,cyan,blue', ','))
+const palette = pick(colors, split('red,orange,yellow,green,cyan,blue', ','))
 const rainbow = {}
-Object.entries(colors).map(([name, bg], i) => {
-  rainbow[`&:nth-of-type(${Object.keys(colors).length}n + ${i + 1})`] = { bg }
+Object.entries(palette).map(([name, bg], i) => {
+  rainbow[`&:nth-of-type(${Object.keys(palette).length}n + ${i + 1})`] = { bg }
 })
 
 export default ({ showAll = false }) => (

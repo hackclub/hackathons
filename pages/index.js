@@ -1,5 +1,5 @@
 import Grouping from '../components/grouping'
-import { Heading, Text, Link } from '@theme-ui/components'
+import { Heading, Text, Link } from 'theme-ui'
 import Meta from '../components/meta'
 import Signup from '../components/signup'
 import Years from '../components/years'

@@ -1,4 +1,4 @@
-import { Container, Box } from '@theme-ui/components'
+import { Container, Box } from 'theme-ui'
 import Header from '../../components/header'
 import Years from '../../components/years'
 

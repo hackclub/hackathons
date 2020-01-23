@@ -1,4 +1,4 @@
-import { Grid, Card, Heading } from '@theme-ui/components'
+import { Grid, Card, Heading } from 'theme-ui'
 import { kebabCase, snakeCase, startCase } from 'lodash'
 import Link from 'next/link'
 

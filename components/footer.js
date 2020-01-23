@@ -1,5 +1,5 @@
 import Footer from './footer.mdx'
-import { Container, Box } from '@theme-ui/components'
+import { Container, Box } from 'theme-ui'
 
 export default () => (
   <Box

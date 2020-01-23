@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import { palette } from './theme'
+import { colors } from './theme'
 
 const name = 'Hack Club Hackathons'
 const makeTitle = title => (title === name ? title : `${title} – ${name}`)
@@ -8,7 +8,7 @@ export default ({
   title = name,
   description = 'Listing of upcoming high school hackathons around the world.',
   image = 'https://hackathons.now.sh/card.png',
-  color = palette.red
+  color = colors.red
 }) => (
   <Head>
     <meta key="og_type" property="og:type" content="website" />
