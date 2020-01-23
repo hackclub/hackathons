@@ -106,7 +106,7 @@ export default () => {
         </Button>
         <NavButton
           as="a"
-          href="https://github.com/lachlanjc/hackathons"
+          href="https://github.com/hackclub/hackathons"
           aria-label="View source code on GitHub"
         >
           <GitHub size={24} />

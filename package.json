@@ -1,13 +1,13 @@
 {
   "name": "hackathons",
   "version": "0.0.1",
-  "author": "Lachlan Campbell",
+  "author": "Lachlan Campbell <lachlan@hackclub.com>",
   "license": "MIT",
   "private": true,
   "scripts": {
     "dev": "next",
     "now-build": "next build",
-    "start": "npm run dev"
+    "start": "yarn run dev"
   },
   "engines": {
     "node": "12.x"
