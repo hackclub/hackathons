@@ -87,13 +87,8 @@ export default () => {
           as="a"
           href="https://airtable.com/shr42MplImeMkHHWP"
           aria-label="Submit your hackathon"
-          sx={{
-            ml: 'auto',
-            bg: 'transparent',
-            border: '2px solid currentColor',
-            py: 0,
-            px: 2
-          }}
+          variant="outline"
+          sx={{ ml: 'auto', py: 0, px: 2 }}
         >
           Submit
         </Button>
