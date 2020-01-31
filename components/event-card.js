@@ -1,4 +1,4 @@
-import { Card, Box, Heading, Text, Flex, Image } from '@theme-ui/components'
+import { Card, Box, Heading, Text, Flex, Image } from 'theme-ui'
 import Tilt from './tilt'
 import {
   imageSrc,

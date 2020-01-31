@@ -1,18 +1,7 @@
-import { Grid, Card, Heading } from '@theme-ui/components'
+import { regions } from '../lib/regions.json'
+import { Grid, Card, Heading } from 'theme-ui'
 import { kebabCase, snakeCase, startCase } from 'lodash'
 import Link from 'next/link'
-
-let photoSrc = q =>
-  `https://source.unsplash.com/random/512x256/?${snakeCase(q)}`
-let regions = [
-  'Los Angeles',
-  'Chicago',
-  'New York',
-  'the Bay Area',
-  'the USA',
-  'Canada',
-  'India'
-]
 
 export default ({ showAll = false, sx = {} }) => (
   <Grid
@@ -52,7 +41,7 @@ export default ({ showAll = false, sx = {} }) => (
         </Card>
       </Link>
     )}
-    {regions.map(name => (
+    {Object.entries(regions).map(([name, url]) => (
       <Link
         href={`/list-of-hackathons-in-${kebabCase(name)}`}
         passHref
@@ -63,7 +52,7 @@ export default ({ showAll = false, sx = {} }) => (
           variant="event"
           style={{
             backgroundImage: `linear-gradient(rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.375) 75%),
-              url(${photoSrc(name)})`
+              url(${url})`
           }}
         >
           <Heading as="h3" sx={{ fontSize: 3 }}>

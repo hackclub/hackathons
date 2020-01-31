@@ -1,6 +1,8 @@
+import { ArrowLeft, Plus, Moon, GitHub } from 'react-feather'
+import { Box, Container, IconButton, Button, Image, Link as A } from 'theme-ui'
 import { useColorMode } from 'theme-ui'
-import { Box, Container, IconButton, Image, Link } from '@theme-ui/components'
-import { Plus, Moon, GitHub } from 'react-feather'
+import { useRouter } from 'next/router'
+import Link from 'next/link'
 
 const NavButton = ({ sx, ...props }) => (
   <IconButton
@@ -18,13 +20,37 @@ const NavButton = ({ sx, ...props }) => (
   />
 )
 
+const BackButton = ({ to = '/' }) => (
+  <Link href={to} passHref>
+    <NavButton as="a" title={to === '/' ? 'Back to homepage' : 'Back'}>
+      <ArrowLeft />
+    </NavButton>
+  </Link>
+)
+
+const Flag = () => (
+  <A
+    href="https://hackclub.com"
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="Hack Club homepage"
+    sx={{ mt: -3 }}
+  >
+    <Image
+      src="https://hackclub.com/orpheus_flag.svg"
+      alt="Hack Club flag"
+      sx={{ width: [96, 128] }}
+    />
+  </A>
+)
+
 const ColorSwitcher = props => {
   const [mode, setMode] = useColorMode()
   return (
     <NavButton
       {...props}
       onClick={() => setMode(mode === 'dark' ? 'light' : 'dark')}
-      title="Cycle Color Mode"
+      title="Reverse color scheme"
     >
       <Moon size={24} />
     </NavButton>
@@ -33,6 +59,8 @@ const ColorSwitcher = props => {
 
 export default () => {
   const [mode] = useColorMode()
+  const router = useRouter()
+  const home = router.pathname === '/'
   return (
     <Box
       as="nav"
@@ -41,7 +69,6 @@ export default () => {
         color: 'nav',
         py: 3
       }}
-      key="nav"
     >
       <Container
         sx={{
@@ -55,30 +82,19 @@ export default () => {
           }
         }}
       >
-        <Link
-          href="https://hackclub.com"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="Hack Club homepage"
-          sx={{ mt: -3 }}
-        >
-          <Image
-            src="https://hackclub.com/orpheus_flag.svg"
-            alt="Hack Club flag"
-            sx={{ width: [96, 128] }}
-          />
-        </Link>
-        <NavButton
+        {!home ? <BackButton /> : <Flag />}
+        <Button
           as="a"
           href="https://airtable.com/shr42MplImeMkHHWP"
           aria-label="Submit your hackathon"
-          sx={{ ml: 'auto' }}
+          variant="outline"
+          sx={{ ml: 'auto', py: 0, px: 2 }}
         >
-          <Plus size={24} />
-        </NavButton>
+          Submit
+        </Button>
         <NavButton
           as="a"
-          href="https://github.com/lachlanjc/hackathons"
+          href="https://github.com/hackclub/hackathons"
           aria-label="View source code on GitHub"
         >
           <GitHub size={24} />
