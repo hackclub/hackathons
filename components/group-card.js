@@ -1,8 +1,8 @@
 import { useState } from 'react'
 import { useThemeUI } from 'theme-ui'
-import { Card, Box, Heading, Text, Flex, Image } from 'theme-ui'
+import { Card, Heading, Text, Flex, Image } from 'theme-ui'
 import { orderBy, first, last } from 'lodash'
-import { imageSrc, humanizedDateRange, formatAddress } from '../lib/util'
+import { imageSrc, humanizedDateRange } from '../lib/util'
 import EventCard from './event-card'
 
 const fauxCardShadow = (px, color) => `
@@ -33,15 +33,13 @@ const GroupCard = ({ group, events }) => {
   events = orderBy(events, 'start')
   const { start } = first(events)
   const { end } = last(events)
-  const { id, website, name, banner, logo } = group
+  const { name, banner, logo } = group
 
   return [
     <Card
       key="base"
       role="button"
       variant="event"
-      itemScope
-      itemType="http://schema.org/Event"
       onClick={toggle}
       style={{
         backgroundImage:
@@ -73,7 +71,7 @@ const GroupCard = ({ group, events }) => {
           }}
         />
       )}
-      <Heading as="h3" itemProp="name" sx={{ fontSize: [3, 4], mt: 2, mb: 3 }}>
+      <Heading as="h3" sx={{ fontSize: [3, 4], mt: 2, mb: 3 }}>
         {name}
       </Heading>
       <Flex
@@ -86,11 +84,6 @@ const GroupCard = ({ group, events }) => {
         <Text as="span">{humanizedDateRange(start, end)}</Text>
         <Text as="span">{events.length} locations</Text>
       </Flex>
-      <Box sx={{ display: 'none' }}>
-        <span itemProp="url">{website}</span>
-        <span itemProp="startDate" content={start} children={end} />
-        <span itemProp="endDate" content={end} children={end} />
-      </Box>
     </Card>,
     events.map(event => (
       <EventCard {...event} key={event.id} invisible={!open} inGroup />
