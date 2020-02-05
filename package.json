@@ -14,6 +14,8 @@
   },
   "dependencies": {
     "@hackclub/icons": "^0.0.3",
+    "@hackclub/meta": "^0.1.0-alpha.0",
+    "@hackclub/theme": "^0.1.0-alpha.0",
     "@segment/snippet": "^4.4.0",
     "@zeit/next-mdx": "^1.2.0",
     "isomorphic-unfetch": "^3.0.0",

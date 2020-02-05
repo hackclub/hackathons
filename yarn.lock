@@ -993,6 +993,16 @@
   resolved "https://registry.yarnpkg.com/@hackclub/icons/-/icons-0.0.3.tgz#4b70c294d174ef7b58732c5888ab5e2b51dc14cb"
   integrity sha512-V9UJo0MNl5GdTBNXQvvKa8YGhNMK4dd0tsnewGNQQLBMpfSYzN0wfxhkKyY5GT5rFqmxAnt0lElW1ACxHRCByA==
 
+"@hackclub/meta@^0.1.0-alpha.0":
+  version "0.1.0-alpha.0"
+  resolved "https://registry.yarnpkg.com/@hackclub/meta/-/meta-0.1.0-alpha.0.tgz#bbe3365b78dafabcf24f86ad610cab76f9aa33e7"
+  integrity sha512-e/LsidiJG7v235q0w/fcaO5y2cC7wyYn1G7Vs7H+rxiYGhjUeBdrCyWY6/ExqZ02S/im4eummduU1Y6k57pxRw==
+
+"@hackclub/theme@^0.1.0-alpha.0":
+  version "0.1.0-alpha.0"
+  resolved "https://registry.yarnpkg.com/@hackclub/theme/-/theme-0.1.0-alpha.0.tgz#9cfc5e401fb41eb0cf62e609e33e3ba97b912f7e"
+  integrity sha512-ozmF6mRoSdA4f8A1Hw/9Ip28uMBa1kGQq4JBJ7NGDKk6GPqGMSopbUvmX6Xfwk77HgcHCab0x1pqGGk81Xj3cg==
+
 "@mdx-js/loader@^0.15.0":
   version "0.15.7"
   resolved "https://registry.yarnpkg.com/@mdx-js/loader/-/loader-0.15.7.tgz#dd184301607579b3aa5021dc50e2ae2a04e478dc"
