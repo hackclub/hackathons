@@ -20,10 +20,15 @@ const NavButton = ({ sx, ...props }) => (
   />
 )
 
-const BackButton = ({ to = '/' }) => (
+const BackButton = ({ to = '/', text = 'All Events' }) => (
   <Link href={to} passHref>
-    <NavButton as="a" title={to === '/' ? 'Back to homepage' : 'Back'}>
+    <NavButton
+      as="a"
+      title={to === '/' ? 'Back to homepage' : 'Back'}
+      sx={{ display: 'flex', width: 'auto', pr: 2 }}
+    >
       <ArrowLeft />
+      {text}
     </NavButton>
   </Link>
 )
