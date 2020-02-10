@@ -76,7 +76,8 @@ const EventCard = ({
             height: 64,
             objectFit: 'contain',
             borderRadius: 'default',
-            mb: 1
+            mb: 1,
+            mt: [0, 0, 5]
           }}
         />
       )}
