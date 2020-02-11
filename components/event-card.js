@@ -72,8 +72,9 @@ const EventCard = ({
           alt={`${name} logo`}
           loading="lazy"
           sx={{
-            minWidth: 64,
-            height: 64,
+            minWidth: [64, null, 64 * 1.5],
+            maxWidth: [128, null, 128 * 1.5],
+            maxHeight: [64, null, 64 * 1.5],
             objectFit: 'contain',
             borderRadius: 'default',
             mb: 1,
