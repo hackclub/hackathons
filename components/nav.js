@@ -86,11 +86,11 @@ export default () => {
         <Button
           as="a"
           href="https://airtable.com/shr42MplImeMkHHWP"
-          aria-label="Submit your hackathon"
+          aria-label="Apply to list your hackathon"
           variant="outline"
           sx={{ ml: 'auto', py: 0, px: 2 }}
         >
-          Submit
+          Add your event
         </Button>
         <NavButton
           as="a"
