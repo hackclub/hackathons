@@ -16,7 +16,7 @@ const eventsPreview = events =>
     )
     .join('')
 
-export default ({ stats, emailStats, events, groups }) => (
+export default ({ stats, emailStats, events }) => (
   <Grouping
     includeMeta={false}
     title={title}
@@ -45,7 +45,6 @@ export default ({ stats, emailStats, events, groups }) => (
       </>
     }
     events={events}
-    groups={groups}
     footer={
       <section>
         <Heading variant="headline" sx={{ mt: [4, 5], mb: [3, 4] }}>
@@ -62,17 +61,17 @@ export default ({ stats, emailStats, events, groups }) => (
 )
 
 export async function unstable_getStaticProps() {
-  let { events, groups, emailStats } = await getGroupingData()
+  let { events, emailStats } = await getGroupingData()
   let stats = {
     total: events.length,
     state: new Set(
       events
         .filter(event => event.parsed_country_code === 'US')
-        .map(event => event.parsed_state)
+        .map(event => event.parsed_state_code)
     ).size,
     country: new Set(events.map(event => event.parsed_country)).size,
     lastUpdated: timeSince(
-      Math.max(...events.map(e => Date.parse(e.updated_at))),
+      Math.max(...events.map(e => Date.parse(e.created_at))),
       false,
       new Date(),
       true
@@ -82,5 +81,5 @@ export async function unstable_getStaticProps() {
     filter(events, e => new Date(e.start) >= new Date()),
     'start'
   )
-  return { props: { events, groups, stats, emailStats } }
+  return { props: { stats, emailStats, events } }
 }
