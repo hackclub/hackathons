@@ -5,7 +5,7 @@ import Meta from '@hackclub/meta'
 import Signup from '../components/signup'
 import Years from '../components/years'
 import Regions from '../components/regions'
-import { filter, orderBy, slice } from 'lodash'
+import { filter, orderBy, slice, last } from 'lodash'
 import { timeSince, humanizedDateRange } from '../lib/util'
 import { getGroupingData } from '../lib/data'
 
@@ -40,7 +40,7 @@ export default ({ stats, emailStats, events }) => (
           A curated list of high school hackathons with {stats.total}
           &nbsp;events in {stats.state}
           &nbsp;states + {stats.country}
-          &nbsp;countries.
+          &nbsp;countries. Last&nbsp;updated {stats.lastUpdated}.
         </Text>
         <Text variant="subtitle">
           Maintained by the <Link href="https://hackclub.com">Hack Club</Link>{' '}
@@ -76,7 +76,13 @@ export async function unstable_getStaticProps() {
         )
         .map(event => event.state)
     ).size,
-    country: new Set(events.map(event => event.country)).size
+    country: new Set(events.map(event => event.country)).size,
+    lastUpdated: timeSince(
+       last(orderBy(events, 'createdAt')).createdAt,
+       false,
+       new Date(),
+       true
+     )
   }
   // Sort upcoming events by start date
   events = orderBy(
