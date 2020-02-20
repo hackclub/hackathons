@@ -5,7 +5,7 @@ import Signup from '../components/signup'
 import { map, orderBy, find, kebabCase, startCase } from 'lodash'
 import { getGroupingData } from '../lib/data'
 
-export default ({ name, events, groups, emailStats }) => {
+export default ({ name, events, emailStats }) => {
   if (!name || !events) return <Error statusCode={404} />
   return (
     <Grouping
@@ -18,7 +18,6 @@ export default ({ name, events, groups, emailStats }) => {
       } student-led hackathons around ${name}.`}
       header={<Signup stats={emailStats} initialLocation={startCase(name)} />}
       events={events}
-      groups={groups}
     >
       <Regions showAll />
     </Grouping>
@@ -89,7 +88,7 @@ export const unstable_getStaticProps = async ({ params }) => {
   let { region } = params
   region = find(regions, ['id', region.replace('list-of-hackathons-in-', '')])
   let { name } = region
-  let { events, groups, emailStats } = await getGroupingData()
-  events = orderBy(events.filter(event => region.filter(event)), 'start')
-  return { props: { name, events, groups, emailStats } }
+  let { events, emailStats } = await getGroupingData()
+  events = orderBy(events.filter(event => region.filter(event)), 'fields.start_date')
+  return { props: { name, events, emailStats } }
 }

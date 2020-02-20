@@ -21,8 +21,7 @@ const EventCard = ({
   background_image,
   logo_image,
   // distanceTo,
-  invisible = false,
-  inGroup = false
+  invisible = false
 }) => (
   <Tilt>
     <Card
@@ -80,7 +79,7 @@ const EventCard = ({
         />
       )}
       <Heading as="h3" itemProp="name" sx={{ fontSize: [3, 4], mt: 2, mb: 3 }}>
-        {inGroup ? name.replace('LHD ', '') : name}
+        {name}
       </Heading>
       <Flex
         sx={{

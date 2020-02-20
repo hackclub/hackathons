@@ -2,7 +2,7 @@ import { Container, Box, Grid } from 'theme-ui'
 import Header from '../components/header'
 import EventCard from '../components/event-card'
 
-export default ({ title, desc, header, children, footer, events, groups }) => (
+export default ({ title, desc, header, children, footer, events }) => (
   <Box
     as="main"
     sx={{ bg: 'background', color: 'text', textAlign: [null, 'center'] }}
