@@ -1,20 +1,29 @@
+import Error from 'next/error'
 import Grouping from '../components/grouping'
 import Regions from '../components/regions'
 import Signup from '../components/signup'
 import { map, orderBy, find, kebabCase, startCase } from 'lodash'
 import { getGroupingData } from '../lib/data'
 
-export default ({ name, events, groups, emailStats }) => (
-  <Grouping
-    title={`High School Hackathons in ${name.replace('USA', 'United States')}`}
-    desc={`Find, register, and compete in ${events.length} student-led hackathons around ${name}.`}
-    header={<Signup stats={emailStats} initialLocation={startCase(name)} />}
-    events={events}
-    groups={groups}
-  >
-    <Regions showAll />
-  </Grouping>
-)
+export default ({ name, events, groups, emailStats }) => {
+  if (!name || !events) return <Error statusCode={404} />
+  return (
+    <Grouping
+      title={`High School Hackathons in ${name.replace(
+        'USA',
+        'United States'
+      )}`}
+      desc={`Find, register, and compete in ${
+        events.length
+      } student-led hackathons around ${name}.`}
+      header={<Signup stats={emailStats} initialLocation={startCase(name)} />}
+      events={events}
+      groups={groups}
+    >
+      <Regions showAll />
+    </Grouping>
+  )
+}
 
 const distance = (lat1, lon1, lat2, lon2) => {
   // https://www.geodatasource.com/developers/javascript
@@ -78,19 +87,18 @@ let regions = [
 ]
 regions = map(regions, region => ({ id: kebabCase(region.name), ...region }))
 
-export const unstable_getStaticPaths = () =>
-  map(map(regions, 'id'), id => ({
+export const unstable_getStaticPaths = () => {
+  const paths = map(map(regions, 'id'), id => ({
     params: { region: `list-of-hackathons-in-${id}` }
   }))
+  return { paths }
+}
 
 export const unstable_getStaticProps = async ({ params }) => {
   let { region } = params
   region = find(regions, ['id', region.replace('list-of-hackathons-in-', '')])
   let { name } = region
   let { events, groups, emailStats } = await getGroupingData()
-  events = orderBy(
-    events.filter(event => region.filter(event)),
-    'start'
-  )
+  events = orderBy(events.filter(event => region.filter(event)), 'start')
   return { props: { name, events, groups, emailStats } }
 }

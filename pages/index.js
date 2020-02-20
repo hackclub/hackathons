@@ -1,6 +1,7 @@
 import Grouping from '../components/grouping'
 import { Heading, Text, Link } from 'theme-ui'
-import Meta from '../components/meta'
+import Head from 'next/head'
+import Meta from '@hackclub/meta'
 import Signup from '../components/signup'
 import Years from '../components/years'
 import Regions from '../components/regions'
@@ -22,19 +23,23 @@ export default ({ stats, emailStats, events, groups }) => (
     title={title}
     header={
       <>
-        <Meta
-          title={title}
-          description={`${title}. A curated list of high school hackathons with ${
-            events.length
-          } events in ${stats.state} states + ${
-            stats.country
-          } countries. Maintained by the Hack Club staff. ${eventsPreview(
-            events
-          )}`}
-        />
+        <Head>
+          <title>{title}</title>
+          <Meta
+            title={title}
+            description={`${title}. A curated list of high school hackathons with ${
+              events.length
+            } events in ${stats.state} states + ${
+              stats.country
+            } countries. Maintained by the Hack Club staff. ${eventsPreview(
+              events
+            )}`}
+          />
+        </Head>
         <Text variant="subtitle" sx={{ mt: [3, 4], mb: 3 }}>
           A curated list of high school hackathons with {stats.total}
-          &nbsp;events in {stats.state}&nbsp;states + {stats.country}
+          &nbsp;events in {stats.state}
+          &nbsp;states + {stats.country}
           &nbsp;countries.
         </Text>
         <Text variant="subtitle">

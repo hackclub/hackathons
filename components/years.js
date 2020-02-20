@@ -1,11 +1,14 @@
 import { Grid, Card } from 'theme-ui'
 import { pick, split, range } from 'lodash'
 import Link from 'next/link'
-import { colors } from './theme'
+import theme from '@hackclub/theme'
 
 const years = range(2017, new Date().getFullYear() + 1)
 
-const palette = pick(colors, split('red,orange,yellow,green,cyan,blue', ','))
+const palette = pick(
+  theme.colors,
+  split('red,orange,yellow,green,cyan,blue', ',')
+)
 const rainbow = {}
 Object.entries(palette).map(([name, bg], i) => {
   rainbow[`&:nth-of-type(${Object.keys(palette).length}n + ${i + 1})`] = { bg }
