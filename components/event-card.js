@@ -16,7 +16,8 @@ const EventCard = ({
   city,
   state,
   country,
-  mlh_associated,
+  countryCode,
+  mlhAssociated,
   banner,
   logo,
   // distanceTo,
@@ -45,7 +46,7 @@ const EventCard = ({
         backgroundImage: `linear-gradient(rgba(0,0,0,0) 0%, rgba(0,0,0,0.375) 75%), url('${banner}')`
       }}
     >
-      {mlh_associated && (
+      {mlhAssociated && (
         <Image
           src="/mlh-logo-grayscale.svg"
           alt="MLH is associated"
@@ -95,7 +96,7 @@ const EventCard = ({
           itemScope
           itemType="http://schema.org/Place"
         >
-          <span itemProp="address">{formatAddress(city, state, country)}</span>
+          <span itemProp="address">{formatAddress(city, state, country, countryCode)}</span>
         </Text>
       </Flex>
       <Box sx={{ display: 'none' }}>
