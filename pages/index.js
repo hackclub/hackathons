@@ -72,16 +72,16 @@ export async function unstable_getStaticProps() {
     state: new Set(
       events
         .filter(event =>
-          ['US', 'USA', 'United States'].includes(event.fields.country)
+          ['US', 'USA', 'United States'].includes(event.country)
         )
-        .map(event => event.fields.state)
+        .map(event => event.state)
     ).size,
-    country: new Set(events.map(event => event.fields.country)).size
+    country: new Set(events.map(event => event.country)).size
   }
   // Sort upcoming events by start date
   events = orderBy(
-    filter(events, e => new Date(e.fields.start_date) >= new Date()),
-    'fields.start_date'
+    filter(events, e => new Date(e.start) >= new Date()),
+    'start'
   )
   return { props: { events, stats, emailStats } }
 }

@@ -1,7 +1,6 @@
 import { Card, Box, Heading, Text, Flex, Image } from 'theme-ui'
 import Tilt from './tilt'
 import {
-  imageSrc,
   humanizedDateRange,
   // humanizeDistance,
   formatAddress,
@@ -11,29 +10,29 @@ import {
 const EventCard = ({
   id,
   name,
-  website_url,
-  start_date,
-  end_date,
+  website,
+  start,
+  end,
   city,
   state,
   country,
   mlh_associated,
-  background_image,
-  logo_image,
+  banner,
+  logo,
   // distanceTo,
   invisible = false
 }) => (
   <Tilt>
     <Card
       as="a"
-      href={website_url}
+      href={website}
       target="_blank"
       rel="noopener noreferrer"
       onClick={trackClick({
-        href: website_url,
+        href: website,
         analyticsEventName: 'Event Clicked',
         analyticsProperties: {
-          eventUrl: website_url,
+          eventUrl: website,
           eventName: name,
           eventId: id
         }
@@ -43,9 +42,7 @@ const EventCard = ({
       variant="event"
       sx={{ display: invisible ? 'none' : 'flex' }}
       style={{
-        backgroundImage: `linear-gradient(rgba(0,0,0,0) 0%, rgba(0,0,0,0.375) 75%), url('${imageSrc(
-          background_image
-        )}')`
+        backgroundImage: `linear-gradient(rgba(0,0,0,0) 0%, rgba(0,0,0,0.375) 75%), url('${banner}')`
       }}
     >
       {mlh_associated && (
@@ -64,9 +61,9 @@ const EventCard = ({
           }}
         />
       )}
-      {logo_image && (
+      {logo && (
         <Image
-          src={imageSrc(logo_image)}
+          src={logo}
           alt={`${name} logo`}
           loading="lazy"
           sx={{
@@ -88,7 +85,7 @@ const EventCard = ({
           opacity: 0.875
         }}
       >
-        <Text as="span">{humanizedDateRange(start_date, end_date)}</Text>
+        <Text as="span">{humanizedDateRange(start, end)}</Text>
         {/* distanceTo ? (
           <Text as="span">{`${humanizeDistance(distanceTo)} miles`}</Text>
         ) : ( */}
@@ -102,12 +99,13 @@ const EventCard = ({
         </Text>
       </Flex>
       <Box sx={{ display: 'none' }}>
-        <span itemProp="url">{website_url}</span>
-        <span itemProp="startDate" content={start_date} children={start_date} />
-        <span itemProp="endDate" content={end_date} children={end_date} />
+        <span itemProp="url">{website}</span>
+        <span itemProp="startDate" content={start} children={start} />
+        <span itemProp="endDate" content={end} children={end} />
       </Box>
     </Card>
   </Tilt>
 )
 
 export default EventCard
+

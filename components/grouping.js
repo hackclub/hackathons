@@ -12,7 +12,7 @@ export default ({ title, desc, header, children, footer, events }) => (
       {children}
       <Grid columns={[1, 2, 3]} gap={[3, 4]} sx={{ mt: [3, 4] }}>
         {events.map(event => (
-          <EventCard id={event.id} key={event.id} {...event.fields} />
+          <EventCard id={event.id} key={event.id} {...event} />
         ))}
       </Grid>
       {footer}
