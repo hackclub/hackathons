@@ -38,7 +38,8 @@ export default ({ stats, emailStats, events, groups }) => (
         </Head>
         <Text variant="subtitle" sx={{ mt: [3, 4], mb: 3 }}>
           A curated list of high school hackathons with {stats.total}
-          &nbsp;events in {stats.state}&nbsp;states + {stats.country}
+          &nbsp;events in {stats.state}
+          &nbsp;states + {stats.country}
           &nbsp;countries.
         </Text>
         <Text variant="subtitle">
