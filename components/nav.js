@@ -20,10 +20,15 @@ const NavButton = ({ sx, ...props }) => (
   />
 )
 
-const BackButton = ({ to = '/' }) => (
+const BackButton = ({ to = '/', text = 'All Events' }) => (
   <Link href={to} passHref>
-    <NavButton as="a" title={to === '/' ? 'Back to homepage' : 'Back'}>
+    <NavButton
+      as="a"
+      title={to === '/' ? 'Back to homepage' : 'Back'}
+      sx={{ display: 'flex', width: 'auto', pr: 2 }}
+    >
       <ArrowLeft />
+      {text}
     </NavButton>
   </Link>
 )
@@ -86,11 +91,11 @@ export default () => {
         <Button
           as="a"
           href="https://airtable.com/shr42MplImeMkHHWP"
-          aria-label="Submit your hackathon"
+          aria-label="Apply to list your hackathon"
           variant="outline"
           sx={{ ml: 'auto', py: 0, px: 2 }}
         >
-          Submit
+          Add your event
         </Button>
         <NavButton
           as="a"
