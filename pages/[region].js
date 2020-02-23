@@ -24,7 +24,7 @@ export default ({ name, events, emailStats }) => {
   )
 }
 
-/*
+
 const distance = (lat1, lon1, lat2, lon2) => {
   // https://www.geodatasource.com/developers/javascript
   const radlat1 = (Math.PI * lat1) / 180
@@ -42,7 +42,7 @@ const distance = (lat1, lon1, lat2, lon2) => {
     kilometers: dist * 1.609344
   }
 }
-*/
+
 
 let regions = [
   {
@@ -51,16 +51,34 @@ let regions = [
   },
   {
     name: 'Chicago',
-    filter: event => ['IL', 'Illinois'].includes(event.state)
+    filter: event => {
+      const position = [41.969649, -87.720643]
+      return (
+        distance(position[0], position[1], event.latitude, event.longitude)
+          .miles < 42
+      )
+    }
   },
   {
     name: 'New York',
-    filter: event =>
-      ['NJ', 'NY', 'New York', 'New Jersey'].includes(event.state)
+    filter: event => {
+      const position = [40.7128, -74.0060]
+      return (
+          distance(position[0], position[1], event.latitude, event.longitude)
+          .miles < 50
+        )
+    }
+      
   },
   {
     name: 'the Bay Area',
-    filter: event => ['CA', 'California'].includes(event.state)
+    filter: event => {
+      const position = [37.641045, -122.228916]
+      return (
+        distance(position[0], position[1], event.latitude, event.longitude)
+          .miles < 39
+      )
+    }
   },
   {
     name: 'the USA',
