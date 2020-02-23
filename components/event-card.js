@@ -50,7 +50,7 @@ const EventCard = ({
         <Image
           src="/mlh-logo-grayscale.svg"
           alt="MLH is associated"
-          width={96}
+          width={64}
           sx={{
             position: 'absolute',
             top: 16,
