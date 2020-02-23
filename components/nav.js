@@ -90,7 +90,7 @@ export default () => {
         {!home ? <BackButton /> : <Flag />}
         <Button
           as="a"
-          href="https://airtable.com/shr42MplImeMkHHWP"
+          href="https://airtable.com/shrpYdJpAOphEWXan"
           aria-label="Apply to list your hackathon"
           variant="outline"
           sx={{ ml: 'auto', py: 0, px: 2 }}
