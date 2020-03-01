@@ -2,7 +2,6 @@ import { Card, Box, Heading, Text, Flex, Image } from 'theme-ui'
 import Tilt from './tilt'
 import {
   humanizedDateRange,
-  // humanizeDistance,
   formatAddress,
   trackClick
 } from '../lib/util'
