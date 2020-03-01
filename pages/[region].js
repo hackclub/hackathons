@@ -5,7 +5,7 @@ import Signup from '../components/signup'
 import { map, orderBy, find, kebabCase, startCase } from 'lodash'
 import { getGroupingData } from '../lib/data'
 
-export default ({ name, events, groups, emailStats }) => {
+export default ({ name, events, emailStats }) => {
   if (!name || !events) return <Error statusCode={404} />
   return (
     <Grouping
@@ -18,12 +18,12 @@ export default ({ name, events, groups, emailStats }) => {
       } student-led hackathons around ${name}.`}
       header={<Signup stats={emailStats} initialLocation={startCase(name)} />}
       events={events}
-      groups={groups}
     >
       <Regions showAll />
     </Grouping>
   )
 }
+
 
 const distance = (lat1, lon1, lat2, lon2) => {
   // https://www.geodatasource.com/developers/javascript
@@ -43,10 +43,11 @@ const distance = (lat1, lon1, lat2, lon2) => {
   }
 }
 
+
 let regions = [
   {
     name: 'Los Angeles',
-    filter: event => event.parsed_city === 'Los Angeles'
+    filter: event => event.city === 'Los Angeles'
   },
   {
     name: 'Chicago',
@@ -60,7 +61,14 @@ let regions = [
   },
   {
     name: 'New York',
-    filter: event => event.parsed_state_code === 'NY'
+    filter: event => {
+      const position = [40.7128, -74.0060]
+      return (
+          distance(position[0], position[1], event.latitude, event.longitude)
+          .miles < 50
+        )
+    }
+      
   },
   {
     name: 'the Bay Area',
@@ -74,15 +82,15 @@ let regions = [
   },
   {
     name: 'the USA',
-    filter: event => event.parsed_country_code === 'US'
+    filter: event => ['US', 'USA', 'United States'].includes(event.country)
   },
   {
     name: 'Canada',
-    filter: event => event.parsed_country_code === 'CA'
+    filter: event => ['CA', 'Canada'].includes(event.country)
   },
   {
     name: 'India',
-    filter: event => event.parsed_country_code === 'IN'
+    filter: event => ['IN', 'India'].includes(event.country)
   }
 ]
 regions = map(regions, region => ({ id: kebabCase(region.name), ...region }))
@@ -98,7 +106,7 @@ export const unstable_getStaticProps = async ({ params }) => {
   let { region } = params
   region = find(regions, ['id', region.replace('list-of-hackathons-in-', '')])
   let { name } = region
-  let { events, groups, emailStats } = await getGroupingData()
+  let { events, emailStats } = await getGroupingData()
   events = orderBy(events.filter(event => region.filter(event)), 'start')
-  return { props: { name, events, groups, emailStats } }
+  return { props: { name, events, emailStats } }
 }

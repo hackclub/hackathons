@@ -1,7 +1,6 @@
 import { Card, Box, Heading, Text, Flex, Image } from 'theme-ui'
 import Tilt from './tilt'
 import {
-  imageSrc,
   humanizedDateRange,
   // humanizeDistance,
   formatAddress,
@@ -10,29 +9,28 @@ import {
 
 const EventCard = ({
   id,
-  website,
   name,
+  website,
   start,
   end,
-  parsed_city,
-  parsed_state_code,
-  parsed_country,
-  parsed_country_code,
-  mlh_associated,
+  city,
+  state,
+  country,
+  countryCode,
+  mlhAssociated,
   banner,
   logo,
   // distanceTo,
-  invisible = false,
-  inGroup = false
+  invisible = false
 }) => (
   <Tilt>
     <Card
       as="a"
-      href={`https://api.hackclub.com/v1/events/${id}/redirect`}
+      href={website}
       target="_blank"
       rel="noopener noreferrer"
       onClick={trackClick({
-        href: `https://api.hackclub.com/v1/events/${id}/redirect`,
+        href: website,
         analyticsEventName: 'Event Clicked',
         analyticsProperties: {
           eventUrl: website,
@@ -45,16 +43,14 @@ const EventCard = ({
       variant="event"
       sx={{ display: invisible ? 'none' : 'flex' }}
       style={{
-        backgroundImage: `linear-gradient(rgba(0,0,0,0) 0%, rgba(0,0,0,0.375) 75%), url('${imageSrc(
-          banner
-        )}')`
+        backgroundImage: `linear-gradient(rgba(0,0,0,0) 0%, rgba(0,0,0,0.375) 75%), url('${banner}')`
       }}
     >
-      {mlh_associated && (
+      {mlhAssociated && (
         <Image
           src="/mlh-logo-grayscale.svg"
           alt="MLH is associated"
-          width={96}
+          width={64}
           sx={{
             position: 'absolute',
             top: 16,
@@ -68,7 +64,7 @@ const EventCard = ({
       )}
       {logo && (
         <Image
-          src={imageSrc(logo)}
+          src={logo}
           alt={`${name} logo`}
           loading="lazy"
           sx={{
@@ -81,7 +77,7 @@ const EventCard = ({
         />
       )}
       <Heading as="h3" itemProp="name" sx={{ fontSize: [3, 4], mt: 2, mb: 3 }}>
-        {inGroup ? name.replace('LHD ', '') : name}
+        {name}
       </Heading>
       <Flex
         sx={{
@@ -100,19 +96,12 @@ const EventCard = ({
           itemScope
           itemType="http://schema.org/Place"
         >
-          <span itemProp="address">
-            {formatAddress(
-              parsed_city,
-              parsed_state_code,
-              parsed_country,
-              parsed_country_code
-            )}
-          </span>
+          <span itemProp="address">{formatAddress(city, state, country, countryCode)}</span>
         </Text>
       </Flex>
       <Box sx={{ display: 'none' }}>
         <span itemProp="url">{website}</span>
-        <span itemProp="startDate" content={start} children={end} />
+        <span itemProp="startDate" content={start} children={start} />
         <span itemProp="endDate" content={end} children={end} />
       </Box>
     </Card>
@@ -120,3 +109,4 @@ const EventCard = ({
 )
 
 export default EventCard
+

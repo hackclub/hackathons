@@ -28,7 +28,7 @@ export default ({
         <title>{title}</title>
       </Head>
     )}
-    <Container>
+    <Container variant="copyPlus">
       <Heading
         as="h1"
         variant="title"
