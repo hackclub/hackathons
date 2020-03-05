@@ -40,7 +40,13 @@ Install dependencies!
 
 Run it!
 
-    $ yarn run dev
+    $ yarn dev
+
+### Build and deploy
+
+Deployment is managed using [Zeit Now](https://zeit.co). Install the Now CLI, and to force a production deploy, run:
+
+    $ now --prod
 
 ### License
 
