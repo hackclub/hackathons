@@ -13,16 +13,16 @@ export default ({ year, events }) => {
   )
 }
 
-export async function unstable_getStaticPaths() {
+export const getStaticPaths = async () => {
   let events = await getEvents()
   let starts = map(events, 'start')
   starts = map(starts, start => first(split(start, '-')))
   let years = uniq(starts)
   const paths = map(years, year => ({ params: { year } }))
-  return { paths }
+  return { paths, fallback: false }
 }
 
-export async function unstable_getStaticProps({ params }) {
+export const getStaticProps = async ({ params }) => {
   const { year } = params
   let { events } = await getGroupingData()
   events = orderBy(
