@@ -65,24 +65,22 @@ export default ({ stats, emailStats, events }) => (
   />
 )
 
-export async function unstable_getStaticProps() {
+export const getStaticProps = async () => {
   let { events, emailStats } = await getGroupingData()
   let stats = {
     total: events.length,
     state: new Set(
       events
-        .filter(event =>
-          ['US', 'USA', 'United States'].includes(event.country)
-        )
+        .filter(event => ['US', 'USA', 'United States'].includes(event.country))
         .map(event => event.state)
     ).size,
     country: new Set(events.map(event => event.country)).size,
     lastUpdated: timeSince(
-       last(orderBy(events, 'createdAt')).createdAt,
-       false,
-       new Date(),
-       true
-     )
+      last(orderBy(events, 'createdAt')).createdAt,
+      false,
+      new Date(),
+      true
+    )
   }
   // Sort upcoming events by start date
   events = orderBy(
