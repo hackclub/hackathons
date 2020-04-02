@@ -18,7 +18,7 @@ Please do not open an issue or submit a pull request to add your event—the for
 
 ### Development environment setup
 
-The stack: [Next.js](https://nextjs.org) & [Theme UI](https://theme-ui.com).
+The stack: [Next.js](https://nextjs.org) & [Theme UI](https://theme-ui.com) with [Hack Club Theme](https://theme.hackclub.com).
 
 Stuff you need installed ahead of time:
 
