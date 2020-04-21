@@ -16,8 +16,8 @@ export default ({
     sx={{
       bg: 'sheet',
       color: 'text',
-      pt: [4, null, null, null, 5],
-      pb: [4, 5, null, null, 6],
+      pt: [3, null, null, 4, 5],
+      pb: [3, 4, null, null, 6],
       textAlign: centered && 'center',
       ...sx
     }}
@@ -28,7 +28,7 @@ export default ({
         <title>{title}</title>
       </Head>
     )}
-    <Container variant="copyPlus">
+    <Container sx={{ maxWidth: [null, 'copy', 'copyPlus'] }}>
       <Heading
         as="h1"
         variant="title"

@@ -1,4 +1,4 @@
-import { ArrowLeft, Plus, Moon, GitHub } from 'react-feather'
+import { ArrowLeft, Moon, GitHub } from 'react-feather'
 import { Box, Container, IconButton, Button, Image, Link as A } from 'theme-ui'
 import { useColorMode } from 'theme-ui'
 import { useRouter } from 'next/router'
@@ -35,21 +35,21 @@ const BackButton = ({ to = '/', text = 'All Events' }) => (
 
 const Flag = () => (
   <A
-    href="https://hackclub.com"
+    href="https://hackclub.com/"
     target="_blank"
     rel="noopener noreferrer"
     aria-label="Hack Club homepage"
-    sx={{ mt: -3 }}
+    sx={{ mt: -3, lineHeight: 0 }}
   >
     <Image
-      src="https://hackclub.com/orpheus_flag.svg"
+      src="https://assets.hackclub.com/flag-orpheus-top.svg"
       alt="Hack Club flag"
       sx={{ width: [96, 128] }}
     />
   </A>
 )
 
-const ColorSwitcher = props => {
+const ColorSwitcher = (props) => {
   const [mode, setMode] = useColorMode()
   return (
     <NavButton
@@ -72,13 +72,14 @@ export default () => {
       sx={{
         bg: mode === 'dark' ? 'darkless' : 'snow',
         color: 'nav',
-        py: 3
+        py: 2
       }}
     >
       <Container
         sx={{
           display: 'flex',
           alignItems: 'center',
+          px: 2,
           a: {
             fontSize: 1,
             color: 'primary',
