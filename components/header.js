@@ -17,7 +17,7 @@ export default ({
       bg: 'sheet',
       color: 'text',
       pt: [3, null, null, 4, 5],
-      pb: [3, 4, null, null, 6],
+      pb: [4, null, null, 5, 6],
       textAlign: centered && 'center',
       ...sx
     }}

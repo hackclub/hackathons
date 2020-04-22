@@ -10,8 +10,8 @@ export default ({ title, desc, header, children, footer, events }) => (
     <Header title={title} desc={desc} children={header} includeMeta />
     <Container sx={{ mt: [3, 4, 5] }}>
       {children}
-      <Grid columns={[1, 2, 3]} gap={[3, 4]} sx={{ mt: [3, 4] }}>
-        {events.map(event => (
+      <Grid columns={[1, 2, 3]} gap={[3, 4]} sx={{ mt: [3, 4, 5] }}>
+        {events.map((event) => (
           <EventCard id={event.id} key={event.id} {...event} />
         ))}
       </Grid>

@@ -1,5 +1,13 @@
 import { ArrowLeft, Moon, GitHub } from 'react-feather'
-import { Box, Container, IconButton, Button, Image, Link as A } from 'theme-ui'
+import {
+  Box,
+  Container,
+  IconButton,
+  Button,
+  Image,
+  Text,
+  Link as A
+} from 'theme-ui'
 import { useColorMode } from 'theme-ui'
 import { useRouter } from 'next/router'
 import Link from 'next/link'
@@ -20,7 +28,7 @@ const NavButton = ({ sx, ...props }) => (
   />
 )
 
-const BackButton = ({ to = '/', text = 'All Events' }) => (
+const BackButton = ({ to = '/', text = 'All Hackathons' }) => (
   <Link href={to} passHref>
     <NavButton
       as="a"
@@ -63,23 +71,22 @@ const ColorSwitcher = (props) => {
 }
 
 export default () => {
-  const [mode] = useColorMode()
   const router = useRouter()
   const home = router.pathname === '/'
   return (
     <Box
       as="nav"
       sx={{
-        bg: mode === 'dark' ? 'darkless' : 'snow',
-        color: 'nav',
-        py: 2
+        bg: 'sheet',
+        color: 'primary',
+        py: 3
       }}
     >
       <Container
         sx={{
           display: 'flex',
           alignItems: 'center',
-          px: 2,
+          pr: 2,
           a: {
             fontSize: 1,
             color: 'primary',
@@ -96,7 +103,12 @@ export default () => {
           variant="outline"
           sx={{ ml: 'auto', py: 0, px: 2 }}
         >
-          Add your event
+          <Text as="span" sx={{ display: ['block', 'none'] }}>
+            Submit
+          </Text>
+          <Text as="span" sx={{ display: ['none', 'block'] }}>
+            Add your event
+          </Text>
         </Button>
         <NavButton
           as="a"
