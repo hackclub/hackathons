@@ -43,11 +43,11 @@ const distance = (lat1, lon1, lat2, lon2) => {
 let regions = [
   {
     name: 'Los Angeles',
-    filter: event => event.city === 'Los Angeles'
+    filter: (event) => event.city === 'Los Angeles'
   },
   {
     name: 'Chicago',
-    filter: event => {
+    filter: (event) => {
       const position = [41.969649, -87.720643]
       return (
         distance(position[0], position[1], event.latitude, event.longitude)
@@ -57,7 +57,7 @@ let regions = [
   },
   {
     name: 'New York',
-    filter: event => {
+    filter: (event) => {
       const position = [40.7128, -74.006]
       return (
         distance(position[0], position[1], event.latitude, event.longitude)
@@ -67,7 +67,7 @@ let regions = [
   },
   {
     name: 'the Bay Area',
-    filter: event => {
+    filter: (event) => {
       const position = [37.641045, -122.228916]
       return (
         distance(position[0], position[1], event.latitude, event.longitude)
@@ -77,21 +77,21 @@ let regions = [
   },
   {
     name: 'the USA',
-    filter: event => ['US', 'USA', 'United States'].includes(event.country)
+    filter: (event) => ['US', 'USA', 'United States'].includes(event.country)
   },
   {
     name: 'Canada',
-    filter: event => ['CA', 'Canada'].includes(event.country)
+    filter: (event) => ['CA', 'Canada'].includes(event.country)
   },
   {
     name: 'India',
-    filter: event => ['IN', 'India'].includes(event.country)
+    filter: (event) => ['IN', 'India'].includes(event.country)
   }
 ]
-regions = map(regions, region => ({ id: kebabCase(region.name), ...region }))
+regions = map(regions, (region) => ({ id: kebabCase(region.name), ...region }))
 
 export const getStaticPaths = () => {
-  const paths = map(map(regions, 'id'), id => ({
+  const paths = map(map(regions, 'id'), (id) => ({
     params: { region: `list-of-hackathons-in-${id}` }
   }))
   return { paths, fallback: false }
@@ -102,7 +102,7 @@ export const getStaticProps = async ({ params }) => {
   region = find(regions, ['id', region.replace('list-of-hackathons-in-', '')])
   let { name } = region
   let { events, emailStats } = await getGroupingData()
-  events = events.filter(event => region.filter(event))
+  events = events.filter((event) => region.filter(event))
   events = orderBy(events, 'start')
-  return { props: { name, events, emailStats } }
+  return { props: { name, events, emailStats }, unstable_revalidate: 300 }
 }
