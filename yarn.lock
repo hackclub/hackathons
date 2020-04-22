@@ -1033,10 +1033,10 @@
   resolved "https://registry.yarnpkg.com/@hackclub/meta/-/meta-0.1.0-alpha.0.tgz#bbe3365b78dafabcf24f86ad610cab76f9aa33e7"
   integrity sha512-e/LsidiJG7v235q0w/fcaO5y2cC7wyYn1G7Vs7H+rxiYGhjUeBdrCyWY6/ExqZ02S/im4eummduU1Y6k57pxRw==
 
-"@hackclub/theme@^0.1.0-alpha.0":
-  version "0.1.0-alpha.0"
-  resolved "https://registry.yarnpkg.com/@hackclub/theme/-/theme-0.1.0-alpha.0.tgz#9cfc5e401fb41eb0cf62e609e33e3ba97b912f7e"
-  integrity sha512-ozmF6mRoSdA4f8A1Hw/9Ip28uMBa1kGQq4JBJ7NGDKk6GPqGMSopbUvmX6Xfwk77HgcHCab0x1pqGGk81Xj3cg==
+"@hackclub/theme@^0.1.1":
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/@hackclub/theme/-/theme-0.1.1.tgz#b02672cc2f28094eb79a227e160cee935cc751fe"
+  integrity sha512-P8G0OcY22NnWK2SsGupYSMxd1ScbqSrTewPVjgWLcd1qgjTHEJBafWEF75B3Ru87CRco0wLiJi3bMmEBp1LT+A==
 
 "@mdx-js/loader@^0.15.0":
   version "0.15.7"
