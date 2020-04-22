@@ -65,7 +65,7 @@ export default ({ initialLocation, stats = {} }) => {
   return (
     <Card sx={{ maxWidth: 'narrowPlus', mx: 'auto', mt: [3, 4] }}>
       <Heading as="h2" variant="subheadline" sx={{ mb: 1 }}>
-        Want to hear when events are added in your area?
+        Want to hear when (in-person) events are added in your area?
       </Heading>
       <Text sx={{ color: 'muted' }}>
         Join thousands of subscribers from {stats.cities}

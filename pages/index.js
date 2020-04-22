@@ -1,5 +1,5 @@
 import Grouping from '../components/grouping'
-import { Card, Heading, Text, Link } from 'theme-ui'
+import { Box, Card, Heading, Text, Link } from 'theme-ui'
 import Head from 'next/head'
 import Meta from '@hackclub/meta'
 import Signup from '../components/signup'
@@ -80,11 +80,12 @@ export default ({ stats, emailStats, events }) => (
           </Text>{' '}
           High School Hackathons in {new Date().getFullYear()}
         </Heading>
-        <Text variant="subtitle" sx={{ mt: [3, 4], mb: 3 }}>
-          A curated list of high school hackathons with {stats.total}
+        <Text variant="subtitle" sx={{ my: 3 }}>
+          A curated list of high school hackathons with
+          <Box as="br" sx={{ display: ['none', 'block'] }} /> {stats.total}
           &nbsp;events in {stats.state}
           &nbsp;states + {stats.country}
-          &nbsp;countries. Last&nbsp;updated {stats.lastUpdated}.
+          &nbsp;countries.
         </Text>
         <Text variant="subtitle">
           Maintained by the <Link href="https://hackclub.com/">Hack Club</Link>{' '}
