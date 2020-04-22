@@ -1,6 +1,6 @@
 import { regions } from '../lib/regions.json'
 import { Grid, Card, Heading } from 'theme-ui'
-import { kebabCase, snakeCase, startCase } from 'lodash'
+import { kebabCase, startCase } from 'lodash'
 import Link from 'next/link'
 
 export default ({ showAll = false, sx = {} }) => (
@@ -50,6 +50,7 @@ export default ({ showAll = false, sx = {} }) => (
         <Card
           as="a"
           variant="event"
+          sx={{ alignItems: ['flex-start', 'center'] }}
           style={{
             backgroundImage: `linear-gradient(rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.375) 75%),
               url(${url})`

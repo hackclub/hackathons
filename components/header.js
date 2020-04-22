@@ -16,9 +16,8 @@ export default ({
     sx={{
       bg: 'sheet',
       color: 'text',
-      pt: [3, null, null, 4, 5],
-      pb: [4, null, null, 5, 6],
-      textAlign: centered && 'center',
+      py: [3, null, null, 4, 5],
+      textAlign: centered && ['left', 'center'],
       ...sx
     }}
   >
