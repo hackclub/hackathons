@@ -29,7 +29,7 @@ export default ({ initialLocation, stats = {} }) => {
   const [submitting, setSubmitting] = useState(false)
   const [done, setDone] = useState(false)
   const [error, setError] = useState('')
-  const onSubmit = async e => {
+  const onSubmit = async (e) => {
     e.preventDefault()
     if (email.length < 3 || location.length < 3) return
     setSubmitting(true)
@@ -63,10 +63,7 @@ export default ({ initialLocation, stats = {} }) => {
     }
   }
   return (
-    <Card
-      variant="sunken"
-      sx={{ maxWidth: 'narrowPlus', mx: 'auto', mt: [3, 4] }}
-    >
+    <Card sx={{ maxWidth: 'narrowPlus', mx: 'auto', mt: [3, 4] }}>
       <Heading as="h2" variant="subheadline" sx={{ mb: 1 }}>
         Want to hear when events are added in your area?
       </Heading>
@@ -83,7 +80,8 @@ export default ({ initialLocation, stats = {} }) => {
           mt: [null, 3],
           gridTemplateColumns: [null, '1fr 1fr auto'],
           textAlign: 'left',
-          alignItems: 'end'
+          alignItems: 'end',
+          input: { bg: 'sunken' }
         }}
       >
         <div>
@@ -94,7 +92,7 @@ export default ({ initialLocation, stats = {} }) => {
             id="email"
             placeholder="me@email.com"
             value={email}
-            onChange={e => setEmail(e.target.value)}
+            onChange={(e) => setEmail(e.target.value)}
           />
         </div>
         <div>
@@ -103,7 +101,7 @@ export default ({ initialLocation, stats = {} }) => {
             id="location"
             placeholder="Chicago, IL"
             value={location}
-            onChange={e => setLocation(e.target.value)}
+            onChange={(e) => setLocation(e.target.value)}
           />
         </div>
         <Button type="submit" sx={{ mt: [2, 0] }}>

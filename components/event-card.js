@@ -1,10 +1,6 @@
-import { Card, Box, Heading, Text, Flex, Image } from 'theme-ui'
+import { Card, Badge, Box, Heading, Text, Flex, Image } from 'theme-ui'
 import Tilt from './tilt'
-import {
-  humanizedDateRange,
-  formatAddress,
-  trackClick
-} from '../lib/util'
+import { humanizedDateRange, formatAddress, trackClick } from '../lib/util'
 
 const EventCard = ({
   id,
@@ -19,6 +15,7 @@ const EventCard = ({
   mlhAssociated,
   banner,
   logo,
+  virtual,
   // distanceTo,
   invisible = false
 }) => (
@@ -71,7 +68,7 @@ const EventCard = ({
             height: 64,
             objectFit: 'contain',
             borderRadius: 'default',
-            mb: 1
+            mt: 'auto'
           }}
         />
       )}
@@ -79,8 +76,10 @@ const EventCard = ({
         {name}
       </Heading>
       <Flex
+        as="footer"
         sx={{
           justifyContent: 'space-between',
+          mt: 'auto',
           width: '100%',
           opacity: 0.875
         }}
@@ -95,10 +94,32 @@ const EventCard = ({
           itemScope
           itemType="http://schema.org/Place"
         >
-          <span itemProp="address">{formatAddress(city, state, country, countryCode)}</span>
+          {virtual ? (
+            <Badge
+              as="span"
+              itemType="VirtualLocation"
+              sx={{
+                bg: 'white',
+                color: 'blue',
+                fontSize: 'inherit',
+                textShadow: 'none'
+              }}
+            >
+              Online
+            </Badge>
+          ) : (
+            <span itemProp="address">
+              {formatAddress(city, state, country, countryCode)}
+            </span>
+          )}
         </Text>
       </Flex>
       <Box sx={{ display: 'none' }}>
+        <span itemProp="eventAttendanceMode">
+          {virtual
+            ? 'https://schema.org/OnlineEventAttendanceMode'
+            : 'https://schema.org/OfflineEventAttendanceMode'}
+        </span>
         <span itemProp="url">{website}</span>
         <span itemProp="startDate" content={start} children={start} />
         <span itemProp="endDate" content={end} children={end} />
@@ -108,4 +129,3 @@ const EventCard = ({
 )
 
 export default EventCard
-

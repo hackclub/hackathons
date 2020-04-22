@@ -1,5 +1,5 @@
 import Grouping from '../components/grouping'
-import { Heading, Text, Link } from 'theme-ui'
+import { Card, Heading, Text, Link } from 'theme-ui'
 import Head from 'next/head'
 import Meta from '@hackclub/meta'
 import Signup from '../components/signup'
@@ -36,8 +36,49 @@ export default ({ stats, emailStats, events }) => (
             )}`}
           />
         </Head>
+        <Card
+          sx={{
+            bg: 'orange',
+            color: 'white',
+            borderRadius: 'default',
+            textAlign: 'left',
+            p: [2, 3],
+            mt: [-2, -4],
+            mb: 4
+          }}
+        >
+          <Text as="p" sx={{ fontSize: [1, 2], lineHeight: 'caption' }}>
+            Due to COVID-19, most hackathons are canceled, postponed, or hosting
+            virtually. We’ve put out{' '}
+            <Link
+              href="https://hackclub.com/covid19/"
+              sx={{ color: 'inherit' }}
+            >
+              official guidance
+            </Link>{' '}
+            to organizers on postponing their events, and in the meantime, the
+            majority of this year’s events will be virtual. Stay safe.
+          </Text>
+        </Card>
         <Heading as="h1" variant="title" sx={{ color: 'primary' }}>
-          Online High School Hackathons in {new Date().getFullYear()}
+          <Text
+            as="span"
+            sx={{
+              color: 'cyan',
+              display: 'inline-block',
+              transition: 'all .25s ease-in-out',
+              ':hover': {
+                WebkitTextStroke: 'currentColor',
+                WebkitTextStrokeWidth: '2px',
+                WebkitTextFillColor: (theme) => theme.colors.white,
+                textShadow: (theme) => `0 0 12px ${theme.colors.cyan}`,
+                transform: 'rotate(-4deg) scale(1.025)'
+              }
+            }}
+          >
+            (Online)
+          </Text>{' '}
+          High School Hackathons in {new Date().getFullYear()}
         </Heading>
         <Text variant="subtitle" sx={{ mt: [3, 4], mb: 3 }}>
           A curated list of high school hackathons with {stats.total}
@@ -49,12 +90,12 @@ export default ({ stats, emailStats, events }) => (
           Maintained by the <Link href="https://hackclub.com/">Hack Club</Link>{' '}
           staff.
         </Text>
-        <Signup stats={emailStats} />
       </>
     }
     events={events}
     footer={
       <section>
+        <Signup stats={emailStats} />
         <Heading variant="headline" sx={{ mt: [4, 5], mb: [3, 4] }}>
           Explore by year
         </Heading>
