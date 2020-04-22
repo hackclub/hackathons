@@ -9,18 +9,18 @@ import { filter, orderBy, slice, last } from 'lodash'
 import { timeSince, humanizedDateRange } from '../lib/util'
 import { getGroupingData } from '../lib/data'
 
-const title = `Upcoming High School Hackathons in ${new Date().getFullYear()}`
-const eventsPreview = events =>
+const title = `Online High School Hackathons in ${new Date().getFullYear()}`
+const eventsPreview = (events) =>
   slice(events, 0, 4)
     .map(
-      event => `${event.name} (${humanizedDateRange(event.start, event.end)})…`
+      (event) =>
+        `${event.name} (${humanizedDateRange(event.start, event.end)})…`
     )
     .join('')
 
 export default ({ stats, emailStats, events }) => (
   <Grouping
     includeMeta={false}
-    title={title}
     header={
       <>
         <Head>
@@ -36,6 +36,9 @@ export default ({ stats, emailStats, events }) => (
             )}`}
           />
         </Head>
+        <Heading as="h1" variant="title" sx={{ color: 'primary' }}>
+          Online High School Hackathons in {new Date().getFullYear()}
+        </Heading>
         <Text variant="subtitle" sx={{ mt: [3, 4], mb: 3 }}>
           A curated list of high school hackathons with {stats.total}
           &nbsp;events in {stats.state}
@@ -43,7 +46,7 @@ export default ({ stats, emailStats, events }) => (
           &nbsp;countries. Last&nbsp;updated {stats.lastUpdated}.
         </Text>
         <Text variant="subtitle">
-          Maintained by the <Link href="https://hackclub.com">Hack Club</Link>{' '}
+          Maintained by the <Link href="https://hackclub.com/">Hack Club</Link>{' '}
           staff.
         </Text>
         <Signup stats={emailStats} />
@@ -71,10 +74,12 @@ export const getStaticProps = async () => {
     total: events.length,
     state: new Set(
       events
-        .filter(event => ['US', 'USA', 'United States'].includes(event.country))
-        .map(event => event.state)
+        .filter((event) =>
+          ['US', 'USA', 'United States'].includes(event.country)
+        )
+        .map((event) => event.state)
     ).size,
-    country: new Set(events.map(event => event.country)).size,
+    country: new Set(events.map((event) => event.country)).size,
     lastUpdated: timeSince(
       last(orderBy(events, 'createdAt')).createdAt,
       false,
@@ -84,7 +89,7 @@ export const getStaticProps = async () => {
   }
   // Sort upcoming events by start date
   events = orderBy(
-    filter(events, e => new Date(e.start) >= new Date()),
+    filter(events, (e) => new Date(e.start) >= new Date()),
     'start'
   )
   return { props: { events, stats, emailStats } }

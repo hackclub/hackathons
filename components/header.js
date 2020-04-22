@@ -29,16 +29,14 @@ export default ({
       </Head>
     )}
     <Container sx={{ maxWidth: [null, 'copy', 'copyPlus'] }}>
-      <Heading
-        as="h1"
-        variant="title"
-        sx={{
-          color: 'primary',
-          maxWidth: 'copyPlus',
-          mx: centered && 'auto'
-        }}
-        children={title}
-      />
+      {title && (
+        <Heading
+          as="h1"
+          variant="title"
+          sx={{ color: 'primary' }}
+          children={title}
+        />
+      )}
       {desc && (
         <Heading
           as="h2"
