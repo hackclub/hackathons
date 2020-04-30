@@ -19,7 +19,7 @@ export default () => {
     mlh_associated: false,
     banner: '',
     logo: '',
-    expected_hackers: 50
+    expected_hackers: 0
   })
   const onChange = ({ target }) => {
     let { value } = target
@@ -29,7 +29,11 @@ export default () => {
   useEffect(() => console.log(fields), [fields]) // for debugging
 
   return [
-    <Header title="Submit your event" key="header" />,
+    <Header
+      title="Submit your event"
+      desc="Fill out your event’s details & we’ll get back to you within 2 days."
+      key="header"
+    />,
     <Container
       sx={{
         px: [3, 4],
@@ -42,7 +46,7 @@ export default () => {
     >
       <Grid columns={[null, 2]} gap={[3, 4]}>
         <Field
-          label="What’s your email?"
+          label="Your email address"
           name="email"
           type="email"
           desc="If we have any questions about your event, we’ll get in touch through this email."
@@ -73,10 +77,20 @@ export default () => {
           half
         />
         <Field
+          label="How many hackers you’re expecting"
+          name="expected_hackers"
+          type="number"
+          value={fields.expected_hackers}
+          onChange={onChange}
+          placeholder={50}
+          half
+        />
+        <Field
           label="City where it’s being held"
           name="parsed_city"
           value={fields.parsed_city}
           onChange={onChange}
+          half
         />
         <Field
           label="State, region, or territory"
@@ -116,14 +130,6 @@ export default () => {
           value={fields.mlh_associated}
           onChange={onChange}
           half
-        />
-        <Field
-          label="How many hackers are you expecting at the event?"
-          name="expected_hackers"
-          type="number"
-          value={fields.expected_hackers}
-          onChange={onChange}
-          placeholder={50}
         />
       </Grid>
       <Box sx={{ gridRow: [-1, 'auto'] }}>
