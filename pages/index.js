@@ -10,11 +10,10 @@ import { timeSince, humanizedDateRange } from '../lib/util'
 import { getGroupingData } from '../lib/data'
 
 const title = `Online High School Hackathons in ${new Date().getFullYear()}`
-const eventsPreview = (events) =>
+const eventsPreview = events =>
   slice(events, 0, 4)
     .map(
-      (event) =>
-        `${event.name} (${humanizedDateRange(event.start, event.end)})…`
+      event => `${event.name} (${humanizedDateRange(event.start, event.end)})…`
     )
     .join('')
 
@@ -23,19 +22,17 @@ export default ({ stats, emailStats, events }) => (
     includeMeta={false}
     header={
       <>
-        <Head>
-          <title>{title}</title>
-          <Meta
-            title={title}
-            description={`${title}. A curated list of high school hackathons with ${
-              events.length
-            } events in ${stats.state} states + ${
-              stats.country
-            } countries. Maintained by the Hack Club staff. ${eventsPreview(
-              events
-            )}`}
-          />
-        </Head>
+        <Meta
+          as={Head}
+          title={title}
+          description={`${title}. A curated list of high school hackathons with ${
+            events.length
+          } events in ${stats.state} states + ${
+            stats.country
+          } countries. Maintained by the Hack Club staff. ${eventsPreview(
+            events
+          )}`}
+        />
         <Card
           sx={{
             bg: 'orange',
@@ -70,8 +67,8 @@ export default ({ stats, emailStats, events }) => (
               ':hover': {
                 WebkitTextStroke: 'currentColor',
                 WebkitTextStrokeWidth: '2px',
-                WebkitTextFillColor: (theme) => theme.colors.white,
-                textShadow: (theme) => `0 0 12px ${theme.colors.cyan}`,
+                WebkitTextFillColor: theme => theme.colors.white,
+                textShadow: theme => `0 0 12px ${theme.colors.cyan}`,
                 transform: 'rotate(-4deg) scale(1.025)'
               }
             }}
@@ -116,12 +113,10 @@ export const getStaticProps = async () => {
     total: events.length,
     state: new Set(
       events
-        .filter((event) =>
-          ['US', 'USA', 'United States'].includes(event.country)
-        )
-        .map((event) => event.state)
+        .filter(event => ['US', 'USA', 'United States'].includes(event.country))
+        .map(event => event.state)
     ).size,
-    country: new Set(events.map((event) => event.country)).size,
+    country: new Set(events.map(event => event.country)).size,
     lastUpdated: timeSince(
       last(orderBy(events, 'createdAt')).createdAt,
       false,
@@ -131,7 +126,7 @@ export const getStaticProps = async () => {
   }
   // Sort upcoming events by start date
   events = orderBy(
-    filter(events, (e) => new Date(e.start) >= new Date()),
+    filter(events, e => new Date(e.start) >= new Date()),
     'start'
   )
   return { props: { events, stats, emailStats }, unstable_revalidate: 1 }

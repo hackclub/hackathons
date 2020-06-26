@@ -22,10 +22,7 @@ export default ({
     }}
   >
     {includeMeta && (
-      <Head>
-        <Meta title={title} description={desc} image={img} />
-        <title>{title}</title>
-      </Head>
+      <Meta as={Head} title={title} description={desc} image={img} />
     )}
     <Container sx={{ maxWidth: [null, 'copy', 'copyPlus'] }}>
       {title && (
