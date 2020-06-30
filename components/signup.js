@@ -11,7 +11,6 @@ import {
   Alert
 } from 'theme-ui'
 import { AlertTriangle, Send } from 'react-feather'
-import fetch from 'isomorphic-unfetch'
 
 const Loading = () => (
   <Spinner

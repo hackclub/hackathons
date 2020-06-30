@@ -7,15 +7,15 @@
   "scripts": {
     "dev": "next",
     "build": "next build",
-    "start": "yarn run dev"
+    "start": "next start"
   },
   "dependencies": {
     "@hackclub/icons": "^0.0.3",
     "@hackclub/meta": "^1.0.0",
     "@hackclub/theme": "^0.1.1",
+    "@mdx-js/loader": "^1.6.6",
     "@next/mdx": "^9.4.4",
     "fathom-client": "^3.0.0",
-    "isomorphic-unfetch": "^3.0.0",
     "lodash": "^4.17.15",
     "next": "^9.4.4",
     "nprogress": "^0.2.0",
