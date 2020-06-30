@@ -6,9 +6,9 @@ import {
   Button,
   Image,
   Text,
-  Link as A
+  Link as A,
+  useColorMode
 } from 'theme-ui'
-import { useColorMode } from 'theme-ui'
 import { useRouter } from 'next/router'
 import Link from 'next/link'
 
