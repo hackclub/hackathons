@@ -10,6 +10,11 @@ export default () => (
       variant="narrow"
       sx={{
         p: { color: 'secondary', lineHeight: 'caption', fontSize: [2, 3] },
+        'p:last-of-type': {
+          fontSize: 1,
+          variant: 'text.caption',
+          a: { color: 'secondary' }
+        },
         a: { variant: 'styles.a', color: 'primary' }
       }}
     >
