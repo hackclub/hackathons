@@ -1,5 +1,5 @@
 import Grouping from '../components/grouping'
-import { Box, Card, Heading, Text, Link } from 'theme-ui'
+import { Box, Heading, Text, Link } from 'theme-ui'
 import Head from 'next/head'
 import Meta from '@hackclub/meta'
 import Signup from '../components/signup'
@@ -13,7 +13,7 @@ const title = `Online High School Hackathons in ${new Date().getFullYear()}`
 const eventsPreview = events =>
   slice(events, 0, 4)
     .map(
-      event => `${event.name} (${humanizedDateRange(event.start, event.end)})…`
+      event => `${event.name} (${humanizedDateRange(event.start, event.end)}) … `
     )
     .join('')
 
@@ -33,30 +33,6 @@ export default ({ stats, emailStats, events }) => (
             events
           )}`}
         />
-        <Card
-          sx={{
-            bg: 'orange',
-            color: 'white',
-            borderRadius: 'default',
-            textAlign: 'left',
-            p: [2, 3],
-            mt: [-2, -4],
-            mb: 4
-          }}
-        >
-          <Text as="p" sx={{ fontSize: [1, 2], lineHeight: 'caption' }}>
-            Due to COVID-19, most hackathons are canceled, postponed, or hosting
-            virtually. We’ve put out{' '}
-            <Link
-              href="https://hackclub.com/covid19/"
-              sx={{ color: 'inherit' }}
-            >
-              official guidance
-            </Link>{' '}
-            to organizers on postponing their events, and in the meantime, the
-            majority of this year’s events will be virtual. Stay safe.
-          </Text>
-        </Card>
         <Heading as="h1" variant="title" sx={{ color: 'primary' }}>
           <Text
             as="span"
