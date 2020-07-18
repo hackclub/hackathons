@@ -57,7 +57,7 @@ const Flag = () => (
   </A>
 )
 
-const ColorSwitcher = (props) => {
+const ColorSwitcher = props => {
   const [mode, setMode] = useColorMode()
   return (
     <NavButton
@@ -98,10 +98,16 @@ export default () => {
         {!home ? <BackButton /> : <Flag />}
         <Button
           as="a"
+          variant="outline"
           href="https://airtable.com/shrpYdJpAOphEWXan"
           aria-label="Apply to list your hackathon"
-          variant="outline"
-          sx={{ ml: 'auto', py: 0, px: 2 }}
+          sx={{
+            width: 'auto',
+            ml: 'auto',
+            boxShadow: 'none !important',
+            py: 1,
+            px: 3
+          }}
         >
           <Text as="span" sx={{ display: ['block', 'none'] }}>
             Submit
