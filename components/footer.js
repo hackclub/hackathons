@@ -7,12 +7,10 @@ export default () => (
     sx={{ bg: 'sunken', textAlign: 'center', px: 2, py: [3, 4], mt: [4, 5] }}
   >
     <Container
+      variant="narrow"
       sx={{
-        maxWidth: 640,
-        alignItems: 'center',
-        justifyContent: 'center',
-        p: { color: 'secondary', fontSize: [2, 3] },
-        a: { color: 'primary' }
+        p: { color: 'secondary', lineHeight: 'caption', fontSize: [2, 3] },
+        a: { variant: 'styles.a', color: 'primary' }
       }}
     >
       <Footer />
