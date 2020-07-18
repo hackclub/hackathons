@@ -1,5 +1,10 @@
 {
   "public": true,
-  "trailingSlash": true,
-  "github": { "silent": true }
+  "github": { "silent": true },
+  "rewrites": [
+    {
+      "source": "/api/email-stats",
+      "destination": "https://api.hackclub.com/v1/event_email_subscribers/stats"
+    }
+  ]
 }
