@@ -33,5 +33,5 @@ export const getStaticProps = async ({ params }) => {
   let events = await getEvents()
   events = filter(events, (e) => startsWith(e.start, year))
   events = orderBy(events, 'start')
-  return { props: { year, events }, unstable_revalidate: 30 }
+  return { props: { year, events }, revalidate: 10 }
 }

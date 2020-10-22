@@ -105,5 +105,5 @@ export const getStaticProps = async () => {
     filter(events, e => new Date(e.start) >= new Date()),
     'start'
   )
-  return { props: { events, stats, emailStats }, unstable_revalidate: 1 }
+  return { props: { events, stats, emailStats }, revalidate: 1 }
 }
