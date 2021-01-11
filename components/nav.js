@@ -99,7 +99,7 @@ export default () => {
         <Button
           as="a"
           variant="outline"
-          href="https://airtable.com/shrpYdJpAOphEWXan"
+          href="https://hack.af/submit-hackathon"
           aria-label="Apply to list your hackathon"
           sx={{
             width: 'auto',
