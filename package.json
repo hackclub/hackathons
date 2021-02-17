@@ -22,7 +22,7 @@
     "pluralize": "^8.0.0",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
-    "react-feather": "^2.0.8",
+    "react-feather": "^2.0.9",
     "theme-ui": "^0.3.1",
     "vanilla-tilt": "^1.7.0"
   }
