@@ -44,7 +44,7 @@ Run it!
 
 ### Build and deploy
 
-Deployment is managed using [Vercel](https://zeit.co). Install the Vercel CLI, and to force a production deploy, run:
+Deployment is managed using [Vercel](https://vercel.com). Install the Vercel CLI, and to force a production deploy, run:
 
     $ vercel --prod
 
