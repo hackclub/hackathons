@@ -4,6 +4,7 @@ import Regions from '../components/regions'
 import Signup from '../components/signup'
 import { map, orderBy, find, kebabCase, startCase } from 'lodash'
 import { getGroupingData } from '../lib/data'
+import { Box } from 'theme-ui'
 
 export default ({ name, events, emailStats }) => {
   if (!name || !events) return <Error statusCode={404} />
@@ -15,7 +16,7 @@ export default ({ name, events, emailStats }) => {
       )}`}
       desc={`Find, register, and compete in ${events.length} student-led hackathons around ${name}.`}
       events={events}
-      footer={<><Regions showAll /> <Signup stats={emailStats} initialLocation={startCase(name)} /></>}
+      footer={<> <Signup stats={emailStats} initialLocation={startCase(name)} /> <Box sx={{mt: [3, 4]}} > <Regions showAll /> </Box> </>}
     >
     </Grouping>
   )
