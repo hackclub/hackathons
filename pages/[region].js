@@ -15,9 +15,9 @@ export default ({ name, events, emailStats }) => {
       )}`}
       desc={`Find, register, and compete in ${events.length} student-led hackathons around ${name}.`}
       events={events}
+      footer={<Signup stats={emailStats} initialLocation={startCase(name)} />}
     >
       <Regions showAll />
-      <Signup stats={emailStats} initialLocation={startCase(name)} />
     </Grouping>
   )
 }
