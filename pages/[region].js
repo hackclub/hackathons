@@ -103,6 +103,6 @@ export const getStaticProps = async ({ params }) => {
   let { name } = region
   let { events, emailStats } = await getGroupingData()
   events = events.filter((event) => region.filter(event))
-  events = orderBy(events, 'start')
+  events = orderBy(events, 'start', 'desc')
   return { props: { name, events, emailStats }, revalidate: 10 }
 }
