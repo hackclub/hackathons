@@ -14,10 +14,10 @@ export default ({ name, events, emailStats }) => {
         'United States'
       )}`}
       desc={`Find, register, and compete in ${events.length} student-led hackathons around ${name}.`}
-      header={<Signup stats={emailStats} initialLocation={startCase(name)} />}
       events={events}
     >
       <Regions showAll />
+      <Signup stats={emailStats} initialLocation={startCase(name)} />
     </Grouping>
   )
 }
