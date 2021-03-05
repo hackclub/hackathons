@@ -1,7 +1,7 @@
 import Error from 'next/error'
 import Grouping from '../components/grouping'
 import Regions from '../components/regions'
-import Signup from '../components/signup'
+import Signup from '../components/minimal-signup'
 import { map, orderBy, find, kebabCase, startCase } from 'lodash'
 import { getGroupingData } from '../lib/data'
 import { Box } from 'theme-ui'
@@ -16,7 +16,8 @@ export default ({ name, events, emailStats }) => {
       )}`}
       desc={`Find, register, and compete in ${events.length} student-led hackathons around ${name}.`}
       events={events}
-      footer={<> <Signup stats={emailStats} initialLocation={startCase(name)} /> <Box sx={{mt: [3, 4]}} > <Regions showAll /> </Box> </>}
+      header={<Signup stats={emailStats} initialLocation={startCase(name)} />}
+      footer={<> <Box sx={{mt: [3, 4]}} > <Regions showAll /> </Box> </>}
     >
     </Grouping>
   )
