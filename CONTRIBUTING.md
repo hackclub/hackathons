@@ -64,7 +64,8 @@ git push -u origin <your-branch-name>
 - You'll see an option to make pull-request
   ![cmp](https://cloud-2g5ft0rri-hack-club-bot.vercel.app/0cmp.png)
 - Describe your Pull request and what changes it makes in the original repo.
-- Ask a maintainer nicely to review the PR and and if there are no conflicts, it'll gete merged.
+  ![PR example](https://cloud-11mvtdz0w-hack-club-bot.vercel.app/0pr.png)
+- Ask a maintainer nicely to review the PR and if there are no major conflicts, it will get merged soon.
 
 ### Step 7: Partyy!
 
