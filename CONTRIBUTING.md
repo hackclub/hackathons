@@ -62,6 +62,7 @@ git push -u origin <your-branch-name>
 
 - Go to your forked repo.
 - You'll see an option to make pull-request
+  ![cmp](https://cloud-2g5ft0rri-hack-club-bot.vercel.app/0cmp.png)
 - Describe your Pull request and what changes it makes in the original repo.
 - Ask a maintainer nicely to review the PR and and if there are no conflicts, it'll gete merged.
 
