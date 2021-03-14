@@ -1,6 +1,6 @@
 # Contribution Guidelines
 
-#### This document contains a set of guidelines that any contributions to any Hack Club repository must follow.
+This document contains a set of guidelines that any contributions to any Hack Club repository must follow.
 
 ## Welcome Hackers!
 
@@ -16,7 +16,7 @@ After this step, you'll get your copy of the repo.
 
 Something in your URL would look like this:
 
-- https://github.com/\<your-username>/hackathons
+- https://github.com/<your-username\>/hackathons
 
 ### Step 2: Clone the forked repo
 
