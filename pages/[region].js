@@ -1,7 +1,7 @@
 import Error from 'next/error'
 import Grouping from '../components/grouping'
 import Regions from '../components/regions'
-import Signup from '../components/minimal-signup'
+import Signup from '../components/signup'
 import { map, orderBy, find, kebabCase, startCase } from 'lodash'
 import { getGroupingData } from '../lib/data'
 import { Box } from 'theme-ui'
