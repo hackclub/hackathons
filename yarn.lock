@@ -3203,10 +3203,10 @@ util@^0.11.0:
   dependencies:
     inherits "2.0.3"
 
-vanilla-tilt@^1.7.0:
-  version "1.7.0"
-  resolved "https://registry.yarnpkg.com/vanilla-tilt/-/vanilla-tilt-1.7.0.tgz#4e6d3c6442c6fa2b45c958c9c2013f31686ab461"
-  integrity sha512-u9yUhpSasFeqQCuiTon+RSb0aHzcj9stvWVXQIswzKL5oG491lkYk7U1GmhOAEZt7yPT6EiYZRJhIh2MFBncOA==
+vanilla-tilt@^1.7.1:
+  version "1.7.1"
+  resolved "https://registry.yarnpkg.com/vanilla-tilt/-/vanilla-tilt-1.7.1.tgz#4f5f3a29707551f532e3766bc0062023c3eec186"
+  integrity sha512-S3qZcTqMEVthgdnxhOW1BDcXJ0kCzrhF/zQYPTwtRMeETn9DW3BEvQrfAMsMN02mi3TMytWR+ODuNrcfO7OGWw==
 
 vfile-location@^3.0.0:
   version "3.0.1"
