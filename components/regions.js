@@ -42,25 +42,20 @@ export default ({ showAll = false, sx = {} }) => (
       </Link>
     )}
     {Object.entries(regions).map(([name, url]) => (
-      <Link
+      <Card
+        as="a"
         href={`/list-of-hackathons-in-${kebabCase(name)}`}
-        passHref
-        key={name}
+        variant="event"
+        sx={{ alignItems: ['flex-start', 'center'] }}
+        style={{
+          backgroundImage: `linear-gradient(rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.375) 75%),
+            url(${url})`
+        }}
       >
-        <Card
-          as="a"
-          variant="event"
-          sx={{ alignItems: ['flex-start', 'center'] }}
-          style={{
-            backgroundImage: `linear-gradient(rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.375) 75%),
-              url(${url})`
-          }}
-        >
-          <Heading as="h3" sx={{ fontSize: 3 }}>
-            {startCase(name)}
-          </Heading>
-        </Card>
-      </Link>
+        <Heading as="h3" sx={{ fontSize: 3 }}>
+          {startCase(name)}
+        </Heading>
+      </Card>
     ))}
   </Grid>
 )

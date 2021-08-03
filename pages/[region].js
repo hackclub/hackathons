@@ -4,6 +4,7 @@ import Regions from '../components/regions'
 import Signup from '../components/signup'
 import { map, orderBy, find, kebabCase, startCase } from 'lodash'
 import { getGroupingData } from '../lib/data'
+import { Box } from 'theme-ui'
 
 export default ({ name, events, emailStats }) => {
   if (!name || !events) return <Error statusCode={404} />
@@ -14,10 +15,10 @@ export default ({ name, events, emailStats }) => {
         'United States'
       )}`}
       desc={`Find, register, and compete in ${events.length} student-led hackathons around ${name}.`}
-      header={<Signup stats={emailStats} initialLocation={startCase(name)} />}
       events={events}
+      header={<Signup stats={emailStats} initialLocation={startCase(name)} />}
+      footer={<> <Box sx={{mt: [3, 4]}} > <Regions showAll /> </Box> </>}
     >
-      <Regions showAll />
     </Grouping>
   )
 }
@@ -103,6 +104,6 @@ export const getStaticProps = async ({ params }) => {
   let { name } = region
   let { events, emailStats } = await getGroupingData()
   events = events.filter((event) => region.filter(event))
-  events = orderBy(events, 'start')
+  events = orderBy(events, 'start', 'desc')
   return { props: { name, events, emailStats }, revalidate: 10 }
 }
