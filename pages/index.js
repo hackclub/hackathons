@@ -34,23 +34,6 @@ export default ({ stats, emailStats, events }) => (
           )}`}
         />
         <Heading as="h1" variant="title" sx={{ color: 'primary' }}>
-          <Text
-            as="span"
-            sx={{
-              color: 'cyan',
-              display: 'inline-block',
-              transition: 'all .25s ease-in-out',
-              ':hover': {
-                WebkitTextStroke: 'currentColor',
-                WebkitTextStrokeWidth: '2px',
-                WebkitTextFillColor: theme => theme.colors.white,
-                textShadow: theme => `0 0 12px ${theme.colors.cyan}`,
-                transform: 'rotate(-4deg) scale(1.025)'
-              }
-            }}
-          >
-            (Online)
-          </Text>{' '}
           High School Hackathons in {new Date().getFullYear()}
         </Heading>
         <Text variant="subtitle" sx={{ my: 3 }}>
