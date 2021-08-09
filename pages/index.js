@@ -61,7 +61,7 @@ export default ({ stats, emailStats, events }) => (
           &nbsp;countries.
         </Text>
         <Text variant="subtitle">
-          Maintained by the <Link href="https://hackclub.com/">Hack Club</Link>{' '}
+          {' '}Maintained by the <Link href="https://hackclub.com/">Hack Club</Link>{' '}
           staff.
         </Text>
       </>
