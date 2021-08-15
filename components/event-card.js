@@ -58,6 +58,23 @@ const EventCard = ({
           }}
         />
       )}
+          
+      <Badge
+        as="span"
+        itemType="VirtualLocation"
+        sx={{
+          position: 'absolute',
+          top: 16,
+          right: 16,
+          bg: 'snow',
+          color: virtual ? 'red' : 'blue',
+          fontSize: 'inherit',
+          textShadow: 'none'
+        }}
+      >
+        {virtual ? 'Online' : 'In-Person'}
+      </Badge>
+
       {logo && (
         <Image
           src={logo}
@@ -94,20 +111,7 @@ const EventCard = ({
           itemScope
           itemType="http://schema.org/Place"
         >
-          {virtual ? (
-            <Badge
-              as="span"
-              itemType="VirtualLocation"
-              sx={{
-                bg: 'white',
-                color: 'blue',
-                fontSize: 'inherit',
-                textShadow: 'none'
-              }}
-            >
-              Online
-            </Badge>
-          ) : (
+          {!virtual && (
             <span itemProp="address">
               {formatAddress(city, state, country, countryCode)}
             </span>
