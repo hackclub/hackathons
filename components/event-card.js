@@ -69,7 +69,8 @@ const EventCard = ({
           bg: 'snow',
           color: virtual ? 'red' : 'blue',
           fontSize: 'inherit',
-          textShadow: 'none'
+          textShadow: 'none',
+          borderRadius: 5
         }}
       >
         {virtual ? 'Online' : 'In-Person'}
@@ -92,10 +93,9 @@ const EventCard = ({
       <Heading as="h3" itemProp="name" sx={{ fontSize: [3, 4], mt: 2, mb: 3, overflowWrap: "anywhere" }}>
         {name}
       </Heading>
-      <Flex
+      <Box
         as="footer"
         sx={{
-          justifyContent: 'space-between',
           mt: 'auto',
           width: '100%',
           opacity: 0.875
@@ -113,11 +113,11 @@ const EventCard = ({
         >
           {!virtual && (
             <span itemProp="address">
-              {formatAddress(city, state, country, countryCode)}
+              {': '}{formatAddress(city, state, country, countryCode)}
             </span>
           )}
         </Text>
-      </Flex>
+      </Box>
       <Box sx={{ display: 'none' }}>
         <span itemProp="eventAttendanceMode">
           {virtual
