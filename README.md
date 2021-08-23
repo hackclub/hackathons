@@ -1,4 +1,4 @@
-<p align="center"><img width="200px" height="200px" alt="Hackathons icon" src="https://hackclub.com/icon/icon-masked.png"></a>
+<p align="center"><img width="200px" height="200px" alt="Hackathons icon" src="https://cloud-i2jaub9dv-hack-club-bot.vercel.app/0icon-masked.png"></a>
 <h1 align="center"><a href="https://hackathons.hackclub.com">Hack Club Hackathons</a></h1>
 <p align="center"><i>A curated list of hackathons for high school students.</i></p>
 
