@@ -9,7 +9,7 @@ import { filter, orderBy, slice, last } from 'lodash'
 import { timeSince, humanizedDateRange } from '../lib/util'
 import { getGroupingData } from '../lib/data'
 
-const title = `Online High School Hackathons in ${new Date().getFullYear()}`
+const title = `High School Hackathons in ${new Date().getFullYear()}`
 const eventsPreview = events =>
   slice(events, 0, 4)
     .map(
@@ -25,7 +25,7 @@ export default ({ stats, emailStats, events }) => (
         <Meta
           as={Head}
           title={title}
-          description={`${title}. A curated list of high school hackathons with ${
+          description={`${title}. A curated list of online and in-person high school hackathons with ${
             events.length
           } events in ${stats.state} states + ${
             stats.country
@@ -34,34 +34,19 @@ export default ({ stats, emailStats, events }) => (
           )}`}
         />
         <Heading as="h1" variant="title" sx={{ color: 'primary' }}>
-          <Text
-            as="span"
-            sx={{
-              color: 'cyan',
-              display: 'inline-block',
-              transition: 'all .25s ease-in-out',
-              ':hover': {
-                WebkitTextStroke: 'currentColor',
-                WebkitTextStrokeWidth: '2px',
-                WebkitTextFillColor: theme => theme.colors.white,
-                textShadow: theme => `0 0 12px ${theme.colors.cyan}`,
-                transform: 'rotate(-4deg) scale(1.025)'
-              }
-            }}
-          >
-            (Online)
-          </Text>{' '}
-          High School Hackathons in {new Date().getFullYear()}
+          High School Hackathons{' '}
+          <Box as="br" sx={{ display: ['none', 'block'] }} /> 
+          in {new Date().getFullYear()}
         </Heading>
-        <Text variant="subtitle" sx={{ my: 3 }}>
+        <Text as='p' variant="subtitle" sx={{ my: 3 }}>
           A curated list of high school hackathons with
           <Box as="br" sx={{ display: ['none', 'block'] }} /> {stats.total}
           &nbsp;events in {stats.state}
           &nbsp;states + {stats.country}
           &nbsp;countries.
         </Text>
-        <Text variant="subtitle">
-          Maintained by the <Link href="https://hackclub.com/">Hack Club</Link>{' '}
+        <Text as='p' variant="subtitle">
+          {' '}Maintained by the <Link href="https://hackclub.com/">Hack Club</Link>{' '}
           staff.
         </Text>
       </>

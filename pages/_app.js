@@ -15,7 +15,7 @@ const App = ({ Component, pageProps }) => (
       as={Head}
       title="Hack Club Hackathons"
       name="Hack Club Hackathons"
-      description="Listing of upcoming high school hackathons around the world."
+      description="Listing of upcoming online and in-person high school hackathons around the world."
       image="https://hackathons.hackclub.com/card.png"
     />
     <NProgress color={theme.colors.primary} />
