@@ -6,8 +6,9 @@ import { Box, Heading, Text, Link } from 'theme-ui'
 import Head from 'next/head'
 import Signup from '../components/signup'
 import Years from '../components/years'
-import { map, orderBy, find, kebabCase, startCase } from 'lodash'
+import { map, orderBy, find, kebabCase, startCase, filter } from 'lodash'
 import { getGroupingData } from '../lib/data'
+import { getEvents } from '../lib/data'
 
 export default ({ name, events, emailStats }) => {
   const title = `High School Hackathons in ${new Date().getFullYear()}`
@@ -71,8 +72,9 @@ export default ({ name, events, emailStats }) => {
 //   }
 // }
 
-export const getStaticProps = async () => {
-  let { events, emailStats } = await getGroupingData()
+export const getStaticProps = async (req, res) => {
+  let events = await getEvents()
+  events = filter(events, 'fields.apac')
   events = orderBy(events, 'start', 'desc')
-  return { props: { events, emailStats }, revalidate: 10 }
+  return { props: { events }, revalidate: 10 }
 }
