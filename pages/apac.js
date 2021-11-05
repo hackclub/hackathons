@@ -74,7 +74,10 @@ export default ({ name, events, emailStats }) => {
 
 export const getStaticProps = async (req, res) => {
   let events = await getEvents()
-  events = filter(events, 'fields.apac')
-  events = orderBy(events, 'start', 'desc')
+  // events = filter(events, e => 'fields.apac')
+  events = orderBy(
+    filter(events, e => new Date(e.start) >= new Date()),
+    'start'
+  )
   return { props: { events }, revalidate: 10 }
 }
