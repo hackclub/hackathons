@@ -6,7 +6,15 @@ import { Box, Heading, Text, Link } from 'theme-ui'
 import Head from 'next/head'
 import Signup from '../components/signup'
 import Years from '../components/years'
-import { map, orderBy, find, kebabCase, startCase, filter } from 'lodash'
+import {
+  map,
+  orderBy,
+  find,
+  kebabCase,
+  startCase,
+  filter,
+  sortBy
+} from 'lodash'
 import { getGroupingData } from '../lib/data'
 import { getEvents } from '../lib/data'
 
@@ -70,10 +78,9 @@ export default ({ name, events, emailStats }) => {
 
 export const getStaticProps = async (req, res) => {
   let events = await getEvents()
+  // events where the field apac = true
   events = filter(events, 'apac')
-  events = orderBy(
-    filter(events, e => new Date(e.start) >= new Date()),
-    'start'
-  )
+  // upcoming events first
+  events = orderBy(events, 'start', 'desc')
   return { props: { events }, revalidate: 10 }
 }

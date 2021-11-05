@@ -13,7 +13,8 @@ const title = `High School Hackathons in ${new Date().getFullYear()}`
 const eventsPreview = events =>
   slice(events, 0, 4)
     .map(
-      event => `${event.name} (${humanizedDateRange(event.start, event.end)}) … `
+      event =>
+        `${event.name} (${humanizedDateRange(event.start, event.end)}) … `
     )
     .join('')
 
@@ -35,18 +36,21 @@ export default ({ stats, emailStats, events }) => (
         />
         <Heading as="h1" variant="title" sx={{ color: 'primary' }}>
           High School Hackathons{' '}
-          <Box as="br" sx={{ display: ['none', 'block'] }} /> 
+          <Box as="br" sx={{ display: ['none', 'block'] }} />
           in {new Date().getFullYear()}
         </Heading>
-        <Text as='p' variant="subtitle" sx={{ my: 3 }}>
+        <Text as="p" variant="subtitle" sx={{ my: 3 }}>
           A curated list of high school hackathons with
           <Box as="br" sx={{ display: ['none', 'block'] }} /> {stats.total}
           &nbsp;events in {stats.state}
           &nbsp;states + {stats.country}
           &nbsp;countries.
         </Text>
-        <Text as='p' variant="subtitle">
-          {' '}Maintained by the <Link href="https://hackclub.com/">Hack Club</Link>{' '}
+        <Text as="p" variant="subtitle">
+          {' '}
+          Maintained by the <Link href="https://hackclub.com/">
+            Hack Club
+          </Link>{' '}
           staff.
         </Text>
       </>
@@ -90,5 +94,7 @@ export const getStaticProps = async () => {
     filter(events, e => new Date(e.start) >= new Date()),
     'start'
   )
+  // Filter out apac hackathons. Moved to /apac as of 2021-11-05
+  events = filter(events, stats.state)
   return { props: { events, stats, emailStats }, revalidate: 1 }
 }
