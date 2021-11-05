@@ -5,7 +5,7 @@ import Meta from '@hackclub/meta'
 import Signup from '../components/signup'
 import Years from '../components/years'
 import Regions from '../components/regions'
-import { filter, orderBy, slice, last } from 'lodash'
+import { filter, orderBy, slice, last, remove } from 'lodash'
 import { timeSince, humanizedDateRange } from '../lib/util'
 import { getGroupingData } from '../lib/data'
 
@@ -95,6 +95,6 @@ export const getStaticProps = async () => {
     'start'
   )
   // Filter out apac hackathons. Moved to /apac as of 2021-11-05
-  events = filter(events, stats.state)
+  events = filter(events, 'country')
   return { props: { events, stats, emailStats }, revalidate: 1 }
 }
