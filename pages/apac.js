@@ -41,10 +41,6 @@ export default ({ name, events, emailStats }) => {
         <section>
           {/* <Signup stats={emailStats} /> */}
           <Heading variant="headline" sx={{ mt: [4, 5], mb: [3, 4] }}>
-            Explore by year
-          </Heading>
-          <Years />
-          <Heading variant="headline" sx={{ mt: [4, 5], mb: [3, 4] }}>
             Explore popular regions
           </Heading>
           <Regions />
@@ -74,7 +70,7 @@ export default ({ name, events, emailStats }) => {
 
 export const getStaticProps = async (req, res) => {
   let events = await getEvents()
-  // events = filter(events, e => 'fields.apac')
+  events = filter(events, 'apac')
   events = orderBy(
     filter(events, e => new Date(e.start) >= new Date()),
     'start'
