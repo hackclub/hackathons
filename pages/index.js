@@ -8,6 +8,7 @@ import Regions from '../components/regions'
 import { filter, orderBy, slice, last, remove } from 'lodash'
 import { timeSince, humanizedDateRange } from '../lib/util'
 import { getGroupingData } from '../lib/data'
+import Banner from '../components/banner'
 
 const title = `High School Hackathons in ${new Date().getFullYear()}`
 const eventsPreview = events =>
