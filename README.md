@@ -28,7 +28,7 @@ Stuff you need installed ahead of time:
 
 Clone it!
 
-    $ git clone https://github.com/hackclub/hackathons
+    $ git clone https://github.com/hackclub/hackathons.git
 
 Go into the directory!
 
