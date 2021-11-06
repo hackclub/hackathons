@@ -1,5 +1,3 @@
-/* eslint-disable react/display-name */
-/* eslint-disable import/no-anonymous-default-export */
 import { useState } from 'react'
 import {
   Card,

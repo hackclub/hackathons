@@ -1,5 +1,3 @@
-/* eslint-disable import/no-anonymous-default-export */
-/* eslint-disable react/display-name */
 import Grouping from '../components/grouping'
 import { Box, Heading, Text, Link } from 'theme-ui'
 import Head from 'next/head'
