@@ -5,11 +5,9 @@ import Meta from '@hackclub/meta'
 import Signup from '../components/signup'
 import Years from '../components/years'
 import Regions from '../components/regions'
-import { filter, orderBy, slice, last } from 'lodash'
+import { filter, orderBy, slice, last, remove } from 'lodash'
 import { timeSince, humanizedDateRange } from '../lib/util'
 import { getGroupingData } from '../lib/data'
-import Banner from '../components/banner'
-import { sendJson } from 'next/dist/server/api-utils'
 
 const title = `High School Hackathons in ${new Date().getFullYear()}`
 const eventsPreview = events =>
@@ -55,13 +53,6 @@ export default ({ stats, emailStats, events }) => (
           </Link>{' '}
           staff.
         </Text>
-        <Banner
-          copy="Looking for hackathons in the APAC (Asia-Pacific) region?"
-          caption="They've been moved to a new page!"
-          href="/apac"
-          iconRight="enter"
-          color="primary"
-        />
       </>
     }
     events={events}
@@ -83,9 +74,6 @@ export default ({ stats, emailStats, events }) => (
 
 export const getStaticProps = async () => {
   let { events, emailStats } = await getGroupingData()
-  const location = await fetch('https://localhost:3000/api/country')
-  const userLocation = JSON.stringify(location)
-  console.log(userLocation)
   let stats = {
     total: events.length,
     state: new Set(
@@ -106,7 +94,7 @@ export const getStaticProps = async () => {
     filter(events, e => new Date(e.start) >= new Date()),
     'start'
   )
-  // APAC Hackathons are now on the /apac page
-  events = filter(events, ['apac', false])
-  return { props: { events, stats, emailStats, userLocation }, revalidate: 1 }
+  // Filter out apac hackathons. Moved to /apac as of 2021-11-05
+  events = filter(events, 'country')
+  return { props: { events, stats, emailStats }, revalidate: 1 }
 }
