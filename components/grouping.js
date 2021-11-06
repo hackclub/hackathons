@@ -7,11 +7,13 @@ export default ({ title, desc, header, children, footer, events }) => (
     as="main"
     sx={{ bg: 'background', color: 'text', textAlign: [null, 'center'] }}
   >
-    <Header title={title} desc={desc} children={header} includeMeta />
+    <Header title={title} desc={desc} includeMeta>
+      {header}
+    </Header>
     <Container sx={{ mt: [3, 4, 5] }}>
       {children}
       <Grid columns={[1, 2, 3]} gap={[3, 4]} sx={{ mt: [3, 4, 5] }}>
-        {events.map((event) => (
+        {events.map(event => (
           <EventCard id={event.id} key={event.id} {...event} />
         ))}
       </Grid>

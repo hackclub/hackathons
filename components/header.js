@@ -26,12 +26,9 @@ export default ({
     )}
     <Container sx={{ maxWidth: [null, 'copy', 'copyPlus'] }}>
       {title && (
-        <Heading
-          as="h1"
-          variant="title"
-          sx={{ color: 'primary' }}
-          children={title}
-        />
+        <Heading as="h1" variant="title" sx={{ color: 'primary' }}>
+          {title}
+        </Heading>
       )}
       {desc && (
         <Heading
@@ -42,8 +39,9 @@ export default ({
             color: 'text',
             mx: centered && 'auto'
           }}
-          children={desc}
-        />
+        >
+          {desc}
+        </Heading>
       )}
       {children}
     </Container>

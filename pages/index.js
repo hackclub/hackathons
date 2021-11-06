@@ -1,3 +1,5 @@
+/* eslint-disable import/no-anonymous-default-export */
+/* eslint-disable react/display-name */
 import Grouping from '../components/grouping'
 import { Box, Heading, Text, Link } from 'theme-ui'
 import Head from 'next/head'
@@ -13,7 +15,8 @@ const title = `High School Hackathons in ${new Date().getFullYear()}`
 const eventsPreview = events =>
   slice(events, 0, 4)
     .map(
-      event => `${event.name} (${humanizedDateRange(event.start, event.end)}) … `
+      event =>
+        `${event.name} (${humanizedDateRange(event.start, event.end)}) … `
     )
     .join('')
 
@@ -35,18 +38,21 @@ export default ({ stats, emailStats, events }) => (
         />
         <Heading as="h1" variant="title" sx={{ color: 'primary' }}>
           High School Hackathons{' '}
-          <Box as="br" sx={{ display: ['none', 'block'] }} /> 
+          <Box as="br" sx={{ display: ['none', 'block'] }} />
           in {new Date().getFullYear()}
         </Heading>
-        <Text as='p' variant="subtitle" sx={{ my: 3 }}>
+        <Text as="p" variant="subtitle" sx={{ my: 3 }}>
           A curated list of high school hackathons with
           <Box as="br" sx={{ display: ['none', 'block'] }} /> {stats.total}
           &nbsp;events in {stats.state}
           &nbsp;states + {stats.country}
           &nbsp;countries.
         </Text>
-        <Text as='p' variant="subtitle">
-          {' '}Maintained by the <Link href="https://hackclub.com/">Hack Club</Link>{' '}
+        <Text as="p" variant="subtitle">
+          {' '}
+          Maintained by the <Link href="https://hackclub.com/">
+            Hack Club
+          </Link>{' '}
           staff.
         </Text>
       </>
