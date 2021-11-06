@@ -86,6 +86,7 @@ export default ({ initialLocation, stats = {} }) => {
         <div>
           <Label htmlFor="email">Email</Label>
           <Input
+            autofillBackgroundColor="highlight"
             type="email"
             name="email"
             id="email"
@@ -97,7 +98,9 @@ export default ({ initialLocation, stats = {} }) => {
         <div>
           <Label htmlFor="location">Location</Label>
           <Input
+            autofillBackgroundColor="highlight"
             type="text"
+            name="location"
             id="location"
             placeholder="Chicago, IL"
             value={location}
