@@ -1,21 +1,9 @@
-import Error from 'next/error'
 import Grouping from '../components/grouping'
 import Regions from '../components/regions'
 import Meta from '@hackclub/meta'
-import { Box, Heading, Text, Link } from 'theme-ui'
+import { Heading, Text, Link } from 'theme-ui'
 import Head from 'next/head'
-import Signup from '../components/signup'
-import Years from '../components/years'
-import {
-  map,
-  orderBy,
-  find,
-  kebabCase,
-  startCase,
-  filter,
-  sortBy
-} from 'lodash'
-import { getGroupingData } from '../lib/data'
+import { orderBy, filter } from 'lodash'
 import { getEvents } from '../lib/data'
 
 export default ({ name, events, emailStats }) => {
@@ -47,7 +35,7 @@ export default ({ name, events, emailStats }) => {
       events={events}
       footer={
         <section>
-          {/* <Signup stats={emailStats} /> */}
+          {/* <Signup stats={emailStats} /> At the moment, the email signup is broken. */}
           <Heading variant="headline" sx={{ mt: [4, 5], mb: [3, 4] }}>
             Explore popular regions
           </Heading>
@@ -57,24 +45,6 @@ export default ({ name, events, emailStats }) => {
     />
   )
 }
-
-// const distance = (lat1, lon1, lat2, lon2) => {
-//   // https://www.geodatasource.com/developers/javascript
-//   const radlat1 = (Math.PI * lat1) / 180
-//   const radlat2 = (Math.PI * lat2) / 180
-//   const theta = lon1 - lon2
-//   const radtheta = (Math.PI * theta) / 180
-//   let dist =
-//     Math.sin(radlat1) * Math.sin(radlat2) +
-//     Math.cos(radlat1) * Math.cos(radlat2) * Math.cos(radtheta)
-//   dist = Math.acos(dist)
-//   dist = (dist * 180) / Math.PI
-//   dist = dist * 60 * 1.1515
-//   return {
-//     miles: dist,
-//     kilometers: dist * 1.609344
-//   }
-// }
 
 export const getStaticProps = async (req, res) => {
   let events = await getEvents()
