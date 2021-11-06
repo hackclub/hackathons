@@ -19,9 +19,20 @@ const eventsPreview = events =>
     .join('')
 
 const styles = `
-  input:-webkit-autofill {
-    -webkit-text-fill-color: white;
-  }
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover, 
+  input:-webkit-autofill:focus,
+  textarea:-webkit-autofill,
+  textarea:-webkit-autofill:hover,
+  textarea:-webkit-autofill:focus,
+  select:-webkit-autofill,
+  select:-webkit-autofill:hover,
+  select:-webkit-autofill:focus {
+    border: 1px solid lightskyblue;
+    background-color: gray;
+    -webkit-text-fill-color: #7f8a99;
+    transition: background-color 5000s ease-in-out 0s;
+}
 `
 
 export default ({ stats, emailStats, events }) => (
