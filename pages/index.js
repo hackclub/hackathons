@@ -8,7 +8,6 @@ import Regions from '../components/regions'
 import { filter, orderBy, slice, last, remove } from 'lodash'
 import { timeSince, humanizedDateRange } from '../lib/util'
 import { getGroupingData } from '../lib/data'
-import Banner from '../components/banner'
 
 const title = `High School Hackathons in ${new Date().getFullYear()}`
 const eventsPreview = events =>
@@ -54,13 +53,6 @@ export default ({ stats, emailStats, events }) => (
           </Link>{' '}
           staff.
         </Text>
-        <Banner
-          copy="Looking for hackathons in the APAC (Asia-Pacific) region?"
-          caption="They've been moved to a new page!"
-          href="/apac"
-          iconRight="enter"
-          color="primary"
-        />
       </>
     }
     events={events}
