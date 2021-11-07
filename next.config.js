@@ -1,6 +1,9 @@
 const nextConfig = {
   experimental: { trailingSlash: true },
   pageExtensions: ['js', 'jsx', 'mdx'],
+  eslint: {
+    ignoreDuringBuilds: true
+  },
   async redirects() {
     return [
       {

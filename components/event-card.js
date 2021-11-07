@@ -58,7 +58,7 @@ const EventCard = ({
           }}
         />
       )}
-          
+
       <Badge
         as="span"
         itemType="VirtualLocation"
@@ -90,7 +90,11 @@ const EventCard = ({
           }}
         />
       )}
-      <Heading as="h3" itemProp="name" sx={{ fontSize: [3, 4], mt: 2, mb: 3, overflowWrap: "anywhere" }}>
+      <Heading
+        as="h3"
+        itemProp="name"
+        sx={{ fontSize: [3, 4], mt: 2, mb: 3, overflowWrap: 'anywhere' }}
+      >
         {name}
       </Heading>
       <Box
@@ -113,7 +117,8 @@ const EventCard = ({
         >
           {!virtual && (
             <span itemProp="address">
-              {': '}{formatAddress(city, state, country, countryCode)}
+              {': '}
+              {formatAddress(city, state, country, countryCode)}
             </span>
           )}
         </Text>
@@ -125,8 +130,12 @@ const EventCard = ({
             : 'https://schema.org/OfflineEventAttendanceMode'}
         </span>
         <span itemProp="url">{website}</span>
-        <span itemProp="startDate" content={start} children={start} />
-        <span itemProp="endDate" content={end} children={end} />
+        <span itemProp="startDate" content={start}>
+          {start}
+        </span>
+        <span itemProp="endDate" content={end}>
+          {end}
+        </span>
       </Box>
     </Card>
   </Tilt>
