@@ -43,6 +43,7 @@ export default ({ showAll = false, sx = {} }) => (
     )}
     {Object.entries(regions).map(([name, url]) => (
       <Card
+        key={name}
         as="a"
         href={`/list-of-hackathons-in-${kebabCase(name)}`}
         variant="event"
