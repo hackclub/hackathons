@@ -102,7 +102,5 @@ export const getStaticProps = async () => {
     filter(events, e => new Date(e.start) >= new Date()),
     'start'
   )
-  // Filter out apac hackathons. Moved to /apac as of 2021-11-05
-  events = filter(events, 'country')
   return { props: { events, stats, emailStats }, revalidate: 1 }
 }
