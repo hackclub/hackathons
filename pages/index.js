@@ -54,13 +54,13 @@ export default ({ stats, emailStats, events }) => (
           </Link>{' '}
           staff.
         </Text>
-        <Banner
+        {/* <Banner
           copy="Looking for hackathons in the APAC (Asia-Pacific) region?"
-          caption="They've been moved to a new page!"
+          caption="Check out the APAC page!"
           href="/apac"
           iconRight="enter"
           color="primary"
-        />
+        /> */}
       </>
     }
     events={events}
