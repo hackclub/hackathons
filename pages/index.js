@@ -5,9 +5,10 @@ import Meta from '@hackclub/meta'
 import Signup from '../components/signup'
 import Years from '../components/years'
 import Regions from '../components/regions'
-import { filter, orderBy, slice, last } from 'lodash'
+import { filter, orderBy, slice, last, remove } from 'lodash'
 import { timeSince, humanizedDateRange } from '../lib/util'
 import { getGroupingData } from '../lib/data'
+import Banner from '../components/banner'
 
 const title = `High School Hackathons in ${new Date().getFullYear()}`
 const eventsPreview = events =>
@@ -53,6 +54,13 @@ export default ({ stats, emailStats, events }) => (
           </Link>{' '}
           staff.
         </Text>
+        {/* <Banner
+          copy="Looking for hackathons in the APAC (Asia-Pacific) region?"
+          caption="Check out the APAC page!"
+          href="/apac"
+          iconRight="enter"
+          color="primary"
+        /> */}
       </>
     }
     events={events}
