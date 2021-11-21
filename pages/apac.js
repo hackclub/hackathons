@@ -1,12 +1,13 @@
 import Grouping from '../components/grouping'
 import Regions from '../components/regions'
 import Meta from '@hackclub/meta'
+import Signup from '../components/signup'
 import { Heading, Text, Link } from 'theme-ui'
 import Head from 'next/head'
 import { orderBy, filter } from 'lodash'
 import { getEvents } from '../lib/data'
 
-export default ({ name, events, emailStats }) => {
+export default ({ events, emailStats }) => {
   const title = `High School Hackathons in ${new Date().getFullYear()}`
 
   return (
@@ -35,7 +36,7 @@ export default ({ name, events, emailStats }) => {
       events={events}
       footer={
         <section>
-          {/* <Signup stats={emailStats} /> At the moment, the email signup is broken. */}
+          <Signup stats={emailStats} />
           <Heading variant="headline" sx={{ mt: [4, 5], mb: [3, 4] }}>
             Explore popular regions
           </Heading>
