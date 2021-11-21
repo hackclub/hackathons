@@ -67,13 +67,13 @@ const EventCard = ({
           top: 16,
           right: 16,
           bg: 'snow',
-          color: virtual ? 'red' : 'blue',
+          color: virtual ? 'red' : hybrid ? 'orange' : 'blue',
           fontSize: 'inherit',
           textShadow: 'none',
           borderRadius: 5
         }}
       >
-        {virtual ? 'Online' : 'In-Person'}
+        {virtual ? 'Online' : hybrid ? 'Hybrid' : 'In-Person'}
       </Badge>
 
       {logo && (
