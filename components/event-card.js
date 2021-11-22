@@ -16,6 +16,7 @@ const EventCard = ({
   banner,
   logo,
   virtual,
+  hybrid,
   // distanceTo,
   invisible = false
 }) => (
