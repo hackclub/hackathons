@@ -85,7 +85,7 @@ let regions = [
   },
   {
     name: 'the USA',
-    filter: event => ['US', 'USA', 'United States'].includes(event.country)
+    filter: event => ['US', 'USA', 'United States', 'United States of America'].includes(event.country)
   },
   {
     name: 'Canada',
