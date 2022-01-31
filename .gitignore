@@ -2,3 +2,6 @@
 node_modules/
 
 .now
+
+.env
+.env.local
