@@ -15,7 +15,7 @@ Object.entries(palette).map(([name, bg], i) => {
 })
 
 const Years = ({ showAll = false }) => (
-  <Grid columns={[1, 2, showAll ? 6 : 5]} gap={[3, 4]}>
+  <Grid columns={[1, 2, showAll ? 7 : 6]} gap={[3, 4]}>
     {showAll && (
       <Link href="/" passHref>
         <Card as="a" variant="nav" sx={{ bg: 'elevated', color: 'primary' }}>
