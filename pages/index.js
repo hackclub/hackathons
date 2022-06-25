@@ -1,10 +1,11 @@
 import Grouping from '../components/grouping'
-import { Box, Heading, Text, Link } from 'theme-ui'
+import { Box, Heading, Text, Link, Container } from 'theme-ui'
 import Head from 'next/head'
 import Meta from '@hackclub/meta'
 import Signup from '../components/signup'
 import Years from '../components/years'
 import Regions from '../components/regions'
+import EventCard from '../components/event-card'
 import { filter, orderBy, slice, last, remove } from 'lodash'
 import { timeSince, humanizedDateRange } from '../lib/util'
 import { getGroupingData } from '../lib/data'
@@ -53,6 +54,7 @@ export default ({ stats, emailStats, events }) => (
           </Link>{' '}
           staff.
         </Text>
+        
       </>
     }
     events={events}
@@ -69,7 +71,23 @@ export default ({ stats, emailStats, events }) => (
         <Regions />
       </section>
     }
-  />
+  > 
+  <EventCard
+    {...{
+      id: 'assemble',
+      name: 'Hack Club Assemble',
+      website: 'https://assemble.hackclub.com',
+      start: '2022-08-05T17:00:00.000Z',
+      end: '2022-08-07T18:30:00.000Z',
+      banner:
+        'https://cloud-7rzmfbze1-hack-club-bot.vercel.app/0golden-bay.png',
+      city: 'San Francisco',
+      state: 'CA',
+      lead: `Let's start an IRL hackathon renaissance at...`,
+      footer: `August 5-7 ~ Figma's San Francisco HQ ~ $40k in Travel Stipends ~ Fully Open Sourced`,
+      hq: true
+    }}
+  /></Grouping>
 )
 
 export const getStaticProps = async () => {
