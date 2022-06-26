@@ -28,7 +28,7 @@ export default ({ name, events, emailStats }) => {
         </>
       }
     >
-      {name == 'the Bay Area' && (
+      {name == 'the Bay Area' || name == 'the USA' && (
         <EventCard
           {...{
             id: 'assemble',
