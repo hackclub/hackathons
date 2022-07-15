@@ -21,10 +21,6 @@ export default async function handler(req, res) {
       //   parsed_state_code: data.parsed_state_code,
       //   parsed_country: data.parsed_country,
       //   parsed_country_code: data.parsed_country_code
-      //   unsubscribed_at: data.unsubscribed_at,
-      //   unsubscribe_token: data.unsubscribe_token,
-      //   confirmed_at: data.confirmed_at,
-      //   confirmation_token: data.confirmation_token
     })
     const url = 'https://hackathons.hackclub.com'
     const body = JSON.stringify({
