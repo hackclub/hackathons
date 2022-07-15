@@ -38,7 +38,7 @@ export default ({ initialLocation, stats = {} }) => {
     } catch (err) {
       console.error(err)
     }
-    let submission = await fetch('/api/event-email-subscriber', {
+    let submission = await fetch('/api/subscribers/create', {
       method: 'POST',
       body: JSON.stringify({ email, location }),
       headers: {
