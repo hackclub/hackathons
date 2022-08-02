@@ -5,7 +5,6 @@ import Signup from '../components/signup'
 import { map, orderBy, find, kebabCase, startCase } from 'lodash'
 import { getGroupingData } from '../lib/data'
 import { Box } from 'theme-ui'
-import EventCard from '../components/event-card'
 
 export default ({ name, events, emailStats }) => {
   if (!name || !events) return <Error statusCode={404} />
@@ -27,26 +26,7 @@ export default ({ name, events, emailStats }) => {
           </Box>{' '}
         </>
       }
-    >
-      {name == 'the Bay Area' && (
-        <EventCard
-          {...{
-            id: 'assemble',
-            name: 'Hack Club Assemble',
-            website: 'https://assemble.hackclub.com',
-            start: '2022-08-05T17:00:00.000Z',
-            end: '2022-08-07T18:30:00.000Z',
-            banner:
-              'https://cloud-7rzmfbze1-hack-club-bot.vercel.app/0golden-bay.png',
-            city: 'San Francisco',
-            state: 'CA',
-            lead: `Let's start an IRL hackathon renaissance at...`,
-            footer: `August 5-7 ~ Figma's San Francisco HQ ~ $40k in Travel Stipends ~ Fully Open Sourced`,
-            hq: true
-          }}
-        />
-      )}
-    </Grouping>
+    ></Grouping>
   )
 }
 
@@ -105,10 +85,7 @@ let regions = [
   },
   {
     name: 'the USA',
-    filter: event =>
-      ['US', 'USA', 'United States', 'United States of America'].includes(
-        event.country
-      )
+    filter: event => ['US', 'USA', 'United States', 'United States of America'].includes(event.country)
   },
   {
     name: 'Canada',
