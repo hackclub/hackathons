@@ -8,6 +8,7 @@ import { ThemeProvider } from 'theme-ui'
 import NProgress from '../components/nprogress'
 import Nav from '../components/nav'
 import Footer from '../components/footer'
+import Analytics from '../components/analytics'
 
 const App = ({ Component, pageProps }) => (
   <ThemeProvider theme={theme}>
@@ -18,6 +19,7 @@ const App = ({ Component, pageProps }) => (
       description="Listing of upcoming online and in-person high school hackathons around the world."
       image="/card.png"
     />
+    <Analytics />
     <NProgress color={theme.colors.primary} />
     <Nav />
     <Component {...pageProps} />
