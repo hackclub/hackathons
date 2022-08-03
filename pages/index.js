@@ -55,7 +55,7 @@ export default ({ stats, emailStats, events }) => (
         </Text>
       </>
     }
-    events={events}
+    events={ events }
     footer={
       <section>
         <Heading variant="headline" sx={{ mt: [4, 5], mb: [3, 4] }}>
@@ -68,7 +68,9 @@ export default ({ stats, emailStats, events }) => (
         <Regions />
       </section>
     }
-  />
+  >
+    <Signup stats={emailStats} />
+    </Grouping>
 )
 
 export const getStaticProps = async () => {
