@@ -17,9 +17,6 @@ const EventCard = ({
   logo,
   virtual,
   hybrid,
-  hq = false,
-  footer,
-  lead,
   // distanceTo,
   invisible = false
 }) => (
@@ -41,10 +38,9 @@ const EventCard = ({
       itemScope
       itemType="http://schema.org/Event"
       variant="event"
-      sx={{ display: invisible ? 'none' : 'flex', px: 4 }}
+      sx={{ display: invisible ? 'none' : 'flex' }}
       style={{
-        backgroundImage: `linear-gradient(rgba(0,0,0,0) 0%, rgba(0,0,0,0.375) 75%), url('${banner}')`,
-        textAlign: hq ? 'left' : 'center'
+        backgroundImage: `linear-gradient(rgba(0,0,0,0) 0%, rgba(0,0,0,0.375) 75%), url('${banner}')`
       }}
     >
       {mlhAssociated && (
@@ -95,66 +91,38 @@ const EventCard = ({
           }}
         />
       )}
-      {lead && <Box
-        sx={{
-          mb: hq ? 0 : 'auto',
-          mt: hq ? 2 : 0,
-          width: '100%',
-          opacity: 1,
-          fontWeight: 800,
-          fontSize: 2
-        }}
-      >
-        <Text>
-         {lead}
-        </Text>
-      </Box>}
       <Heading
-        as={'h3'}
+        as="h3"
         itemProp="name"
-        sx={{
-          fontSize: hq ? [4, 6] : [3, 4],
-          mt: hq ? 0 : 2,
-          mb: hq ? 0 : 3,
-          overflowWrap: 'anywhere',
-          width: '100%'
-        }}
+        sx={{ fontSize: [3, 4], mt: 2, mb: 3, overflowWrap: 'anywhere' }}
       >
         {name}
       </Heading>
       <Box
         as="footer"
         sx={{
-          mt: hq ? 0 : 'auto',
-          mb: hq ? 2 : 0,
+          mt: 'auto',
           width: '100%',
           opacity: 0.875
         }}
       >
-        {footer ? (
-          footer
-        ) : (
-          <>
-            {' '}
-            <Text as="span">{humanizedDateRange(start, end)}</Text>
-            {/* distanceTo ? (
+        <Text as="span">{humanizedDateRange(start, end)}</Text>
+        {/* distanceTo ? (
           <Text as="span">{`${humanizeDistance(distanceTo)} miles`}</Text>
         ) : ( */}
-            <Text
-              as="span"
-              itemProp="location"
-              itemScope
-              itemType="http://schema.org/Place"
-            >
-              {!virtual && (
-                <span itemProp="address">
-                  {': '}
-                  {formatAddress(city, state, country, countryCode)}
-                </span>
-              )}
-            </Text>
-          </>
-        )}
+        <Text
+          as="span"
+          itemProp="location"
+          itemScope
+          itemType="http://schema.org/Place"
+        >
+          {!virtual && (
+            <span itemProp="address">
+              {': '}
+              {formatAddress(city, state, country, countryCode)}
+            </span>
+          )}
+        </Text>
       </Box>
       <Box sx={{ display: 'none' }}>
         <span itemProp="eventAttendanceMode">
