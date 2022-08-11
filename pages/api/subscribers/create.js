@@ -3,7 +3,7 @@ import AirtablePlus from 'airtable-plus'
 const subscribersTable = new AirtablePlus({
   baseID: 'apptapPDAi0eBaaG1',
   apiKey: process.env.AIRTABLE_API_KEY,
-  tableName: 'subscribers'
+  tableName: process.env.AIRTABLE_TABLE_NAME
 })
 
 export default async function handler(req, res) {
