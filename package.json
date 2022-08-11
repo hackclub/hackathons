@@ -18,6 +18,7 @@
     "@hackclub/theme": "^0.3.3",
     "@mdx-js/loader": "^1.6.22",
     "@next/mdx": "^10.0.4",
+    "airtable-plus": "^1.0.4",
     "lodash": "^4.17.21",
     "next": "^12.2.4",
     "next-compose-plugins": "^2.2.1",

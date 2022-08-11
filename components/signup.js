@@ -38,17 +38,14 @@ export default ({ initialLocation, stats = {} }) => {
     } catch (err) {
       console.error(err)
     }
-    let submission = await fetch(
-      'https://api.hackclub.com/v1/event_email_subscribers',
-      {
-        method: 'POST',
-        body: JSON.stringify({ email, location, timestamp: new Date() }),
-        headers: {
-          Accept: 'application/json',
-          'Content-Type': 'application/json'
-        }
+    let submission = await fetch('/api/subscribers/create', {
+      method: 'POST',
+      body: JSON.stringify({ email, location }),
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json'
       }
-    )
+    })
     if (submission.ok) {
       submission = await submission.json()
       setEmail('')
