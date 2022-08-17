@@ -15,7 +15,7 @@ export default ({ title, desc, header, children, footer, events }) => {
       events = events.filter(event => event.hybrid)
       break
     case 'inperson':
-      events = events.filter(event => !event.virtual)
+      events = events.filter(event => !event.virtual && !event.hybrid)
       break
   }
 
@@ -46,7 +46,8 @@ export default ({ title, desc, header, children, footer, events }) => {
             filter={filter}
             filterName="online"
             onClick={() => {
-              filter === 'online' ? setFilter('') : setFilter('online')
+              filter !== 'online' ? setFilter('online') :  setFilter('')
+              console.log(filter)
             }}
           >
             Online
