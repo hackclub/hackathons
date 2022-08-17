@@ -19,14 +19,14 @@ export default ({ title, desc, header, children, footer, events }) => {
       </Header>
       <Container sx={{ mt: [3, 4, 5] }}>
         {children}
-        <Container
+        <Grid
           sx={{
             mt: [2, 4, 5],
-            display: 'flex',
+            mb: [1, 2, 3],
             fontSize: [2, 3],
-            alignItems: 'center',
-            justifyContent: 'center'
+            textAlign: 'center'
           }}
+          columns={[1, 2]}
         >
           <Button
             sx={{ mx: [1, 2, 3] }}
@@ -46,7 +46,17 @@ export default ({ title, desc, header, children, footer, events }) => {
           >
             In-Person
           </Button>
-        </Container>
+        </Grid>
+        {filter ? (
+          <Button
+            onClick={() => {
+              setFilter(false)
+            }}
+            sx={{ mt: [2, 3, 4] }}
+          >
+            Clear
+          </Button>
+        ) : null}
         <Grid columns={[1, 2, 3]} gap={[3, 4]} sx={{ mt: [3, 4, 5] }}>
           {events.map(event => (
             <EventCard id={event.id} key={event.id} {...event} />
