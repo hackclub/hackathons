@@ -11,4 +11,5 @@ export default async (req, res) => {
   }
 
   // GIB EMAIL...
+  return res.status(200).json({msg: 'OK'})
 }
