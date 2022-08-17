@@ -27,8 +27,13 @@ export default async (req, res) => {
 
   const event = await airtable.find(id)
 
+  const emails = ({ event }) => {
+    // given an event, get the emails of subscribers that are nearby
+    return 'ella@hackclub.com'
+  }
+
   const msg = {
-    to: email,
+    to: emails,
     from: 'bank@hackclub.com',
     subject: `${event.name} is coming up! - High School Hackathons`,
     text: `${event.name}, a high school hackathon, is coming up near you. Register at ${eventUrl}.`,
