@@ -5,22 +5,24 @@ const FilterButton = ({ children, sx, color, onClick, filter, filterName }) => {
     <Button
       variant="outline"
       sx={{
-        borderRadius: 10,
+        borderRadius: '0',
+        borderTop: 'none',
+        borderLeft: 'none',
+        borderRight: 'none',
         boxShadow: 'none',
-        borderColor: color,
-        color: filter == filterName ? 'white' : color,
-        bg: filter == filterName ? color : 'none',
+        borderColor: filter == filterName ? color : 'muted',
+        color: color,
         boxShadow: 'none',
-        borderWidth: '1px',
-        transition: 'none',
+        borderWidth: '4px',
+        transition: '.125s ease-in-out',
         ':hover': {
           transform: 'none',
-          bg: color,
-          color: 'white',
-          borderColor: color
+          borderColor: filter == filterName ? color : 'slate',
+          boxShadow: 'none'
         },
         ':focus': {
-          transform: 'scale(1)'
+          transform: 'scale(1)',
+          boxShadow: 'none'
         },
         ...sx
       }}

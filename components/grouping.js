@@ -33,31 +33,22 @@ export default ({ title, desc, header, children, footer, events }) => {
           sx={{
             display: 'flex',
             alignItems: 'center',
+            justifyContent: 'center',
             mt: [2, 4, 5],
             fontSize: [1, 2]
           }}
         >
           <FilterButton
-            sx={{
-              borderTopRightRadius: '0',
-              borderBottomRightRadius: '0'
-            }}
             color="red"
             filter={filter}
             filterName="online"
             onClick={() => {
-              filter !== 'online' ? setFilter('online') :  setFilter('')
-              console.log(filter)
+              filter === 'online' ? setFilter('') : setFilter('online')
             }}
           >
             Online
           </FilterButton>
           <FilterButton
-            sx={{
-              borderRadius: 0,
-              borderRight: 'none',
-              borderLeft: 'none'
-            }}
             color="orange"
             filter={filter}
             filterName="hybrid"
@@ -68,10 +59,6 @@ export default ({ title, desc, header, children, footer, events }) => {
             Hybrid
           </FilterButton>
           <FilterButton
-            sx={{
-              borderTopLeftRadius: '0',
-              borderBottomLeftRadius: '0'
-            }}
             color="blue"
             filter={filter}
             filterName="inperson"
