@@ -9,8 +9,7 @@ export default ({ title, desc, header, children, footer, events }) => {
   const [inPerson, setInPerson] = useState(false)
 
   if (virtual) events = events.filter(event => event.virtual)
-  else if(inPerson) events = events.filter(event => !event.virtual)
-  
+  else if (inPerson) events = events.filter(event => !event.virtual)
 
   return (
     <Box
