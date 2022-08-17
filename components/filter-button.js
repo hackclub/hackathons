@@ -5,10 +5,18 @@ const FilterButton = ({ children, sx, color, onClick, filter }) => {
     <Button
       variant="outline"
       sx={{
-        display: 'inline-block',
         borderRadius: 6,
         boxShadow: 'none',
         borderColor: color,
+        color: color,
+        boxShadow: 'none',
+        borderWidth: '1px',
+        ':hover': {
+          transform: "none",
+          bg: color,
+          color: 'white',
+          borderColor: color
+        },
         ...sx
       }}
       onClick={onClick}
