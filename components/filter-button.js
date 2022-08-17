@@ -1,14 +1,15 @@
 import { Button } from 'theme-ui'
 
-const FilterButton = ({ children, sx, color, onClick, filter }) => {
+const FilterButton = ({ children, sx, color, onClick, filter, filterName }) => {
   return (
     <Button
       variant="outline"
       sx={{
-        borderRadius: 6,
+        borderRadius: 10,
         boxShadow: 'none',
         borderColor: color,
-        color: color,
+        color: filter === filterName ? 'white' : color,
+        bg: filter === filterName ? color : null,
         boxShadow: 'none',
         borderWidth: '1px',
         ':hover': {

@@ -5,12 +5,19 @@ import { useState } from 'react'
 import FilterButton from './filter-button'
 
 export default ({ title, desc, header, children, footer, events }) => {
-  const [filter, setFilter] = useState(false)
-  const [virtual, setVirtual] = useState(false)
-  const [inPerson, setInPerson] = useState(false)
+  const [filter, setFilter] = useState('')
 
-  if (virtual) events = events.filter(event => event.virtual)
-  else if (inPerson) events = events.filter(event => !event.virtual)
+  switch (filter) {
+    case 'online':
+      events = events.filter(event => event.virtual)
+      break
+    case 'hybrid':
+      events = events.filter(event => event.hybrid)
+      break
+    case 'inperson':
+      events = events.filter(event => !event.virtual)
+      break
+  }
 
   return (
     <Box
@@ -26,7 +33,6 @@ export default ({ title, desc, header, children, footer, events }) => {
           sx={{
             display: 'flex',
             alignItems: 'center',
-            justifyContent: 'end',
             mt: [2, 4, 5],
             fontSize: [1, 2]
           }}
@@ -34,23 +40,28 @@ export default ({ title, desc, header, children, footer, events }) => {
           <FilterButton
             sx={{
               borderTopRightRadius: '0',
-              borderBottomRightRadius: '0',
-              borderRight: 'none'
+              borderBottomRightRadius: '0'
             }}
             color="red"
+            filter={filter}
+            filterName="online"
             onClick={() => {
-              setVirtual(virtual ? false : true)
+              filter === 'online' ? setFilter('') : setFilter('online')
             }}
           >
             Online
           </FilterButton>
           <FilterButton
             sx={{
-              borderRadius: 0
+              borderRadius: 0,
+              borderRight: 'none',
+              borderLeft: 'none'
             }}
             color="orange"
+            filter={filter}
+            filterName="hybrid"
             onClick={() => {
-              setVirtual(virtual ? false : true)
+              filter === 'hybrid' ? setFilter('') : setFilter('hybrid')
             }}
           >
             Hybrid
@@ -58,12 +69,13 @@ export default ({ title, desc, header, children, footer, events }) => {
           <FilterButton
             sx={{
               borderTopLeftRadius: '0',
-              borderBottomLeftRadius: '0',
-              borderLeft: 'none'
+              borderBottomLeftRadius: '0'
             }}
             color="blue"
+            filter={filter}
+            filterName="inperson"
             onClick={() => {
-              setInPerson(inPerson ? false : true)
+              filter === 'inperson' ? setFilter('') : setFilter('inperson')
             }}
           >
             In-Person
