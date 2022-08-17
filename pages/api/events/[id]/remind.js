@@ -8,6 +8,34 @@ const airtable = new AirtablePlus({
   tableName: 'applications'
 })
 
+function calculateLatLngDistance(lat1, lng1, lat2, lng2) {
+  // this is 100% gh copilot and i have no idea how this works
+  // ^ that comment was also made by copilot
+  const R = 6371e3 // metres
+  const φ1 = lat1 * Math.PI / 180
+  const φ2 = lat2 * Math.PI / 180
+  const Δφ = (lat2 - lat1) * Math.PI / 180
+  const Δλ = (lng2 - lng1) * Math.PI / 180
+
+  const a = Math.sin(Δφ / 2) * Math.sin(Δφ / 2) +
+    Math.cos(φ1) * Math.cos(φ2) *
+    Math.sin(Δλ / 2) * Math.sin(Δλ / 2)
+  const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a))
+
+  return R * c
+}
+
+async function nearbySubscribers(lat, lng) {
+  const subscribers = await airtable.findAll({
+    filterByFormula: `AND(DISTANCE(latitude, longitude, ${lat}, ${lng}) < 1, DISTANCE(latitude, longitude, ${lat}, ${lng}) > 0)`
+  })
+  subscribers.filter(subscriber => {
+    const distance = calculateLatLngDistance(subscriber.fields.latitude, subscriber.fields.longitude, lat, lng)
+    return distance < 1000 * 100 // 10km
+  })
+  return subscribers
+}
+
 export default async (req, res) => {
   const token = process.env.TOKEN
   if (!token) {
