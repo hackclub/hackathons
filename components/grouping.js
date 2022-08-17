@@ -1,4 +1,4 @@
-import { Container, Box, Grid, Button, Flex } from 'theme-ui'
+import { Container, Box, Grid, Button, Flex, Card } from 'theme-ui'
 import Header from '../components/header'
 import EventCard from '../components/event-card'
 import { useState } from 'react'
@@ -29,12 +29,15 @@ export default ({ title, desc, header, children, footer, events }) => {
       </Header>
       <Container sx={{ mt: [3, 4, 5] }}>
         {children}
-        <Container
+        <Box
           sx={{
-            display: 'flex',
+            display: "inline-flex",
             alignItems: 'center',
             justifyContent: 'center',
+            bg: "sheet",
             mt: [2, 4, 5],
+            px: [1, 2, 3],
+            borderRadius: 22,
             fontSize: [1, 2]
           }}
         >
@@ -68,7 +71,7 @@ export default ({ title, desc, header, children, footer, events }) => {
           >
             In-Person
           </FilterButton>
-        </Container>
+        </Box>
 
         <Grid columns={[1, 2, 3]} gap={[3, 4]} sx={{ mt: [3, 4, 5] }}>
           {events.map(event => (

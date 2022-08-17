@@ -10,9 +10,10 @@ const FilterButton = ({ children, sx, color, onClick, filter, filterName }) => {
         borderLeft: 'none',
         borderRight: 'none',
         boxShadow: 'none',
-        borderColor: filter == filterName ? color : 'muted',
+        borderColor: filter == filterName ? color : 'sheet',
         color: color,
         boxShadow: 'none',
+        mt: '4px',
         borderWidth: '4px',
         transition: '.125s ease-in-out',
         ':hover': {
