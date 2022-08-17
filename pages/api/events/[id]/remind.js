@@ -33,7 +33,7 @@ async function nearbySubscribers(lat, lng) {
     const distance = calculateLatLngDistance(subscriber.fields.latitude, subscriber.fields.longitude, lat, lng)
     return distance < 1000 * 100 // 10km
   })
-  return subscribers
+  return subscribers.map(s => s.fields["email"])
 }
 
 export default async (req, res) => {
