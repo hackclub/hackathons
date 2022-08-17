@@ -6,8 +6,11 @@ import { useState } from 'react'
 export default ({ title, desc, header, children, footer, events }) => {
   const [filter, setFilter] = useState(false)
   const [virtual, setVirtual] = useState(false)
+  const [inPerson, setInPerson] = useState(false)
 
-  if (filter) events = events.filter(event => event.virtual === virtual)
+  if (virtual) events = events.filter(event => event.virtual)
+  else if(inPerson) events = events.filter(event => !event.virtual)
+  
 
   return (
     <Box
@@ -31,32 +34,23 @@ export default ({ title, desc, header, children, footer, events }) => {
           <Button
             sx={{ mx: [1, 2, 3] }}
             onClick={() => {
-              setFilter(true)
-              setVirtual(true)
+              setVirtual(virtual ? false : true)
             }}
+            variant={virtual ? 'outline' : 'primary'}
           >
             Online
           </Button>
           <Button
             sx={{ mx: [1, 2, 3] }}
             onClick={() => {
-              setFilter(true)
-              setVirtual(false)
+              setInPerson(inPerson ? false : true)
             }}
+            variant={inPerson ? 'outline' : 'primary'}
           >
             In-Person
           </Button>
         </Grid>
-        {filter ? (
-          <Button
-            onClick={() => {
-              setFilter(false)
-            }}
-            sx={{ mt: [2, 3, 4] }}
-          >
-            Clear
-          </Button>
-        ) : null}
+
         <Grid columns={[1, 2, 3]} gap={[3, 4]} sx={{ mt: [3, 4, 5] }}>
           {events.map(event => (
             <EventCard id={event.id} key={event.id} {...event} />
