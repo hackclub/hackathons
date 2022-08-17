@@ -1,4 +1,4 @@
-import { Container, Box, Grid, Button } from 'theme-ui'
+import { Container, Box, Grid, Button, Flex } from 'theme-ui'
 import Header from '../components/header'
 import EventCard from '../components/event-card'
 import { useState } from 'react'
@@ -21,17 +21,20 @@ export default ({ title, desc, header, children, footer, events }) => {
       </Header>
       <Container sx={{ mt: [3, 4, 5] }}>
         {children}
-        <Grid
+        <Flex
           sx={{
             mt: [2, 4, 5],
             mb: [1, 2, 3],
-            fontSize: [2, 3],
+            fontSize: [1, 2],
             textAlign: 'center'
           }}
-          columns={[1, 2]}
         >
           <Button
-            sx={{ mx: [1, 2, 3] }}
+            sx={{
+
+              borderTopRightRadius: '0',
+              borderBottomRightRadius: '0',
+            }}
             onClick={() => {
               setVirtual(virtual ? false : true)
             }}
@@ -40,7 +43,11 @@ export default ({ title, desc, header, children, footer, events }) => {
             Online
           </Button>
           <Button
-            sx={{ mx: [1, 2, 3] }}
+            sx={{
+
+              borderTopLeftRadius: '0',
+              borderBottomLeftRadius: '0'
+            }}
             onClick={() => {
               setInPerson(inPerson ? false : true)
             }}
@@ -48,7 +55,7 @@ export default ({ title, desc, header, children, footer, events }) => {
           >
             In-Person
           </Button>
-        </Grid>
+        </Flex>
 
         <Grid columns={[1, 2, 3]} gap={[3, 4]} sx={{ mt: [3, 4, 5] }}>
           {events.map(event => (
