@@ -17,11 +17,23 @@ export default (req, res) => {
     subject: `${eventName} is coming up! - High School Hackathons`,
     text: `${eventName}, a high school hackathon, is coming up near you. Register at ${eventUrl}.`,
     html: `
-          <p>Hi there!</p>
-          <p>${eventName}, an in-person high school hackathon, is coming up near you!</p>
-          <p>Register here: ${eventUrl}</p>
-          <p>Cheers,</p>
-          <p>The Hack Club Team</p>`
+          <p>Hey hacker 👋</p>
+          <p>Word on the street is that there's a new in-person high school hackathon coming up near
+          you. Here are the details:</p>
+          <p>
+            <strong>${eventName}</strong>
+            <br />
+            📍 eventLocation
+            <br />
+            🗓️ eventDate
+            <br />
+            🌐 <a href="${eventUrl}">${eventUrl}</a>
+          </p>
+        
+          <p>Cheers,<br />The Hack Club Bank Team</p>
+          
+          <small>PS: If you recently moved, just reply to this email with your new location or ZIP code!</small>
+          `
   }
 
   sgMail.send(msg).then(
