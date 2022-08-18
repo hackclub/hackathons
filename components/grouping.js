@@ -31,11 +31,13 @@ export default ({ title, desc, header, children, footer, events }) => {
         {children}
         <Box
           sx={{
-            display: "inline-flex",
+            display: ["flex", "inline-flex"],
             alignItems: 'center',
             justifyContent: 'center',
+            textAlign: 'center',
             bg: "sheet",
-            mt: [2, 4, 5],
+            mt: [3, 4, 5],
+            mb: [3, 0],
             px: [1, 2, 3],
             borderRadius: 22,
             fontSize: [1, 2]
