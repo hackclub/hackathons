@@ -12,28 +12,42 @@ function calculateLatLngDistance(lat1, lng1, lat2, lng2) {
   // this is 100% gh copilot and i have no idea how this works
   // ^ that comment was also made by copilot
   const R = 6371e3 // metres
-  const φ1 = lat1 * Math.PI / 180
-  const φ2 = lat2 * Math.PI / 180
-  const Δφ = (lat2 - lat1) * Math.PI / 180
-  const Δλ = (lng2 - lng1) * Math.PI / 180
+  const φ1 = (lat1 * Math.PI) / 180
+  const φ2 = (lat2 * Math.PI) / 180
+  const Δφ = ((lat2 - lat1) * Math.PI) / 180
+  const Δλ = ((lng2 - lng1) * Math.PI) / 180
 
-  const a = Math.sin(Δφ / 2) * Math.sin(Δφ / 2) +
-    Math.cos(φ1) * Math.cos(φ2) *
-    Math.sin(Δλ / 2) * Math.sin(Δλ / 2)
+  const a =
+    Math.sin(Δφ / 2) * Math.sin(Δφ / 2) +
+    Math.cos(φ1) * Math.cos(φ2) * Math.sin(Δλ / 2) * Math.sin(Δλ / 2)
   const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a))
 
   return R * c
 }
 
 async function nearbySubscribers(lat, lng) {
-  const subscribers = await airtable.findAll({
-    filterByFormula: `AND(DISTANCE(latitude, longitude, ${lat}, ${lng}) < 1, DISTANCE(latitude, longitude, ${lat}, ${lng}) > 0)`
-  })
+  const subscribers = await airtable.read(
+    {
+      // this code is broken and i have no idea how it works
+      // filterByFormula: `AND(DISTANCE(latitude, longitude, ${lat}, ${lng}) < 1, DISTANCE(latitude, longitude, ${lat}, ${lng}) > 0)`
+    },
+    {
+      tableName:
+        process.env.VERCEL_ENV === 'production'
+          ? 'subscribers'
+          : 'subscribers_development'
+    }
+  )
   subscribers.filter(subscriber => {
-    const distance = calculateLatLngDistance(subscriber.fields.latitude, subscriber.fields.longitude, lat, lng)
+    const distance = calculateLatLngDistance(
+      subscriber.fields.latitude,
+      subscriber.fields.longitude,
+      lat,
+      lng
+    )
     return distance < 1000 * 100 // 10km
   })
-  return subscribers.map(s => s.fields["email"])
+  return subscribers.map(s => s.fields['email'])
 }
 
 export default async (req, res) => {
@@ -55,28 +69,30 @@ export default async (req, res) => {
 
   const event = await airtable.find(id)
 
-  const emails = ({ event }) => {
-    // given an event, get the emails of subscribers that are nearby
-    return 'ella@hackclub.com'
-  }
+  const emails = await nearbySubscribers(
+    event.fields.latitude,
+    event.fields.longitude
+  )
+
+  console.log(emails)
 
   const msg = {
     to: emails,
     from: 'bank@hackclub.com',
-    subject: `${event.name} is coming up! - High School Hackathons`,
-    text: `${event.name}, a high school hackathon, is coming up near you. Register at ${eventUrl}.`,
+    subject: `${event.fields.name} is coming up! - High School Hackathons`,
+    text: `${event.fields.name}, a high school hackathon, is coming up near you. Register at ${event.fields.website}.`,
     html: `
           <p>Hey hacker 👋</p>
           <p>Word on the street is that there's a new in-person high school hackathon coming up near
           you. Here are the details:</p>
           <p>
-            <strong>${event.name}</strong>
+            <strong>${event.fields.name}</strong>
             <br />
-            📍 eventLocation
+            📍 ${event.fields.full_location}
             <br />
-            🗓️ eventDate
+            🗓️ ${event.fields.start} to ${event.fields.end}
             <br />
-            🌐 <a href="${event.website}">${event.website}</a>
+            🌐 <a href="${event.fields.website}">${event.fields.website}</a>
           </p>
   
           <p>Cheers,<br />The Hack Club Bank Team</p>
@@ -85,10 +101,10 @@ export default async (req, res) => {
           `
   }
 
-  sgMail.send(msg).then(
+  sgMail.sendMultiple(msg).then(
     () => {
       console.log('Updating event in Airtable')
-      airtable.updateWhere(`{recordId} = '${id}'`, {
+      airtable.updateWhere(`{rec_id} = '${id}'`, {
         subscriber_email_sent: true
       })
     },
@@ -102,6 +118,6 @@ export default async (req, res) => {
   )
 
   res.status(200).json({
-    message: 'Email sent'
+    message: `Email sent to ${emails.length} subscribers.`
   })
 }
