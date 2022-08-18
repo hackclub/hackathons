@@ -6,7 +6,7 @@ export default async (req, res) => {
     return res.status(200).json({msg: 'No token set, are you in dev/preview?'})
   }
 
-  const authed = req.headers['Authorization'] == 'Bearer ' + token
+  const authed = req.headers['authorization'] == 'Bearer ' + token
 
   if (!authed) {
     return res.status(401).json({ error: 'Unauthorized' })
@@ -19,7 +19,7 @@ export default async (req, res) => {
     fetch(`/api/events/${event.id}/remind`, {
       method: 'POST',
       headers: {
-        'Authorization': req.headers['Authorization']
+        'authorization': req.headers['authorization']
       }
     })
   )

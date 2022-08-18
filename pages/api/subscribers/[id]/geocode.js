@@ -10,7 +10,18 @@ async function geocode(address) {
       key: process.env.GOOGLE_MAPS_API_KEY
     }
   })
-  return data.results[0].geometry.location
+  const result = data.results[0]
+  return {
+    latitude: result?.geometry?.location?.lat?.toString(),
+    longitude: result?.geometry?.location?.lng?.toString(),
+    parsed_address: result?.formatted_address,
+    parsed_city: result?.address_components?.find(c => c.types.includes('locality'))?.long_name,
+    parsed_state: result?.address_components?.find(c => c.types.includes('administrative_area_level_1'))?.long_name,
+    parsed_country: result?.address_components?.find(c => c.types.includes('country'))?.long_name,
+    parsed_state_code: result?.address_components?.find(c => c.types.includes('administrative_area_level_1'))?.short_name,
+    parsed_postal_code: result?.address_components?.find(c => c.types.includes('postal_code'))?.long_name?.toString(),
+    parsed_country_code: result?.address_components?.find(c => c.types.includes('country'))?.short_name,
+  }
 }
 
 export default async (req, res) => {
@@ -21,7 +32,7 @@ export default async (req, res) => {
       .json({ msg: 'No token set, are you in dev/preview?' })
   }
 
-  const authed = req.headers['Authorization'] == 'Bearer ' + token
+  const authed = req.headers['authorization'] == 'Bearer ' + token
 
   if (!authed) {
     return res.status(401).json({ error: 'Unauthorized' })
@@ -32,11 +43,8 @@ export default async (req, res) => {
   const subscriber = await getSubscriber(id)
 
   const { location } = subscriber.fields
-  const { lat, lng } = await geocode(location)
+  const fields = await geocode(location)
   
-  const result = await updateSubscriber(id, {
-    latitude: lat.toString(),
-    longitude: lng.toString(),
-  })
+  const result = await updateSubscriber(id, fields)
   res.json({ok: true, result})
 }
