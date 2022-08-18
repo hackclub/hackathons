@@ -58,7 +58,7 @@ export default async (req, res) => {
       .json({ msg: 'No token set, are you in dev/preview?' })
   }
 
-  const authed = req.headers['Authorization'] == 'Bearer ' + token
+  const authed = req.headers['authorization'] == 'Bearer ' + token
 
   if (!authed) {
     return res.status(401).json({ error: 'Unauthorized' })
