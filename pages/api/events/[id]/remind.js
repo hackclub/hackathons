@@ -1,6 +1,7 @@
 import sgMail from '@sendgrid/mail'
 import AirtablePlus from 'airtable-plus'
 sgMail.setApiKey(process.env.SENDGRID_API_KEY)
+import { humanizedDateRange } from '../../../../lib/util'
 
 const airtable = new AirtablePlus({
   baseID: process.env.AIRTABLE_BASE_ID,
@@ -65,14 +66,16 @@ export default async (req, res) => {
   }
 
   // gib email (for event)
-  const { id } = req.params
+  const { id } = req.query
 
   const event = await airtable.find(id)
 
-  const emails = await nearbySubscribers(
-    event.fields.latitude,
-    event.fields.longitude
-  )
+  // const emails = await nearbySubscribers(
+  //   event.fields.latitude,
+  //   event.fields.longitude
+  // )
+
+  const emails = ['ella@hackclub.com']
 
   console.log(emails)
 
@@ -90,12 +93,12 @@ export default async (req, res) => {
             <br />
             📍 ${event.fields.full_location}
             <br />
-            🗓️ ${event.fields.start} to ${event.fields.end}
+            🗓️ ${humanizedDateRange(event.fields.start, event.fields.end)}
             <br />
             🌐 <a href="${event.fields.website}">${event.fields.website}</a>
           </p>
   
-          <p>Cheers,<br />The Hack Club Bank Team</p>
+          <p>Cheers,<br />The Hack Club Team</p>
           
           <small>PS: If you recently moved, just reply to this email with your new location or ZIP code!</small>
           `
