@@ -4,7 +4,15 @@ import EventCard from '../components/event-card'
 import { useState } from 'react'
 import FilterButton from './filter-button'
 
-export default ({ title, desc, header, children, footer, events }) => {
+export default ({
+  title,
+  desc,
+  header,
+  children,
+  footer,
+  events,
+  useFilter
+}) => {
   const [filter, setFilter] = useState('')
 
   switch (filter) {
@@ -29,51 +37,53 @@ export default ({ title, desc, header, children, footer, events }) => {
       </Header>
       <Container sx={{ mt: [3, 4, 5] }}>
         {children}
-        <Box
-          sx={{
-            display: ["flex", "inline-flex"],
-            alignItems: 'center',
-            justifyContent: 'center',
-            textAlign: 'center',
-            bg: "sheet",
-            mt: [3, 4, 5],
-            mb: [3, 0],
-            px: [1, 2, 3],
-            borderRadius: 22,
-            fontSize: [1, 2]
-          }}
-        >
-          <FilterButton
-            color="red"
-            filter={filter}
-            filterName="online"
-            onClick={() => {
-              filter === 'online' ? setFilter('') : setFilter('online')
+        {useFilter ? (
+          <Box
+            sx={{
+              display: ['flex', 'inline-flex'],
+              alignItems: 'center',
+              justifyContent: 'center',
+              textAlign: 'center',
+              bg: 'sheet',
+              mt: [3, 4, 5],
+              mb: [3, 0],
+              px: [1, 2, 3],
+              borderRadius: 22,
+              fontSize: [1, 2]
             }}
           >
-            Online
-          </FilterButton>
-          <FilterButton
-            color="orange"
-            filter={filter}
-            filterName="hybrid"
-            onClick={() => {
-              filter === 'hybrid' ? setFilter('') : setFilter('hybrid')
-            }}
-          >
-            Hybrid
-          </FilterButton>
-          <FilterButton
-            color="blue"
-            filter={filter}
-            filterName="inperson"
-            onClick={() => {
-              filter === 'inperson' ? setFilter('') : setFilter('inperson')
-            }}
-          >
-            In-Person
-          </FilterButton>
-        </Box>
+            <FilterButton
+              color="red"
+              filter={filter}
+              filterName="online"
+              onClick={() => {
+                filter === 'online' ? setFilter('') : setFilter('online')
+              }}
+            >
+              Online
+            </FilterButton>
+            <FilterButton
+              color="orange"
+              filter={filter}
+              filterName="hybrid"
+              onClick={() => {
+                filter === 'hybrid' ? setFilter('') : setFilter('hybrid')
+              }}
+            >
+              Hybrid
+            </FilterButton>
+            <FilterButton
+              color="blue"
+              filter={filter}
+              filterName="inperson"
+              onClick={() => {
+                filter === 'inperson' ? setFilter('') : setFilter('inperson')
+              }}
+            >
+              In-Person
+            </FilterButton>
+          </Box>
+        ) : null}
 
         <Grid columns={[1, 2, 3]} gap={[3, 4]} sx={{ mt: [3, 4, 5] }}>
           {events.map(event => (
