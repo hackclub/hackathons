@@ -68,6 +68,7 @@ export default ({ stats, emailStats, events }) => (
         <Regions />
       </section>
     }
+    useFilter
   >
     <Signup stats={emailStats} />
     </Grouping>
