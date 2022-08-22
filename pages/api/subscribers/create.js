@@ -13,14 +13,6 @@ export default async function handler(req, res) {
     const submission = await subscribersTable.create({
       email: data.email,
       location: data.location
-      //   latitude: data.latitude,
-      //   longitude: data.longitude,
-      //   parsed_address: data.parsed_address,
-      //   parsed_city: data.parsed_city,
-      //   parsed_state: data.parsed_state,
-      //   parsed_state_code: data.parsed_state_code,
-      //   parsed_country: data.parsed_country,
-      //   parsed_country_code: data.parsed_country_code
     })
     const url = 'https://hackathons.hackclub.com'
     const body = JSON.stringify({
