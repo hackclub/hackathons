@@ -79,6 +79,8 @@ export default async (req, res) => {
 
   console.log(emails)
 
+  const unsubscribeUrl = `https://${process.env.VERCEL_URL}/api/subscribers/unsubscribe?id=${event.fields.id}`
+
   const msg = {
     to: emails,
     from: 'bank@hackclub.com',
@@ -86,7 +88,7 @@ export default async (req, res) => {
     text: `${event.fields.name}, a high school hackathon, is coming up near you. Register at ${event.fields.website}.`,
     html: `
           <p>Hey hacker 👋</p>
-          <p>Word on the street is that there's a new in-person high school hackathon coming up near
+          <p>An in-person high school hackathon coming up near
           you. Here are the details:</p>
           <p>
             <strong>${event.fields.name}</strong>
@@ -100,7 +102,8 @@ export default async (req, res) => {
   
           <p>Cheers,<br />The Hack Club Team</p>
           
-          <small>PS: If you recently moved, just reply to this email with your new location or ZIP code!</small>
+          <small>PS: If you recently moved, just reply to this email with your new location or ZIP code!</small><br />
+          <small>If you are no longer interested in receiving these emails, <a href=${unsubscribeUrl}>unsubscribe here</a>.</small>
           `
   }
 

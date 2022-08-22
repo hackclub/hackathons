@@ -17,5 +17,5 @@ export default async (req, res) => {
     unsubscribed_at: Date.now()
   })
 
-  res.status(200).json(subscriber)
+  res.status(200).send(`Successfully unsubscribed ${subscriber.fields.email}`)
 }
