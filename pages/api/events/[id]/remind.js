@@ -65,19 +65,22 @@ export default async (req, res) => {
     return res.status(401).json({ error: 'Unauthorized' })
   }
 
-  // gib email (for event)
   const { id } = req.query
 
   const event = await airtable.find(id)
 
-  // const emails = await nearbySubscribers(
-  //   event.fields.latitude,
-  //   event.fields.longitude
-  // )
-
-  const emails = ['ella@hackclub.com']
-
-  console.log(emails)
+  let emails = []
+  if (
+    process.env.VERCEL_ENV === 'development' ||
+    process.env.VERCEL_ENV === 'preview'
+  ) {
+    emails = ['ella@hackclub.com']
+  } else {
+    emails = await nearbySubscribers(
+      event.fields.latitude,
+      event.fields.longitude
+    )
+  }
 
   const unsubscribeUrl = `https://${process.env.VERCEL_URL}/api/subscribers/unsubscribe?id=${event.fields.id}`
 
