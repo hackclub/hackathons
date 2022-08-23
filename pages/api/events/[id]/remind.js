@@ -77,7 +77,7 @@ export default async (req, res) => {
 
   const event = await airtable.find(id)
 
-  let emails = ['ella@hackclub.com']
+  let emails = []
   if (
     process.env.VERCEL_ENV === 'development' ||
     process.env.VERCEL_ENV === 'preview'
