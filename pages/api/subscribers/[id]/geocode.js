@@ -2,7 +2,7 @@
 import { Client } from '@googlemaps/google-maps-services-js'
 import { getSubscriber, updateSubscriber } from '../../../../lib/data'
 
-async function geocode(address) {
+export async function geocode(address) {
   const client = new Client({ key: process.env.GOOGLE_MAPS_API_KEY })
   const { data } = await client.geocode({
     params: {
