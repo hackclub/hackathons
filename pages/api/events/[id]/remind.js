@@ -115,7 +115,9 @@ export default async (req, res) => {
           <p>Cheers,<br />The Hack Club Team</p>
           
           <small>PS: If you recently moved, just reply to this email with your new location or ZIP code!</small><br />
-          <small>If you are no longer interested in receiving these emails, <a href=${unsubscribeUrl}>unsubscribe here</a>.</small>
+          <small>If you are no longer interested in receiving these emails, <a href=${unsubscribeUrl}>use this link</a> to disable notifications for ${
+      event.fields.full_location
+    }.</small>
           `
   }
 
