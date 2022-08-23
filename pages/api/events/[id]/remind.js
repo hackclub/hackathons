@@ -2,6 +2,7 @@ import sgMail from '@sendgrid/mail'
 import AirtablePlus from 'airtable-plus'
 sgMail.setApiKey(process.env.SENDGRID_API_KEY)
 import { humanizedDateRange } from '../../../../lib/util'
+import { getSubscribers } from '../../../../lib/data'
 
 const airtable = new AirtablePlus({
   baseID: process.env.AIRTABLE_BASE_ID,
@@ -26,28 +27,35 @@ function calculateLatLngDistance(lat1, lng1, lat2, lng2) {
   return R * c
 }
 
-async function nearbySubscribers(lat, lng) {
-  const subscribers = await airtable.read(
-    {
-      // this code is broken and i have no idea how it works
-      // filterByFormula: `AND(DISTANCE(latitude, longitude, ${lat}, ${lng}) < 1, DISTANCE(latitude, longitude, ${lat}, ${lng}) > 0)`
-    },
-    {
-      tableName:
-        process.env.VERCEL_ENV === 'production'
-          ? 'subscribers'
-          : 'subscribers_development'
-    }
-  )
-  subscribers.filter(subscriber => {
-    const distance = calculateLatLngDistance(
-      subscriber.fields.latitude,
-      subscriber.fields.longitude,
-      lat,
-      lng
-    )
-    return distance < 1000 * 100 // 10km
-  })
+// async function nearbySubscribers(lat, lng) {
+//   const subscribers = await airtable.read(
+//     {
+//       // this code is broken and i have no idea how it works
+//       // filterByFormula: `AND(DISTANCE(latitude, longitude, ${lat}, ${lng}) < 1, DISTANCE(latitude, longitude, ${lat}, ${lng}) > 0)`
+//     },
+//     {
+//       tableName:
+//         process.env.VERCEL_ENV === 'production'
+//           ? 'subscribers'
+//           : 'subscribers_development'
+//     }
+//   )
+//   subscribers.filter(subscriber => {
+//     const distance = calculateLatLngDistance(
+//       subscriber.fields.latitude,
+//       subscriber.fields.longitude,
+//       lat,
+//       lng
+//     )
+//     return distance < 1000 * 100 // 10km
+//   })
+//   return subscribers.map(s => s.fields['email'])
+// }
+
+async function nearbySubscribers(city, state, country) {
+  const filter = `AND({parsed_city} = '${city}', {parsed_state_code} = '${state}', {parsed_country_code} = '${country}')`
+
+  const subscribers = await getSubscribers(filter)
   return subscribers.map(s => s.fields['email'])
 }
 
@@ -69,7 +77,7 @@ export default async (req, res) => {
 
   const event = await airtable.find(id)
 
-  let emails = []
+  let emails = ['ella@hackclub.com']
   if (
     process.env.VERCEL_ENV === 'development' ||
     process.env.VERCEL_ENV === 'preview'
@@ -77,8 +85,9 @@ export default async (req, res) => {
     emails = ['ella@hackclub.com']
   } else {
     emails = await nearbySubscribers(
-      event.fields.latitude,
-      event.fields.longitude
+      event.fields.parsed_city,
+      event.fields.parsed_state_code,
+      event.fields.parsed_country_code
     )
   }
 
