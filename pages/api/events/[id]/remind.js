@@ -94,7 +94,7 @@ export default async (req, res) => {
     )
   }
 
-  const unsubscribeUrl = `https://${process.env.VERCEL_URL}/api/subscribers/unsubscribe?id=${event.fields.id}`
+  const unsubscribeUrl = `https://hackathons.hackclub.com/api/subscribers/unsubscribe?id=${event.fields.id}`
 
   const msg = {
     to: emails,
