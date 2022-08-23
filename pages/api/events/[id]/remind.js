@@ -27,6 +27,7 @@ function calculateLatLngDistance(lat1, lng1, lat2, lng2) {
   return R * c
 }
 
+// find nearby subscribers using latitude and longitudes, currently unused
 // async function nearbySubscribers(lat, lng) {
 //   const subscribers = await airtable.read(
 //     {
@@ -52,6 +53,8 @@ function calculateLatLngDistance(lat1, lng1, lat2, lng2) {
 //   return subscribers.map(s => s.fields['email'])
 // }
 
+// find subscribers that have the same city, state, and country as the event
+// perhaps we could just check state in the future because people would probably be willing to travel across a state to attend a hackathon
 async function nearbySubscribers(city, state, country) {
   const filter = `AND({parsed_city} = '${city}', {parsed_state_code} = '${state}', {parsed_country_code} = '${country}')`
 
