@@ -5,7 +5,7 @@ const subscribersTable = new AirtablePlus({
   baseID: 'apptapPDAi0eBaaG1',
   apiKey: process.env.AIRTABLE_API_KEY,
   tableName:
-    process.env.VERCEL_ENV === 'production'
+    process.env.VERCEL_ENV == 'production'
       ? 'subscribers'
       : 'subscribers_development'
 })
