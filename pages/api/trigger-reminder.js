@@ -20,7 +20,7 @@ export default async (req, res) => {
   )
 
   const eventPromises = events.map(event =>
-    fetch(`/api/events/${event.id}/remind`, {
+    fetch(`https://hackathons.hackclub.com/api/events/${event.id}/remind`, {
       method: 'POST',
       headers: {
         authorization: req.headers['authorization']
