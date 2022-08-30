@@ -30,5 +30,5 @@ export default async (req, res) => {
 
   await Promise.all(eventPromises)
 
-  return res.status(200).json({ msg: 'OK' })
+  return res.status(200).json({ msg: 'OK', events: events })
 }
