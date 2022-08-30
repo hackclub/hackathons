@@ -16,7 +16,7 @@ export default async (req, res) => {
 
   // get events that are upcoming and 2 weeks out
   const events = await getEvents(
-    "AND(DATETIME_DIFF(start,TODAY(), 'days') < 15, DATETIME_DIFF(start,TODAY(), 'days') > 0, subscriber_email_sent = FALSE())"
+    "AND(DATETIME_DIFF(start,TODAY(), 'days') < 15, DATETIME_DIFF(start,TODAY(), 'days') > 0, virtual = FALSE(), subscriber_email_sent = FALSE())"
   )
 
   const eventPromises = events.map(event =>
