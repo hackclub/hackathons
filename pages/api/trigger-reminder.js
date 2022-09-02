@@ -14,9 +14,9 @@ export default async (req, res) => {
     return res.status(401).json({ error: 'Unauthorized' })
   }
 
-  // get events that are upcoming and 2 weeks out
+  // get events that are upcoming and 4 weeks out
   const events = await getEvents(
-    "AND(DATETIME_DIFF(start,TODAY(), 'days') < 15, DATETIME_DIFF(start,TODAY(), 'days') > 0, virtual = FALSE(), subscriber_email_sent = FALSE())"
+    "AND(DATETIME_DIFF(start,TODAY(), 'days') < 29, DATETIME_DIFF(start,TODAY(), 'days') > 0, virtual = FALSE(), subscriber_email_sent = FALSE())"
   )
 
   const eventPromises = events.map(event =>
