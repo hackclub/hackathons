@@ -50,7 +50,8 @@ export default ({ showAll = false, sx = {} }) => (
         sx={{ alignItems: ['flex-start', 'center'] }}
         style={{
           backgroundImage: `linear-gradient(rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.375) 75%),
-            url(${url})`
+            url(${url})`,
+          display: showAll && name == "Singapore" ? 'none' : 'block'
         }}
       >
         <Heading as="h3" sx={{ fontSize: 3 }}>
