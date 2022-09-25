@@ -51,7 +51,7 @@ export default ({ showAll = false, sx = {} }) => (
         style={{
           backgroundImage: `linear-gradient(rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.375) 75%),
             url(${url})`,
-          display: showAll && name == "Singapore" ? 'none' : 'block'
+          display: showAll && name == "Singapore" ? 'none' : 'flex'
         }}
       >
         <Heading as="h3" sx={{ fontSize: 3 }}>
