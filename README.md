@@ -6,7 +6,7 @@
 
 Hackathons are awesome—but it’s hard to find a high quality directory of events for high schoolers. That’s where this project comes in.
 
-**Goal:** create the best curated directory of hackathons for high school students. Because quite frankly hackathons shouldn't only be for university students.
+**Goal:-** create the best curated directory of hackathons for high school students. Because quite frankly hackathons shouldn't only be for university students.
 
 ### A word of warning…
 
