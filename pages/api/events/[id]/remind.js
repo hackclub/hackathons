@@ -139,6 +139,20 @@ export default async (req, res) => {
     }
   )
 
+  // notify admins that an email has been sent out
+  const adminMsg = {
+    to: 'bank-outgoing@hackclub.com',
+    from: 'bank@hackclub.com',
+    subject: `📬 Sent ${emails.length} emails for ${event.fields.name}`,
+    text: `Sent ${emails.length} emails for ${event.fields.name}`,
+    html: `
+          <p>Hey Bank team 👋</p>
+          <p>Just letting you know that I emails to ${emails.length} subscribers for ${event.fields.name}.</p>
+          `
+  }
+
+  sgMail.send(adminMsg)
+
   res.status(200).json({
     message: `Email sent to ${emails.length} subscribers.`
   })
