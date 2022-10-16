@@ -141,7 +141,7 @@ export default async (req, res) => {
 
   // notify admins that an email has been sent out
   const adminMsg = {
-    to: 'bank-outgoing@hackclub.com',
+    to: 'bank@hackclub.com',
     from: 'bank@hackclub.com',
     subject: `📬 Sent ${emails.length} emails for ${event.fields.name}`,
     text: `Sent ${emails.length} emails for ${event.fields.name}`,
