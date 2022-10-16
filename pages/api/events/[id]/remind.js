@@ -143,11 +143,11 @@ export default async (req, res) => {
   const adminMsg = {
     to: 'bank@hackclub.com',
     from: 'bank@hackclub.com',
-    subject: `📬 Sent ${emails.length} emails for ${event.fields.name}`,
+    subject: `📬 hackathons.hackclub.com: ${emails.length} emails sent for ${event.fields.name}`,
     text: `Sent ${emails.length} emails for ${event.fields.name}`,
     html: `
           <p>Hey Bank team 👋</p>
-          <p>Just letting you know that I emails to ${emails.length} subscribers for ${event.fields.name}.</p>
+          <p>${emails.length} hackathons.hackclub.com email list subscribers were just notified for ${event.fields.name}.</p>
           `
   }
 
