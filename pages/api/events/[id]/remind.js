@@ -118,7 +118,7 @@ export default async (req, res) => {
           
           <small>PS: If you recently moved, just reply to this email with your new location or ZIP code!</small><br />
           <small>If you are no longer interested in receiving these emails, <a href=${unsubscribeUrl}>use this link</a> to disable notifications for ${
-      event.fields.full_location
+      event.fields.parsed_state_code
     }.</small>
           `
   }
@@ -126,9 +126,13 @@ export default async (req, res) => {
   sgMail.sendMultiple(msg).then(
     () => {
       console.log('Updating event in Airtable')
-      airtable.updateWhere(`{rec_id} = '${id}'`, {
-        subscriber_email_sent: true
-      })
+
+      // don't update airtable in development
+      if (process.env.VERCEL_ENV === 'production') {
+        airtable.updateWhere(`{rec_id} = '${id}'`, {
+          subscriber_email_sent: true
+        })
+      }
     },
     error => {
       console.error(error)
