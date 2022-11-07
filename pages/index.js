@@ -93,7 +93,7 @@ export const getStaticProps = async () => {
   }
   // Sort upcoming events by start date
   events = orderBy(
-    filter(events, e => new Date(e.start) >= new Date()),
+    filter(events, e => new Date(e.end) >= new Date()),
     'start'
   )
   return { props: { events, stats, emailStats }, revalidate: 1 }

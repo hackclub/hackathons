@@ -11,10 +11,10 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@emotion/react": "^11.10.4",
+    "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
     "@googlemaps/google-maps-services-js": "^3.3.16",
-    "@hackclub/icons": "^0.0.9",
+    "@hackclub/icons": "^0.0.12",
     "@hackclub/meta": "^1.1.32",
     "@hackclub/theme": "^0.3.3",
     "@mdx-js/loader": "^1.6.22",
@@ -22,7 +22,7 @@
     "@sendgrid/mail": "^7.7.0",
     "airtable-plus": "^1.0.4",
     "lodash": "^4.17.21",
-    "next": "^12.3.0",
+    "next": "^12.3.1",
     "next-compose-plugins": "^2.2.1",
     "nprogress": "^0.2.0",
     "pluralize": "^8.0.0",
@@ -34,7 +34,7 @@
   },
   "devDependencies": {
     "eslint": "<9.0.0",
-    "eslint-config-next": "13.0.0",
+    "eslint-config-next": "13.0.2",
     "eslint-config-prettier": "^8.5.0"
   }
 }
