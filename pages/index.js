@@ -120,7 +120,8 @@ export const getStaticProps = async () => {
   )
   let previousEvents = orderBy(
     filter(events, e => (new Date(e.end) < new Date() && new Date(e.end) >= new Date().setFullYear(new Date().getFullYear() - 1))),
-    'start'
+    'start',
+    'desc'
   )
   return { props: { events: [ ...upcomingEvents, ...previousEvents ], stats, emailStats }, revalidate: 1 }
 }
