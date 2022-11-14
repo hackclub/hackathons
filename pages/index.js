@@ -114,11 +114,11 @@ export const getStaticProps = async () => {
     )
   }
   // Sort upcoming events by start date
-  upcomingEvents = orderBy(
+  let upcomingEvents = orderBy(
     filter(events, e => new Date(e.end) >= new Date()),
     'start'
   )
-  previousEvents = orderBy(
+  let previousEvents = orderBy(
     filter(events, e => new Date(e.end) >= new Date().setFullYear(new Date().getFullYear() - 1)),
     'start'
   )
