@@ -33,7 +33,28 @@ export default ({ events, emailStats }) => {
           </Text>
         </>
       }
-      events={events}
+      events={[{...{
+        id: 'epoch',
+        name: `Hack Club's Epoch`,
+        website: 'https://epoch.hackclub.com',
+        start: '2022-12-30T17:00:00.000Z',
+        end: '2023-01-01T18:30:00.000Z',
+        banner:
+          'https://cloud-15qevu1zp-hack-club-bot.vercel.app/0assemble_2.png',
+        city: 'Gurugram',
+        state: 'Delhi NCR',
+        lead: `Let's come together to ring in the new year at....`,
+        footer: (
+          <>
+            <b>DEC. 30 2022 TO JAN. 1 2023
+              <br />
+            Gurugram, Delhi NCR</b> 
+            <br />
+            ₹12.5 Lakh in Travel Stipends
+            <br />DOORS OPEN AT 6PM; 42-HOURS LONG</>),
+        hq: true,
+        logo: `https://cloud-jzsq7jfvg-hack-club-bot.vercel.app/0group_9.png`
+      }}, ...events]}
       footer={
         <section>
           <Signup stats={emailStats} />
