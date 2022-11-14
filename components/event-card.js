@@ -49,7 +49,7 @@ const EventCard = ({
         textAlign: hq ? ['center', 'right'] : 'center',
         flexDirection: hq ? ['column', 'row'] : 'column',
         gridColumn: hq ? '1 / -1' : null,
-        filter: (new Date(end) >= new Date() || !useFilter) ? null : 'grayscale(1)'
+        filter: (new Date(end) >= new Date() || !useFilter) ? null : 'grayscale(0.8)'
       }}
     >
       <Badge
