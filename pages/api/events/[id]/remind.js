@@ -93,11 +93,12 @@ export default async (req, res) => {
     )
   }
 
-  const unsubscribeUrl = `https://hackathons.hackclub.com/api/subscribers/unsubscribe?id=${event.fields.id}`
+  // const unsubscribeUrl = `https://hackathons.hackclub.com/api/subscribers/unsubscribe?id=${event.fields.id}`
+  const unsubscribeUrl = `https://hack.af/hackathons-unsubscribe?id=${event.fields.id}`
 
   const msg = {
     to: emails,
-    from: 'bank@hackclub.com',
+    from: 'hackathons@hackclub.com',
     subject: `${event.fields.name} is coming up! - High School Hackathons`,
     text: `${event.fields.name}, a high school hackathon, is coming up near you. Register at ${event.fields.website}.`,
     html: `
