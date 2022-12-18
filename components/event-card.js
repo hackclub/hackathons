@@ -21,7 +21,8 @@ const EventCard = ({
   footer,
   lead,
   // distanceTo,
-  invisible = false
+  invisible = false,
+  useFilter = false
 }) => (
   <Tilt>
     <Card
@@ -47,7 +48,8 @@ const EventCard = ({
         backgroundImage: `linear-gradient(rgba(0,0,0,0) 0%, rgba(0,0,0,0.375) 75%), url('${banner}')`,
         textAlign: hq ? ['center', 'right'] : 'center',
         flexDirection: hq ? ['column', 'row'] : 'column',
-        gridColumn: hq ? '1 / -1' : null
+        gridColumn: hq ? '1 / -1' : null,
+        opacity: (new Date(end) >= new Date() || !useFilter) ? null : 0.4
       }}
     >
       <Badge
