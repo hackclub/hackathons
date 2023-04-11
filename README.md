@@ -51,5 +51,3 @@ Deployment is managed using [Vercel](https://vercel.com). Install the Vercel CLI
 ### License
 
 This project is licensed under the MIT license. Please see [`LICENSE.md`](LICENSE.md) for the full text.
-
-MIT License
