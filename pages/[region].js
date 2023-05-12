@@ -76,6 +76,9 @@ let regions = [
   {
     name: 'the Bay Area',
     filter: event => {
+      if (event.name == "AngelHacks Bay Area") {
+        return true
+      }
       const position = [37.641045, -122.228916]
       return (
         distance(position[0], position[1], event.latitude, event.longitude)
