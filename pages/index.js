@@ -6,6 +6,7 @@ import Signup from '../components/signup'
 import Years from '../components/years'
 import Regions from '../components/regions'
 import EventCard from '../components/event-card'
+import MSparkles from './money'
 import { filter, orderBy, slice, last, remove } from 'lodash'
 import { timeSince, humanizedDateRange } from '../lib/util'
 import { getGroupingData } from '../lib/data'
@@ -40,19 +41,17 @@ export default ({ stats, emailStats, events }) => (
           <Box as="br" sx={{ display: ['none', 'block'] }} />
           in {new Date().getFullYear()}
         </Heading>
-        <Text as="p" variant="subtitle" sx={{ my: 3 }}>
+        <Text as="p" variant="subtitle" sx={{ my: 3 }} style={{fontSize: '1.25em'}}>
           A curated list of high school hackathons with
           <Box as="br" sx={{ display: ['none', 'block'] }} /> {stats.total}
           &nbsp;events in {stats.state}
           &nbsp;states + {stats.country}
           &nbsp;countries.
         </Text>
-        <Text as="p" variant="subtitle">
+        <Text as="p" variant="subtitle" style={{fontSize: '1.25em'}}>
           {' '}
-          Maintained by the <Link href="https://hackclub.com/">
-            Hack Club
-          </Link>{' '}
-          staff.
+          Want to run your own hackathon?<br /><MSparkles><Link href="https://hackclub.com/grant">Check out our $500 hackathon grant{' '}
+          available to all high-schooler run in-person hackathons until the end of 2023!</Link></MSparkles>
         </Text>
       </>
     }
