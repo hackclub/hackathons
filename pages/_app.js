@@ -3,6 +3,7 @@ import Head from 'next/head'
 
 import Meta from '@hackclub/meta'
 import '@hackclub/theme/fonts/reg-bold.css'
+import 'mapbox-gl/dist/mapbox-gl.css';
 import theme from '../lib/theme'
 import { ThemeProvider } from 'theme-ui'
 import NProgress from '../components/nprogress'

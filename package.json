@@ -22,6 +22,7 @@
     "@sendgrid/mail": "^7.7.0",
     "airtable-plus": "^1.0.4",
     "lodash": "^4.17.21",
+    "mapbox-gl": "^2.15.0",
     "next": "^12.3.1",
     "next-compose-plugins": "^2.2.1",
     "nprogress": "^0.2.0",
