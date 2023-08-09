@@ -29,9 +29,11 @@ export default function App({events}) {
 	});
 	events.map(event => {
 		if(event.longitude){
-			const el = document.createElement('img');
+			const el = document.createElement('a');
 			el.className = 'marker';
-			el.src = event.logo
+			el.style.backgroundImage = `url(${event.logo})`
+			el.href = event.website
+			el.target = "_blank"
 			new mapboxgl.Marker(el)
 				.setLngLat([event.longitude, event.latitude])
 				.addTo(map.current)
@@ -61,6 +63,8 @@ export default function App({events}) {
 			width: 24px;
 			object-fit: cover;
 			border-radius: 999px;
+			background-size: cover;
+			background-position: center;
 		  }
 		  footer {
 			margin-top: 0px!important;
