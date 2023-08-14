@@ -40,25 +40,45 @@ export default function App({events, citiesThisPastYear}) {
 			el.className = event.past ? 'marker' : 'marker upcoming';
 			el.style.backgroundImage = `url(${event.logo})`
 			el.href = event.website
+			el.title = event.name
 			el.target = "_blank"
+			const child = el.appendChild(document.createElement("div"))
+			child.className = 'hidden-child'
+			child.innerHTML = `
+			<div class="name-and-logo">
+				<img src="${event.logo}" class="logo" />
+				<h3>${event.name}</h3>
+			</div>
+			<div class="location">
+				${event.city}, ${event.state}, ${event.country} 
+			</div>
+			<div class="url">
+				${new URL(event.website).host} 
+			</div>
+			`
+			child.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.675) 75%), url(${event.banner})`
 			let random1 = Math.random() * 0.025
 			let random2 = Math.random() * 0.025
 			let longitude = parseFloat(event.longitude) + random1 - 0.015
 			let latitude = parseFloat(event.latitude) + random2 - 0.0125
-			console.log([longitude, latitude])
-			new mapboxgl.Popup(el)
+			new mapboxgl.Marker(el)
 				.setLngLat([longitude, latitude])
 				.addTo(map.current)
 		}
 	})
+	var popup = new mapboxgl.Popup({
+		closeButton: false,
+		closeOnClick: false,
+	  })
   });
 
   return (
 	<div>
 		<Meta
   		as={Head}
-  		title={`The Map of Hackathons`}
-  		description={`A map of all the high-school hackathons, ever.`}
+  		title={`The Map of High School Hackathons`}
+  		description={`This past year, we've had a high-school hackathon in 
+				${citiesThisPastYear.length} cities around the world.`}
 	  />
 	  <div ref={mapContainer} className="map-container"> 
 
@@ -88,7 +108,7 @@ export default function App({events, citiesThisPastYear}) {
 		  } 
 		  .map-container {
 			position: relative;
-			height: calc(100vh - 68px)
+			height: calc(100vh - 68px);
 		  }
 		  .marker {
 		  	background: #121217;
@@ -101,6 +121,15 @@ export default function App({events, citiesThisPastYear}) {
 			border-radius: 999px;
 			background-size: cover;
 			background-position: center;
+		  }
+		  .name-and-logo {
+			  display: flex;
+			  align-items: center;
+			  gap: 8px;
+		  }
+		  .name-and-logo > img {
+			  height: 24px;
+			  
 		  }
 		  .l2 {
 			  font-size: 8rem;
@@ -116,8 +145,36 @@ export default function App({events, citiesThisPastYear}) {
 		  footer {
 			margin-top: 0px!important;
 		  }
+		  .location {
+			  font-weight: 600
+	      }
+		  
+		  .marker .hidden-child{
+			  visibility: hidden;
+			  position: relative;
+			  z-index: 10000;
+			  margin-top: 16px;
+			  background: var(--theme-ui-colors-sunken);
+			  padding: 8px;
+			  border-radius: 8px;
+			  width: fit-content;
+			  color: white;
+			  text-decoration: none;
+			  background-size: cover;
+			  min-width: 200px;
+		  }
+		  .marker:hover {
+			  text-decoration: none;
+		  }
+		  
+		  h3 {
+			  margin-block-start: 0px;
+			  margin-block-end: 0px;
+		  }
+		  .marker:hover .hidden-child{
+			  visibility: visible;
+		  }
 	  `}
-	  
 	  </style>
 	</div>
   );
@@ -140,7 +197,5 @@ export const getStaticProps = async () => {
   	'start',
 	'desc'
   ), ...upcomingEvents].map(x => x.city))
-  console.log(citiesThisPastYear)
-  
   return { props: { events: [ ...upcomingEvents, ...previousEvents ], citiesThisPastYear }, revalidate: 1 }
 }
