@@ -20,7 +20,6 @@
     "@mdx-js/loader": "^1.6.22",
     "@next/mdx": "^13.4.7",
     "@sendgrid/mail": "^7.7.0",
-    "airtable-plus": "^1.0.4",
     "lodash": "^4.17.21",
     "mapbox-gl": "^2.15.0",
     "next": "^12.3.1",
