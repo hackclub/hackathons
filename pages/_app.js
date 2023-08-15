@@ -22,7 +22,7 @@ const App = ({ Component, pageProps }) => (
     />
     <Analytics />
     <NProgress color={theme.colors.primary} />
-    <Nav />
+    <Nav app />
     <Component {...pageProps} />
     <Footer />
   </ThemeProvider>

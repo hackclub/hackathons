@@ -1,4 +1,5 @@
 import Grouping from '../components/grouping'
+import Announcement from '../components/announcement'
 import { Box, Heading, Text, Link, Container } from 'theme-ui'
 import Head from 'next/head'
 import Meta from '@hackclub/meta'
@@ -21,7 +22,9 @@ const eventsPreview = events =>
 
 export default ({ stats, emailStats, events }) => (
   <Grouping
+    backgroundImage='/header.jpg'
     includeMeta={false}
+    includeNav={true}
     header={
       <>
         <Meta
@@ -35,30 +38,31 @@ export default ({ stats, emailStats, events }) => (
             events
           )}`}
         />
-        <Heading as="h1" variant="title" sx={{ color: 'primary' }}>
-          High School Hackathons{' '}
-          <Box as="br" sx={{ display: ['none', 'block'] }} />
+        <Heading as="h1" variant="title" sx={{ color: 'primary', textShadow: 'elevated' }}>
+          Upcoming High School Hackathons{' '}
           in {new Date().getFullYear()}
         </Heading>
-        <Text as="p" variant="subtitle" sx={{ my: 3 }}>
+        <Text as="p" variant="subtitle" sx={{ my: 3, color: 'white', textShadow: 'text'  }}>
           A curated list of high school hackathons with
           <Box as="br" sx={{ display: ['none', 'block'] }} /> {stats.total}
           &nbsp;events in {stats.state}
           &nbsp;states + {stats.country}
           &nbsp;countries.
         </Text>
-        <Text as="p" variant="subtitle">
-          {' '}
-          Maintained by the <Link href="https://hackclub.com/">
-            Hack Club
-          </Link>{' '}
-          staff.
-        </Text>
+        <Announcement
+          copy="Organizing a hackathon? Hack Club is here to help."
+          caption="This year, we've got $500 grants, fee-free usage of Hack Club Bank and an incredible community of organizers."
+          href="https://epoch.hackclub.com"
+          color="primary"
+        />
       </>
     }
     events={events}
     footer={
       <section>
+        <Box mt={[3, 4, 5]}>
+          <Signup />
+        </Box>
         <Heading variant="headline" sx={{ mt: [4, 5], mb: [3, 4] }}>
           Explore by year
         </Heading>
@@ -70,9 +74,7 @@ export default ({ stats, emailStats, events }) => (
       </section>
     }
     useFilter
-  >
-    <Signup stats={emailStats} />
-  </Grouping>
+  />
 )
 
 export const getStaticProps = async () => {
