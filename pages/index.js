@@ -20,9 +20,9 @@ const eventsPreview = events =>
     )
     .join('')
 
-export default ({ stats, emailStats, events }) => (
+export default ({ stats, emailStats, events, header }) => (
   <Grouping
-    backgroundImage='/header.jpg'
+    backgroundImage={header}
     includeMeta={false}
     includeNav={true}
     header={
@@ -79,6 +79,7 @@ export default ({ stats, emailStats, events }) => (
 
 export const getStaticProps = async () => {
   let { events, emailStats } = await getGroupingData()
+  let headerImages = ["/header.jpg", "https://cloud-fiuzhcn11-hack-club-bot.vercel.app/0img_8991__2_.jpg", "https://cloud-bu0rfj04y-hack-club-bot.vercel.app/1screenshot_2023-08-05_at_1.12.01_pm.jpg", "https://cloud-bu0rfj04y-hack-club-bot.vercel.app/0assemble.jpg", "https://cloud-l0he31p7o-hack-club-bot.vercel.app/002e3fdc31-5201-42cf-99ca-b0c875875994.jpeg"]
   let stats = {
     total: events.length,
     state: new Set(
@@ -104,5 +105,5 @@ export const getStaticProps = async () => {
     'start',
     'desc'
   )
-  return { props: { events: [ ...upcomingEvents, ...previousEvents ], stats, emailStats }, revalidate: 1 }
+  return { props: { events: [ ...upcomingEvents, ...previousEvents ], stats, emailStats, header: headerImages[Math.floor(Math.random() * headerImages.length)] }, revalidate: 1 }
 }
