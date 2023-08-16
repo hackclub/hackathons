@@ -24,7 +24,7 @@ const Announcement = ({
 	  mx: 'auto',
 	  maxWidth: 'narrow',
 	  width: '100%',
-	  textAlign: 'left',
+	  textAlign: 'center',
 	  textDecoration: 'none',
 	  lineHeight: 'caption',
 	  display: 'flex',
