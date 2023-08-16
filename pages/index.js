@@ -52,7 +52,7 @@ export default ({ stats, emailStats, events, header }) => (
         <Announcement
           copy="Organizing a hackathon? Hack Club is here to help."
           caption="This year, we've got $500 grants, fee-free usage of Hack Club Bank and an incredible community of organizers."
-          href="https://epoch.hackclub.com"
+          href="https://hackclub.com/hackathons/grant/"
           color="primary"
         />
       </>
