@@ -11,6 +11,7 @@ import {
   Alert
 } from 'theme-ui'
 import { AlertTriangle, Send } from 'react-feather'
+import { api_url_for } from '../lib/data'
 
 const Loading = () => (
   <Spinner
@@ -38,7 +39,7 @@ export default ({ initialLocation, stats = {} }) => {
     } catch (err) {
       console.error(err)
     }
-    let submission = await fetch('/api/subscribers/create', {
+    let submission = await fetch(api_url_for('v1/hackathons/subscriptions'), {
       method: 'POST',
       body: JSON.stringify({ email, location }),
       headers: {
@@ -51,11 +52,15 @@ export default ({ initialLocation, stats = {} }) => {
       setEmail('')
       setLocation('')
       setSubmitting(false)
+
       setDone(true)
+      setError('')
     } else {
       submission = await submission.json()
       setSubmitting(false)
-      setError(submission.errors || 'Something went wrong')
+
+      setError(submission.detail || submission.title || 'Something went wrong')
+      setDone(false)
     }
   }
   return (
