@@ -100,7 +100,7 @@ export default ({app = false}) => {
         <Button
           as="a"
           variant="outline"
-          href="https://hack.af/submit-hackathon"
+          href="https://dash.hackathons.hackclub.com/hackathons/submissions/new"
           aria-label="Apply to list your hackathon"
           sx={{
             width: 'auto',
