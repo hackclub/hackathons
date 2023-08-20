@@ -48,6 +48,14 @@ Deployment is managed using [Vercel](https://vercel.com). Install the Vercel CLI
 
     $ vercel --prod
 
+### Hackathon Data
+
+This front-end site is powered by the
+[Hackathons Backend](https://github.com/hackclub/hackathons-backend).
+
+The backend contains all the hackathon data and exposes it via a REST API
+which is consumed by this app.
+
 ### License
 
 This project is licensed under the MIT license. Please see [`LICENSE.md`](LICENSE.md) for the full text.
