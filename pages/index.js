@@ -60,9 +60,6 @@ export default ({ stats, emailStats, events, header }) => (
     events={events}
     footer={
       <section>
-        <Box mt={[3, 4, 5]}>
-          <Signup />
-        </Box>
         <Heading variant="headline" sx={{ mt: [4, 5], mb: [3, 4] }}>
           Explore by year
         </Heading>
@@ -74,7 +71,9 @@ export default ({ stats, emailStats, events, header }) => (
       </section>
     }
     useFilter
-  />
+  >
+    <Signup />
+  </Grouping>
 )
 
 export const getStaticProps = async () => {
