@@ -79,7 +79,14 @@ export default ({ stats, emailStats, events, header }) => (
 
 export const getStaticProps = async () => {
   let { events, emailStats } = await getGroupingData()
-  let headerImages = ["/header.jpg", "https://cloud-661xqt4ge-hack-club-bot.vercel.app/0502_hacks_compressed.png", "https://cloud-fiuzhcn11-hack-club-bot.vercel.app/0img_8991__2_.jpg", "https://cloud-bu0rfj04y-hack-club-bot.vercel.app/1screenshot_2023-08-05_at_1.12.01_pm.jpg", "https://cloud-bu0rfj04y-hack-club-bot.vercel.app/0assemble.jpg", "https://cloud-l0he31p7o-hack-club-bot.vercel.app/002e3fdc31-5201-42cf-99ca-b0c875875994.jpeg"]
+  let headerImages = [
+    "/header.jpg", 
+    "https://cloud-661xqt4ge-hack-club-bot.vercel.app/0502_hacks_compressed.png", 
+    "https://cloud-fiuzhcn11-hack-club-bot.vercel.app/0img_8991__2_.jpg", 
+    "https://cloud-bu0rfj04y-hack-club-bot.vercel.app/1screenshot_2023-08-05_at_1.12.01_pm.jpg", 
+    "https://cloud-bu0rfj04y-hack-club-bot.vercel.app/0assemble.jpg", 
+    "https://cloud-l0he31p7o-hack-club-bot.vercel.app/002e3fdc31-5201-42cf-99ca-b0c875875994.jpeg"
+  ]
   let stats = {
     total: events.length,
     state: new Set(
