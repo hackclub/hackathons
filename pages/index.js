@@ -72,7 +72,9 @@ export default ({ stats, emailStats, events, header }) => (
     }
     useFilter
   >
-    <Signup />
+    <Box mb={[3, 3, 4]}>
+      <Signup />
+    </Box>
   </Grouping>
 )
 
