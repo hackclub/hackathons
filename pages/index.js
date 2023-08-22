@@ -86,7 +86,8 @@ export const getStaticProps = async () => {
     "https://cloud-fiuzhcn11-hack-club-bot.vercel.app/0img_8991__2_.jpg", 
     "https://cloud-bu0rfj04y-hack-club-bot.vercel.app/1screenshot_2023-08-05_at_1.12.01_pm.jpg", 
     "https://cloud-bu0rfj04y-hack-club-bot.vercel.app/0assemble.jpg", 
-    "https://cloud-l0he31p7o-hack-club-bot.vercel.app/002e3fdc31-5201-42cf-99ca-b0c875875994.jpeg"
+    "https://cloud-l0he31p7o-hack-club-bot.vercel.app/002e3fdc31-5201-42cf-99ca-b0c875875994.jpeg",
+    "https://cloud-e06dmf42c-hack-club-bot.vercel.app/07a8a2644-03f0-48c9-a7bd-fe1ea42b6c87_1_105_c.jpeg"
   ]
   let stats = {
     total: events.length,
