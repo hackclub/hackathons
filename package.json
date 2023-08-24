@@ -11,7 +11,7 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@emotion/react": "^11.10.6",
+    "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.10.5",
     "@hackclub/icons": "^0.0.14",
     "@hackclub/meta": "^1.1.32",
