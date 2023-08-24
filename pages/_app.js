@@ -3,6 +3,7 @@ import Head from 'next/head'
 
 import Meta from '@hackclub/meta'
 import '@hackclub/theme/fonts/reg-bold.css'
+import 'mapbox-gl/dist/mapbox-gl.css';
 import theme from '../lib/theme'
 import { ThemeProvider } from 'theme-ui'
 import NProgress from '../components/nprogress'
@@ -21,7 +22,7 @@ const App = ({ Component, pageProps }) => (
     />
     <Analytics />
     <NProgress color={theme.colors.primary} />
-    <Nav />
+    <Nav app />
     <Component {...pageProps} />
     <Footer />
   </ThemeProvider>

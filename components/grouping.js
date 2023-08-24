@@ -8,8 +8,10 @@ export default ({
   title,
   desc,
   header,
+  backgroundImage,
   children,
   footer,
+  includeNav,
   events,
   useFilter
 }) => {
@@ -30,12 +32,17 @@ export default ({
   return (
     <Box
       as="main"
-      sx={{ bg: 'background', color: 'text', textAlign: [null, 'center'] }}
+      sx={{ 
+        bg: 'background', 
+        
+        color: 'text', 
+        textAlign: [null, 'center'] 
+      }}
     >
-      <Header title={title} desc={desc} includeMeta>
+      <Header title={title} desc={desc} includeMeta includeNav={includeNav} backgroundImage={backgroundImage}>
         {header}
       </Header>
-      <Container sx={{ mt: [3, 4, 5] }}>
+      <Container sx={{ mt: useFilter ? [2, 3, 4] : [3, 4, 5] }}>
         {children}
         {useFilter ? (
           <Box
@@ -45,10 +52,11 @@ export default ({
               justifyContent: 'center',
               textAlign: 'center',
               bg: 'sheet',
-              mt: [3, 4, 5],
               mb: [3, 0],
               px: [1, 2, 3],
               borderRadius: 22,
+              border: '1px solid',
+              borderColor: 'border',
               fontSize: [1, 2]
             }}
           >
@@ -85,7 +93,7 @@ export default ({
           </Box>
         ) : null}
 
-        <Grid columns={[1, 2, 3]} gap={[3, 4]} sx={{ mt: [3, 4, 5] }}>
+        <Grid columns={[1, 2, 3]} gap={[3, 4]} sx={{ mt: useFilter ? [2, 3, 4] : [3, 4, 5] }}>
           {events.map(event => (
             <EventCard id={event.id} key={event.id} {...event} useFilter={true} />
           ))}

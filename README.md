@@ -12,7 +12,7 @@ Hackathons are awesome—but it’s hard to find a high quality directory of eve
 
 To ensure that the directory remains as high quality as possible, we have strict guidelines for listing hackathons.
 
-For the time being, primarily for ease of development, requests for listing new events happens through [this form](https://hack.af/submit-hackathon).
+For the time being, primarily for ease of development, requests for listing new events happens through [this form](https://dash.hackathons.hackclub.com/hackathons/submissions/new).
 
 Please do not open an issue or submit a pull request to add your event—the form is the easiest and fastest way for us to review submissions.
 
@@ -47,6 +47,14 @@ Run it!
 Deployment is managed using [Vercel](https://vercel.com). Install the Vercel CLI, and to force a production deploy, run:
 
     $ vercel --prod
+
+### Hackathon Data
+
+This front-end site is powered by the
+[Hackathons Backend](https://github.com/hackclub/hackathons-backend).
+
+The backend contains all the hackathon data and exposes it via a REST API
+which is consumed by this app.
 
 ### License
 

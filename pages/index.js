@@ -1,4 +1,5 @@
 import Grouping from '../components/grouping'
+import Announcement from '../components/announcement'
 import { Box, Heading, Text, Link, Container } from 'theme-ui'
 import Head from 'next/head'
 import Meta from '@hackclub/meta'
@@ -19,9 +20,11 @@ const eventsPreview = events =>
     )
     .join('')
 
-export default ({ stats, emailStats, events }) => (
+export default ({ stats, emailStats, events, header }) => (
   <Grouping
+    backgroundImage={header}
     includeMeta={false}
+    includeNav={true}
     header={
       <>
         <Meta
@@ -35,25 +38,23 @@ export default ({ stats, emailStats, events }) => (
             events
           )}`}
         />
-        <Heading as="h1" variant="title" sx={{ color: 'primary' }}>
-          High School Hackathons{' '}
-          <Box as="br" sx={{ display: ['none', 'block'] }} />
+        <Heading as="h1" variant="title" sx={{ color: 'primary', textShadow: 'elevated' }}>
+          Upcoming High School Hackathons{' '}
           in {new Date().getFullYear()}
         </Heading>
-        <Text as="p" variant="subtitle" sx={{ my: 3 }}>
+        <Text as="p" variant="subtitle" sx={{ my: 3, color: 'white', textShadow: 'text'  }}>
           A curated list of high school hackathons with
           <Box as="br" sx={{ display: ['none', 'block'] }} /> {stats.total}
           &nbsp;events in {stats.state}
           &nbsp;states + {stats.country}
           &nbsp;countries.
         </Text>
-        <Text as="p" variant="subtitle">
-          {' '}
-          Maintained by the <Link href="https://hackclub.com/">
-            Hack Club
-          </Link>{' '}
-          staff.
-        </Text>
+        <Announcement
+          copy="Organizing a hackathon? Hack Club is here to help."
+          caption="This year, we've got $500 grants, fee-free usage of Hack Club Bank and an incredible community of organizers."
+          href="https://hackclub.com/hackathons/grant/"
+          color="primary"
+        />
       </>
     }
     events={events}
@@ -71,12 +72,24 @@ export default ({ stats, emailStats, events }) => (
     }
     useFilter
   >
-    <Signup stats={emailStats} />
+    <Box mb={[3, 3, 4]}>
+      <Signup />
+    </Box>
   </Grouping>
 )
 
 export const getStaticProps = async () => {
   let { events, emailStats } = await getGroupingData()
+  let headerImages = [
+    "/header.jpg", 
+    "https://cloud-661xqt4ge-hack-club-bot.vercel.app/0502_hacks_compressed.png", 
+    "https://cloud-fiuzhcn11-hack-club-bot.vercel.app/0img_8991__2_.jpg", 
+    "https://cloud-bu0rfj04y-hack-club-bot.vercel.app/1screenshot_2023-08-05_at_1.12.01_pm.jpg", 
+    "https://cloud-bu0rfj04y-hack-club-bot.vercel.app/0assemble.jpg", 
+    "https://cloud-l0he31p7o-hack-club-bot.vercel.app/002e3fdc31-5201-42cf-99ca-b0c875875994.jpeg",
+    "https://cloud-e06dmf42c-hack-club-bot.vercel.app/07a8a2644-03f0-48c9-a7bd-fe1ea42b6c87_1_105_c.jpeg",
+    "https://cloud-991he1asg-hack-club-bot.vercel.app/0pxl_20230528_002006781.jpg"
+  ]
   let stats = {
     total: events.length,
     state: new Set(
@@ -102,5 +115,5 @@ export const getStaticProps = async () => {
     'start',
     'desc'
   )
-  return { props: { events: [ ...upcomingEvents, ...previousEvents ], stats, emailStats }, revalidate: 1 }
+  return { props: { events: [ ...upcomingEvents, ...previousEvents ], stats, emailStats, header: headerImages[Math.floor(Math.random() * headerImages.length)] }, revalidate: 1 }
 }

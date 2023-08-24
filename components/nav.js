@@ -70,16 +70,17 @@ const ColorSwitcher = props => {
   )
 }
 
-export default () => {
+export default ({app = false}) => {
   const router = useRouter()
   const home = router.pathname === '/'
   return (
     <Box
       as="nav"
       sx={{
-        bg: 'sheet',
+        bg: home ? 'none' : 'sheet',
         color: 'primary',
-        py: 3
+        py: 3,
+        display: home && app ? 'none' : 'block'
       }}
     >
       <Container
@@ -99,7 +100,7 @@ export default () => {
         <Button
           as="a"
           variant="outline"
-          href="https://hack.af/submit-hackathon"
+          href="https://dash.hackathons.hackclub.com/hackathons/submissions/new"
           aria-label="Apply to list your hackathon"
           sx={{
             width: 'auto',
@@ -113,7 +114,7 @@ export default () => {
             Submit
           </Text>
           <Text as="span" sx={{ display: ['none', 'block'] }}>
-            Add your event
+            Add Your Event
           </Text>
         </Button>
         <NavButton
