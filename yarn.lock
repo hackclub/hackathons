@@ -1217,9 +1217,9 @@ camelcase-css@2.0.1:
   integrity sha512-QOSvevhslijgYwRx6Rv7zKdMF8lbRmx+uQGx2+vDc+KI/eBnsy9kit5aj23AgGu3pa4t9AgwbnXWqS+iOY+2aA==
 
 caniuse-lite@^1.0.30001406:
-  version "1.0.30001509"
-  resolved "https://registry.npmjs.org/caniuse-lite/-/caniuse-lite-1.0.30001509.tgz"
-  integrity sha512-2uDDk+TRiTX5hMcUYT/7CSyzMZxjfGu0vAUjS2g0LSD8UoXOv0LtpH4LxGMemsiPq6LCVIUjNwVM0erkOkGCDA==
+  version "1.0.30001525"
+  resolved "https://registry.npmjs.org/caniuse-lite/-/caniuse-lite-1.0.30001525.tgz"
+  integrity sha512-/3z+wB4icFt3r0USMwxujAqRvaD/B7rvGTsKhbhSQErVrJvkZCLhgNLJxU8MevahQVH6hCU9FsHdNUFbiwmE7Q==
 
 ccount@^1.0.0:
   version "1.0.5"
