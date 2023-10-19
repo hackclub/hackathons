@@ -3,6 +3,7 @@ import Header from '../components/header'
 import EventCard from '../components/event-card'
 import { useState } from 'react'
 import FilterButton from './filter-button'
+import Announcement from './announcement'
 
 export default ({
   title,
@@ -92,6 +93,23 @@ export default ({
             </FilterButton>
           </Box>
         ) : null}
+
+<Announcement
+          copyLogo="/hauntedlogo.png"
+          caption="Haunted House is a Chicago-based event full of sites and frights! Join us from October 28-29 for a weekend of coding pushing the bounds of creativity, where fright meets byte!"
+          href="https://haunted.hackclub.com/"
+          color="primary"
+          backgroundImage="/haunted.png"
+          copyColor="orange"
+          captionColor="white"
+          iconLeft="/haunted.png"
+          sx={{
+            backgroundSize: 'cover', 
+            backgroundPosition: 'center', 
+            backgroundRepeat: 'no-repeat', 
+            height: '200px',
+          }}
+        />
 
         <Grid columns={[1, 2, 3]} gap={[3, 4]} sx={{ mt: useFilter ? [2, 3, 4] : [3, 4, 5] }}>
           {events.map(event => (
