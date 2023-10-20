@@ -49,11 +49,14 @@ export default ({ stats, emailStats, events, header }) => (
           &nbsp;states + {stats.country}
           &nbsp;countries.
         </Text>
+
+
         <Announcement
           copy="Organizing a hackathon? Hack Club is here to help."
           caption="This year, we've got $500 grants, fee-free usage of HCB and an incredible community of organizers."
           href="https://hackclub.com/hackathons/grant/"
           color="primary"
+          captionColor="darkless"
         />
       </>
     }
@@ -71,6 +74,7 @@ export default ({ stats, emailStats, events, header }) => (
       </section>
     }
     useFilter
+    
   >
     <Box mb={[3, 3, 4]}>
       <Signup />

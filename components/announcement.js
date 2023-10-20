@@ -14,6 +14,10 @@ const Announcement = ({
   iconRight,
   color = 'accent',
   sx = {},
+  copyLogo,
+  backgroundImage,
+  copyColor,
+  captionColor,
   ...props
 }) => (
   <Card
@@ -36,6 +40,7 @@ const Announcement = ({
 		animation: `${unfold} 0.5s ease-out`
 	  },
 	  svg: { flexShrink: 'none' },
+	  backgroundImage: `url(${backgroundImage})`,
 	  ...sx
 	}}
 	{...props}
@@ -46,18 +51,22 @@ const Announcement = ({
 		sx={{ mr: [2, 3], ml: 2, color, display: ['none', 'block'] }}
 	  />
 	)}
+	
 	<Text
-	  as="p"
-	  sx={{ flex: '1 1 auto',strong: { display: ['inline', 'block'] }, color: 'black' }}
-	>
-	  <strong>{copy}</strong>
-	  {caption && (
-		<Text as="span" variant="caption" color="darkless">
-		  {' '}
-		  {caption}
-		</Text>
-	  )}
-	</Text>
+    as="p"
+    sx={{ flex: '1 1 auto', strong: { display: ['inline', 'block'] }, color: copyColor }}
+  >
+		  {copyLogo && (
+      <img src={copyLogo} alt="Copy Logo" style={{ maxWidth: '280px', display: ['inline', 'block'] }} />
+    )}
+    <strong>{copy}</strong>
+    {caption && (
+      <Text as="span" variant="caption" color={captionColor}> 
+        {' '}
+        {caption}
+      </Text>
+    )}
+  </Text>
 	{iconRight && <Icon glyph={iconRight} sx={{ ml: [2, 3], color }} />}
   </Card>
 )
