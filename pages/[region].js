@@ -87,9 +87,15 @@ let regions = [
     name: 'Singapore',
     filter: event => event.city === 'Singapore'
   },
-  {
+ {
     name: 'Toronto',
-    filter: event => ['Toronto', 'Mississauga', 'Hamilton','Milton', 'Oakville', 'Waterloo', 'Toronto, Canada'].includes(event.city)
+    filter: event => {
+      const position = [43.6510, -79.3470]
+      return (
+        distance(position[0], position[1], event.latitude, event.longitude)
+          .miles < 120
+      )
+    }
   },
     {
     name: 'the USA',
