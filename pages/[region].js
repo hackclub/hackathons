@@ -88,6 +88,9 @@ let regions = [
     filter: event => event.city === 'Singapore'
   },
   {
+    name: 'Toronto',
+    filter: event => ['Toronto', 'Mississauga', 'Hamilton','Milton', 'Oakville', 'Waterloo']
+  {
     name: 'the USA',
     filter: event => ['US', 'USA', 'United States', 'United States of America'].includes(event.country)
   },
