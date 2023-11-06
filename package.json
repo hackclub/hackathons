@@ -32,7 +32,7 @@
   },
   "devDependencies": {
     "eslint": "<9.0.0",
-    "eslint-config-next": "13.4.7",
+    "eslint-config-next": "14.0.1",
     "eslint-config-prettier": "^8.8.0"
   }
 }
