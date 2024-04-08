@@ -94,23 +94,6 @@ export default ({
           </Box>
         ) : null}
 
-        <Announcement
-          copyLogo="https://cloud-lvxa0tab7-hack-club-bot.vercel.app/0apotitle_cropped.png"
-          caption="It's 2034. The world has collapsed under a zombie apocalypse, but tech still stands. Join us in Toronto from May 17–19 to build wacky tech and spark a new age of humanity."
-          href="https://apocalypse.hackclub.com/"
-          color="primary"
-          backgroundImage="https://cloud-1132qsbcy-hack-club-bot.vercel.app/0image__6_.png"
-          copyColor="purple"
-          captionColor="white"
-          iconLeft="https://cloud-1132qsbcy-hack-club-bot.vercel.app/0image__6_.png"
-          iconRight="https://cloud-1132qsbcy-hack-club-bot.vercel.app/0image__6_.png"
-          sx={{
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-            backgroundRepeat: 'no-repeat',
-            height: '200px'
-          }}
-        />
 
         <Grid columns={[1, 2, 3]} gap={[3, 4]} sx={{ mt: useFilter ? [2, 3, 4] : [3, 4, 5] }}>
           {events.map(event => (
