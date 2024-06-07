@@ -57,6 +57,7 @@ export default ({ stats, emailStats, events, header }) => (
           href="https://hackclub.com/hackathons/grant/"
           color="primary"
           captionColor="darkless"
+          copyColor="darkless"
         />
       </>
     }
