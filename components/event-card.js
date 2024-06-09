@@ -80,7 +80,7 @@ const EventCard = ({
             height: hq ? 200 : 64,
             width: hq ? '100%' : null,
             objectFit: hq ? 'contain' : 'contain',
-            objectPosition: 'left',
+            objectPosition: 'center',
             borderRadius: 'default',
             mt: 'auto'
           }}
