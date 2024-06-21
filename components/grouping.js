@@ -94,6 +94,21 @@ export default ({
           </Box>
         ) : null}
 
+        <Announcement
+          copyLogo="https://cloud-n78tkq1az-hack-club-bot.vercel.app/0group_1text.png"
+          href="https://boreal.hackclub.com/"
+          color="primary"
+          backgroundImage="https://cloud-5xy3dtpja-hack-club-bot.vercel.app/0background__1_.png"
+          copyColor="green"
+          captionColor="white"
+          sx={{
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat',
+            height: '200px'
+          }}
+        />
+
         <Grid columns={[1, 2, 3]} gap={[3, 4]} sx={{ mt: useFilter ? [2, 3, 4] : [3, 4, 5] }}>
           {events.map(event => (
             <EventCard id={event.id} key={event.id} {...event} useFilter={true} />
