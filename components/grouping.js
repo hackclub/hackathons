@@ -98,7 +98,7 @@ export default ({
           copyLogo="https://cloud-n78tkq1az-hack-club-bot.vercel.app/0group_1text.png"
           href="https://boreal.hackclub.com/"
           color="primary"
-          backgroundImage="https://cloud-5xy3dtpja-hack-club-bot.vercel.app/0background__1_.png"
+          backgroundImage="https://cloud-56cjm14e4-hack-club-bot.vercel.app/00background__1_-min.png"
           copyColor="green"
           captionColor="white"
           sx={{
