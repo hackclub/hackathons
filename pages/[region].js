@@ -99,11 +99,11 @@ let regions = [
   },
     {
     name: 'the USA',
-    filter: event => ['US', 'USA', 'United States', 'United States of America'].includes(event.country)
+    filter: event => ['US', 'USA'].includes(event.countryCode)
   },
   {
     name: 'Canada',
-    filter: event => ['CA', 'CAN', 'Canada'].includes(event.country)
+    filter: event => ['CA', 'CAN'].includes(event.countryCode)
   }
 ]
 regions = map(regions, region => ({ id: kebabCase(region.name), ...region }))
