@@ -93,6 +93,21 @@ export default ({
             </FilterButton>
           </Box>
         ) : null}
+        <Announcement
+          href="https://counterspell.hackclub.com/"
+          copyLogo="https://cloud-kj22s9kqp-hack-club-bot.vercel.app/0csfg.png"
+          color="primary"
+          backgroundImage="https://cloud-6ga8f26wh-hack-club-bot.vercel.app/0csbg.png"
+          copyColor="purple"
+          captionColor="white"
+          sx={{
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat',
+            height: '200px',
+            imageRendering: 'pixelated',
+          }}
+        />
         <Grid columns={[1, 2, 3]} gap={[3, 4]} sx={{ mt: useFilter ? [2, 3, 4] : [3, 4, 5] }}>
           {events.map(event => (
             <EventCard id={event.id} key={event.id} {...event} useFilter={true} />
