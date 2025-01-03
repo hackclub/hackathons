@@ -93,6 +93,21 @@ export default ({
             </FilterButton>
           </Box>
         ) : null}
+        <Announcement
+          copyLogo="https://cloud-4fnsp2wse-hack-club-bot.vercel.app/0scrapyard.png"
+          href="https://scrapyard.hackclub.com/"
+          caption="February 15-16: Los Angeles, March 15-16: 100+ cities"
+          color="primary"
+          backgroundImage="https://cloud-hqnbfdg3v-hack-club-bot.vercel.app/0image__14_.png"
+          copyColor="#ededed"
+          captionColor="white"
+          sx={{
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat',
+            height: '200px'
+          }}
+        />
         <Grid columns={[1, 2, 3]} gap={[3, 4]} sx={{ mt: useFilter ? [2, 3, 4] : [3, 4, 5] }}>
           {events.map(event => (
             <EventCard id={event.id} key={event.id} {...event} useFilter={true} />
