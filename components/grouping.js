@@ -95,8 +95,8 @@ export default ({
         ) : null}
         <Announcement
           copyLogo="https://cloud-4fnsp2wse-hack-club-bot.vercel.app/0scrapyard.png"
-          href="https://scrapyard.hackclub.com/"
-          caption="February 15-16: Los Angeles, March 15-16: 100+ cities"
+          href="https://scrapyard.hackclub.com/?utm_source=hackathons&utm_campaign=hackathons-spotlight&utm_content=spotlight-card&utm_medium=web"
+          caption="March 1-2: Austin, Texas • March 15-16: 100+ cities"
           color="primary"
           backgroundImage="https://cloud-hqnbfdg3v-hack-club-bot.vercel.app/0image__14_.png"
           copyColor="#ededed"
