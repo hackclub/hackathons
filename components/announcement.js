@@ -18,6 +18,7 @@ const Announcement = ({
   backgroundImage,
   copyColor,
   captionColor,
+  logoImageMaxWidth,
   ...props
 }) => (
   <Card
@@ -57,11 +58,22 @@ const Announcement = ({
     sx={{ flex: '1 1 auto', strong: { display: ['inline', 'block'] }, color: copyColor }}
   >
 		  {copyLogo && (
-      <img src={copyLogo} alt="Copy Logo" style={{ maxWidth: '280px', display: ['inline', 'block'] }} />
+      <img src={copyLogo} alt="Copy Logo" style={{ maxWidth: logoImageMaxWidth, display: ['inline', 'block'] }} />
     )}
     <strong>{copy}</strong>
     {caption && (
-      <Text as="span" variant="caption" color={captionColor}> 
+      <Text
+        as="span"
+        variant="caption"
+        color={captionColor}
+        sx={{
+          backgroundColor: '#01AAF9',
+          borderRadius: 5,
+          px: 1,
+          py: 1,
+          display: 'inline-block'
+        }}
+      >
         {' '}
         {caption}
       </Text>

@@ -94,11 +94,12 @@ export default ({
           </Box>
         ) : null}
         <Announcement
-          copyLogo="https://cloud-4fnsp2wse-hack-club-bot.vercel.app/0scrapyard.png"
-          href="https://scrapyard.hackclub.com/?utm_source=hackathons&utm_campaign=hackathons-spotlight&utm_content=spotlight-card&utm_medium=web"
-          caption="March 1-2: Austin, Texas • March 15-16: 100+ cities"
+          copyLogo="https://hc-cdn.hel1.your-objectstorage.com/s/v3/e5cf596bd8e449439183c6ce9ff541a8f6547869_shipwrecked_logo__2_.png"
+          logoImageMaxWidth="200px"
+          href="https://shipwrecked.hackclub.com/?utm_source=hackathons&utm_campaign=hackathons-spotlight&utm_content=spotlight-card&utm_medium=web"
+          caption="August 8&ndash;11: Cathleen Stone Island in the Boston Harbor"
           color="primary"
-          backgroundImage="https://cloud-hqnbfdg3v-hack-club-bot.vercel.app/0image__14_.png"
+          backgroundImage="https://hc-cdn.hel1.your-objectstorage.com/s/v3/7cd3b45ba3f5af7767b4538a363478daf8567234_launchimgsmaller.webp"
           copyColor="#ededed"
           captionColor="white"
           sx={{
