@@ -33,11 +33,11 @@ export default ({
   return (
     <Box
       as="main"
-      sx={{ 
-        bg: 'background', 
-        
-        color: 'text', 
-        textAlign: [null, 'center'] 
+      sx={{
+        bg: 'background',
+
+        color: 'text',
+        textAlign: [null, 'center']
       }}
     >
       <Header title={title} desc={desc} includeMeta includeNav={includeNav} backgroundImage={backgroundImage}>
@@ -94,12 +94,12 @@ export default ({
           </Box>
         ) : null}
         <Announcement
-          copyLogo="https://hc-cdn.hel1.your-objectstorage.com/s/v3/e5cf596bd8e449439183c6ce9ff541a8f6547869_shipwrecked_logo__2_.png"
+          copyLogo="https://hc-cdn.hel1.your-objectstorage.com/s/v3/bbe28473131d7175ddb72bc5927ea337d2535919_image.png"
           logoImageMaxWidth="200px"
-          href="https://shipwrecked.hackclub.com/?utm_source=hackathons&utm_campaign=hackathons-spotlight&utm_content=spotlight-card&utm_medium=web"
-          caption="August 8&ndash;11: Cathleen Stone Island in the Boston Harbor"
+          href="https://daydream.hackclub.com/?utm_source=hackathons&utm_campaign=hackathons-spotlight&utm_content=spotlight-card&utm_medium=web"
+          caption="September 27&ndash;28: Near You!"
           color="primary"
-          backgroundImage="https://hc-cdn.hel1.your-objectstorage.com/s/v3/7cd3b45ba3f5af7767b4538a363478daf8567234_launchimgsmaller.webp"
+          backgroundImage="https://hc-cdn.hel1.your-objectstorage.com/s/v3/dc3b451685526453c1fe82ba8d5074dbbf90f602_image.png"
           copyColor="#ededed"
           captionColor="white"
           sx={{
