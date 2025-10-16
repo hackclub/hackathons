@@ -94,19 +94,20 @@ export default ({
           </Box>
         ) : null}
         <Announcement
-          copyLogo="https://hc-cdn.hel1.your-objectstorage.com/s/v3/bbe28473131d7175ddb72bc5927ea337d2535919_image.png"
-          logoImageMaxWidth="200px"
-          href="https://daydream.hackclub.com/?utm_source=hackathons&utm_campaign=hackathons-spotlight&utm_content=spotlight-card&utm_medium=web"
-          caption="September 27&ndash;28: Near You!"
+          copyLogo="https://hc-cdn.hel1.your-objectstorage.com/s/v3/94524545f8aa56f74f6fcba24ca804a20771c1f4_image_5.png"
+          logoImageMaxWidth="250px"
+          href="https://moonshot.hackclub.com/?utm_source=hackathons&utm_campaign=hackathons-spotlight&utm_content=spotlight-card&utm_medium=web"
+          caption="December 12&ndash;15: Orlando, FL!"
           color="primary"
-          backgroundImage="https://hc-cdn.hel1.your-objectstorage.com/s/v3/dc3b451685526453c1fe82ba8d5074dbbf90f602_image.png"
+          backgroundImage="https://hc-cdn.hel1.your-objectstorage.com/s/v3/8740ff99ac1fb01b0246ef720bfc553e67c004af_image.png"
           copyColor="#ededed"
           captionColor="white"
           sx={{
             backgroundSize: 'cover',
             backgroundPosition: 'center',
             backgroundRepeat: 'no-repeat',
-            height: '200px'
+            height: '200px',
+            paddingTop: '500px'
           }}
         />
         <Grid columns={[1, 2, 3]} gap={[3, 4]} sx={{ mt: useFilter ? [2, 3, 4] : [3, 4, 5] }}>
