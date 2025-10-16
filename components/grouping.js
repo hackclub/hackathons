@@ -107,7 +107,6 @@ export default ({
             backgroundPosition: 'center',
             backgroundRepeat: 'no-repeat',
             height: '200px',
-            paddingTop: '500px'
           }}
         />
         <Grid columns={[1, 2, 3]} gap={[3, 4]} sx={{ mt: useFilter ? [2, 3, 4] : [3, 4, 5] }}>
