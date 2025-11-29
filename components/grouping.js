@@ -93,7 +93,7 @@ export default ({
             </FilterButton>
           </Box>
         ) : null}
-       /* <Announcement
+          {/* <Announcement
           copyLogo="https://hc-cdn.hel1.your-objectstorage.com/s/v3/bbe28473131d7175ddb72bc5927ea337d2535919_image.png"
           logoImageMaxWidth="200px"
           href="https://daydream.hackclub.com/?utm_source=hackathons&utm_campaign=hackathons-spotlight&utm_content=spotlight-card&utm_medium=web"
@@ -108,7 +108,7 @@ export default ({
             backgroundRepeat: 'no-repeat',
             height: '200px'
           }}
-        />*/
+        />*/}
         <Grid columns={[1, 2, 3]} gap={[3, 4]} sx={{ mt: useFilter ? [2, 3, 4] : [3, 4, 5] }}>
           {events.map(event => (
             <EventCard id={event.id} key={event.id} {...event} useFilter={true} />
