@@ -93,22 +93,22 @@ export default ({
             </FilterButton>
           </Box>
         ) : null}
-          {/* <Announcement
-          copyLogo="https://hc-cdn.hel1.your-objectstorage.com/s/v3/bbe28473131d7175ddb72bc5927ea337d2535919_image.png"
-          logoImageMaxWidth="200px"
-          href="https://daydream.hackclub.com/?utm_source=hackathons&utm_campaign=hackathons-spotlight&utm_content=spotlight-card&utm_medium=web"
-          caption="September 27&ndash;28: Near You!"
+          <Announcement
+          copyLogo="https://flavortown.hackclub.com/assets/landing/hero/logo-b28e0e8b.avif"
+          logoImageMaxWidth="120px"
+          href="https://flavortown.hackclub.com/?ref=hackathons"
+          caption="Dec 15 – Mar 31: Cook projects. Win free prizes."
+          virtual={true}
           color="primary"
-          backgroundImage="https://hc-cdn.hel1.your-objectstorage.com/s/v3/dc3b451685526453c1fe82ba8d5074dbbf90f602_image.png"
+          backgroundImage="https://flavortown.hackclub.com/assets/landing/hero/hero-bg-00c1d8d0.avif"
           copyColor="#ededed"
           captionColor="white"
           sx={{
             backgroundSize: 'cover',
-            backgroundPosition: 'center',
-            backgroundRepeat: 'no-repeat',
-            height: '200px'
+            backgroundPosition: 'top',
+            backgroundRepeat: 'no-repeat'
           }}
-        />*/}
+        />
         <Grid columns={[1, 2, 3]} gap={[3, 4]} sx={{ mt: useFilter ? [2, 3, 4] : [3, 4, 5] }}>
           {events.map(event => (
             <EventCard id={event.id} key={event.id} {...event} useFilter={true} />
