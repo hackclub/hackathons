@@ -1,4 +1,5 @@
-import { regions } from '../lib/regions.json'
+import regionsData from '../lib/regions.json'
+const { regions } = regionsData
 import { Grid, Card, Heading } from 'theme-ui'
 import { kebabCase, startCase } from 'lodash'
 import Link from 'next/link'
