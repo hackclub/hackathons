@@ -1,4 +1,4 @@
-import { Card, Text } from 'theme-ui'
+import { Card, Text, Badge } from 'theme-ui'
 import { keyframes } from '@emotion/react'
 import Icon from './icon'
 
@@ -19,6 +19,8 @@ const Announcement = ({
   copyColor,
   captionColor,
   logoImageMaxWidth,
+  virtual,
+  hybrid,
   ...props
 }) => (
   <Card
@@ -26,6 +28,7 @@ const Announcement = ({
 	variant="interactive"
 	sx={{
 	  variant: 'cards.translucent',
+	  position: 'relative',
 	  mx: 'auto',
 	  maxWidth: 'narrow',
 	  width: '100%',
@@ -46,6 +49,23 @@ const Announcement = ({
 	}}
 	{...props}
   >
+	{(virtual || hybrid || virtual === false) && (
+	  <Badge
+		as="span"
+		sx={{
+		  position: 'absolute',
+		  top: 16,
+		  right: 16,
+		  bg: 'snow',
+		  color: virtual ? 'red' : hybrid ? 'orange' : 'blue',
+		  fontSize: 'inherit',
+		  textShadow: 'none',
+		  borderRadius: 5
+		}}
+	  >
+		{virtual ? 'Online' : hybrid ? 'Hybrid' : 'In-Person'}
+	  </Badge>
+	)}
 	{iconLeft && (
 	  <Icon
 		glyph={iconLeft}
