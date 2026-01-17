@@ -3999,10 +3999,10 @@ use-sync-external-store@1.2.0:
   resolved "https://registry.yarnpkg.com/use-sync-external-store/-/use-sync-external-store-1.2.0.tgz#7dbefd6ef3fe4e767a0cf5d7287aacfb5846928a"
   integrity sha512-eEgnFxGQ1Ife9bzYs6VLi8/4X6CObHMw9Qr9tPY43iKwsPw8xE8+EFsf/2cFZ5S3esXgpWgtSCtLNS41F+sKPA==
 
-vanilla-tilt@^1.8.0:
-  version "1.8.0"
-  resolved "https://registry.yarnpkg.com/vanilla-tilt/-/vanilla-tilt-1.8.0.tgz#64528ff3667dc6976270236a56332a123482ce3c"
-  integrity sha512-wVCHyyfRuiRdKhDTNxKPb60lkagmywDSqLgFETEr71Sm646AvGxuf/14Kx9A8FaISyYvMoKQHk6FTqt+YLGhEw==
+vanilla-tilt@^1.8.1:
+  version "1.8.1"
+  resolved "https://registry.yarnpkg.com/vanilla-tilt/-/vanilla-tilt-1.8.1.tgz#09cb4dc89509a55a44bb221917bb8ecdc2e39113"
+  integrity sha512-hPB1XUsnh+SIeVSW2beb5RnuFxz4ZNgxjGD78o52F49gS4xaoLeEMh9qrQnJrnEn/vjjBI7IlxrrXmz4tGV0Kw==
 
 vfile-location@^3.0.0:
   version "3.0.1"
