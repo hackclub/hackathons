@@ -93,43 +93,24 @@ export default ({
             </FilterButton>
           </Box>
         ) : null}
-          {new Date() < new Date('2026-02-20') ? (
-            <Box
-              as="a"
-              href="https://flagship.hackclub.com/?ref=hackathons"
-              sx={{
-                display: 'block',
-                maxWidth: '40rem',
-                mx: 'auto',
-                mt: [3, 4],
-                transition: 'transform 0.2s ease-in-out',
-                ':hover': { transform: 'scale(1.05)' }
-              }}
-            >
-              <img
-                src="/campfire.png"
-                alt="Campfire Flagship - Join your favourite youtubers in a game jam!"
-                style={{ width: '100%', height: 'auto', borderRadius: '8px' }}
-              />
-            </Box>
-          ) : (
-            <Announcement
-              copyLogo="https://flavortown.hackclub.com/assets/landing/hero/logo-b28e0e8b.avif"
-              logoImageMaxWidth="120px"
-              href="https://flavortown.hackclub.com/?ref=hackathons"
-              caption="Dec 15 – Mar 31: Cook projects. Win free prizes."
-              virtual={true}
-              color="primary"
-              backgroundImage="https://flavortown.hackclub.com/assets/landing/hero/hero-bg-00c1d8d0.avif"
-              copyColor="#ededed"
-              captionColor="white"
-              sx={{
-                backgroundSize: 'cover',
-                backgroundPosition: 'top',
-                backgroundRepeat: 'no-repeat'
-              }}
+          <Box
+            as="a"
+            href="https://campfire.hackclub.com/?ref=hackathons"
+            sx={{
+              display: 'block',
+              maxWidth: '40rem',
+              mx: 'auto',
+              mt: [3, 4],
+              transition: 'transform 0.2s ease-in-out',
+              ':hover': { transform: 'scale(1.05)' }
+            }}
+          >
+            <img
+              src="https://cdn.hackclub.com/019c6440-08c6-7f1f-ade2-bde1b69d2b53/campbanner.png"
+              alt="Campfire - Join us at campfire.hackclub.com!"
+              style={{ width: '100%', height: 'auto', borderRadius: '12px' }}
             />
-          )}
+          </Box>
         <Grid columns={[1, 2, 3]} gap={[3, 4]} sx={{ mt: useFilter ? [2, 3, 4] : [3, 4, 5] }}>
           {events.map(event => (
             <EventCard id={event.id} key={event.id} {...event} useFilter={true} />
