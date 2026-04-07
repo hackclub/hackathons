@@ -182,18 +182,25 @@ export default function App({events, citiesThisPastYear}) {
 
 export const getStaticProps = async () => {
   let { events } = await getGroupingData()
+  const now = new Date()
+  const oneYearAgo = new Date(now)
+  oneYearAgo.setFullYear(oneYearAgo.getFullYear() - 1)
+  const isForcedPast = event => event.name?.trim().toLowerCase() === 'campfire'
   // Sort upcoming events by start date
   let upcomingEvents = orderBy(
-	filter(events, e => new Date(e.end) >= new Date()),
+	filter(events, e => new Date(e.end) >= now && !isForcedPast(e)),
 	'start'
   ).map(x => ({...x, past: false}))
   let previousEvents = orderBy(
-	filter(events, e => (new Date(e.end) < new Date())),
+	filter(events, e => (isForcedPast(e) || new Date(e.end) < now)),
 	'start',
 	'desc'
   ).map( x => ({...x, past: true}))
   let citiesThisPastYear = uniquify([...orderBy(
-  	filter(events, e => (new Date(e.end) < new Date() && new Date(e.end) >= new Date().setFullYear(new Date().getFullYear() - 1))),
+	  filter(events, e => (
+		isForcedPast(e) ||
+		(new Date(e.end) < now && new Date(e.end) >= oneYearAgo)
+	  )),
   	'start',
 	'desc'
   ), ...upcomingEvents].map(x => x.city))
