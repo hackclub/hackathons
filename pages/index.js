@@ -92,22 +92,12 @@ export const getStaticProps = async () => {
       true
     )
   }
-  // Sort upcoming events by start date
-  let upcomingEvents = orderBy(
-    filter(events, e => new Date(e.end) >= new Date()),
-    'start'
-  )
-  let previousEvents = orderBy(
-    filter(events, e => (new Date(e.end) < new Date() && new Date(e.end) >= new Date().setFullYear(new Date().getFullYear() - 1))),
-    'start',
-    'desc'
-  )
   const campfireEvent = {
     id: 'campfire',
     name: 'Campfire',
     website: 'https://campfire.hackclub.com/?ref=hackathons',
-    start: '2025-08-01T00:00:00Z',
-    end: '2025-08-03T00:00:00Z',
+    start: '2026-02-28T00:00:00Z',
+    end: '2026-03-01T23:59:59Z',
     logo: '/campfire_logo.png',
     banner: 'https://cdn.hackclub.com/019c6440-08c6-7f1f-ade2-bde1b69d2b53/campbanner.png',
     city: '',
@@ -119,5 +109,16 @@ export const getStaticProps = async () => {
     mlhAssociated: false
   }
 
-  return { props: { events: [ ...upcomingEvents, ...previousEvents, campfireEvent ], stats, emailStats, header: headerImages[Math.floor(Math.random() * headerImages.length)] }, revalidate: 1 }
+  // Sort upcoming events by start date
+  let upcomingEvents = orderBy(
+    filter(events, e => new Date(e.end) >= new Date()),
+    'start'
+  )
+  let previousEvents = orderBy(
+    [...filter(events, e => (new Date(e.end) < new Date() && new Date(e.end) >= new Date().setFullYear(new Date().getFullYear() - 1))), campfireEvent],
+    'start',
+    'desc'
+  )
+
+  return { props: { events: [ ...upcomingEvents, ...previousEvents ], stats, emailStats, header: headerImages[Math.floor(Math.random() * headerImages.length)] }, revalidate: 1 }
 }
