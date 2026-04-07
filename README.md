@@ -1,6 +1,13 @@
-<p align="center"><img width="200px" height="200px" alt="Hackathons icon" src="https://hackclub.com/icon/icon-masked.png"></a>
-<h1 align="center"><a href="https://hackathons.hackclub.com">Hack Club Hackathons</a></h1>
-<p align="center"><i>A curated list of hackathons organized by high schoolers for high schoolers.</i></p>
+<div align="center">
+<img width="200px" height="200px" alt="Hackathons icon" src="https://assets.hackclub.com/icon-rounded.svg">
+<h1>
+<a href="https://hackathons.hackclub.com">Hack Club Hackathons</a>
+</h1>
+<p>
+<i>A curated list of hackathons organized by high schoolers for high schoolers.
+</i>
+</p>
+</div>
 
 ### Introduction
 
@@ -26,27 +33,37 @@ Stuff you need installed ahead of time:
 - Yarn
 - An operating system (we hope)
 
-Clone it!
+1. Clone it!
 
-    $ git clone https://github.com/hackclub/hackathons.git
+   ```bash
+   git clone https://github.com/hackclub/hackathons.git
+   ```
 
-Go into the directory!
+2. Go into the directory!
 
-    $ cd hackathons
+   ```bash
+   cd hackathons
+   ```
 
-Install dependencies!
+3. Install dependencies!
 
-    $ yarn
+   ```bash
+   yarn
+   ```
 
-Run it!
+4. Run it!
 
-    $ yarn dev
+   ```bash
+   yarn dev
+   ```
 
 ### Build and deploy
 
 Deployment is managed using [Vercel](https://vercel.com). Install the Vercel CLI, and to force a production deploy, run:
 
-    $ vercel --prod
+```bash
+vercel --prod
+```
 
 ### Hackathon Data
 
