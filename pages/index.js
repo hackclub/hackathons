@@ -102,5 +102,22 @@ export const getStaticProps = async () => {
     'start',
     'desc'
   )
-  return { props: { events: [ ...upcomingEvents, ...previousEvents ], stats, emailStats, header: headerImages[Math.floor(Math.random() * headerImages.length)] }, revalidate: 1 }
+  const campfireEvent = {
+    id: 'campfire',
+    name: 'Campfire',
+    website: 'https://campfire.hackclub.com/?ref=hackathons',
+    start: '2025-08-01T00:00:00Z',
+    end: '2025-08-03T00:00:00Z',
+    logo: '',
+    banner: 'https://cdn.hackclub.com/019c6440-08c6-7f1f-ade2-bde1b69d2b53/campbanner.png',
+    city: '',
+    state: '',
+    country: '',
+    countryCode: '',
+    virtual: false,
+    hybrid: false,
+    mlhAssociated: false
+  }
+
+  return { props: { events: [ ...upcomingEvents, ...previousEvents, campfireEvent ], stats, emailStats, header: headerImages[Math.floor(Math.random() * headerImages.length)] }, revalidate: 1 }
 }
