@@ -98,7 +98,7 @@ export const getStaticProps = async () => {
     website: 'https://campfire.hackclub.com/?ref=hackathons',
     start: '2026-02-28T00:00:00Z',
     end: '2026-03-01T23:59:59Z',
-    logo: '/campfire_logo.png',
+    logo: 'https://cdn.hackclub.com/019d6998-2cce-754c-89ea-d843d9019ac2/campfire_logo.png',
     banner: 'https://cdn.hackclub.com/019c6440-08c6-7f1f-ade2-bde1b69d2b53/campbanner.png',
     city: '',
     state: '',
