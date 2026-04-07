@@ -93,24 +93,6 @@ export default ({
             </FilterButton>
           </Box>
         ) : null}
-          <Box
-            as="a"
-            href="https://campfire.hackclub.com/?ref=hackathons"
-            sx={{
-              display: 'block',
-              maxWidth: '40rem',
-              mx: 'auto',
-              mt: [3, 4],
-              transition: 'transform 0.2s ease-in-out',
-              ':hover': { transform: 'scale(1.05)' }
-            }}
-          >
-            <img
-              src="https://cdn.hackclub.com/019c6440-08c6-7f1f-ade2-bde1b69d2b53/campbanner.png"
-              alt="Campfire - Join us at campfire.hackclub.com!"
-              style={{ width: '100%', height: 'auto', borderRadius: '12px' }}
-            />
-          </Box>
         <Grid columns={[1, 2, 3]} gap={[3, 4]} sx={{ mt: useFilter ? [2, 3, 4] : [3, 4, 5] }}>
           {events.map(event => (
             <EventCard id={event.id} key={event.id} {...event} useFilter={true} />
