@@ -3,9 +3,6 @@ const withMDX = require('@next/mdx')({ extension: /\.mdx?$/ })
 const nextConfig = {
   trailingSlash: true,
   pageExtensions: ['js', 'jsx', 'mdx'],
-  eslint: {
-    ignoreDuringBuilds: true
-  },
   async redirects() {
     return [
       {
