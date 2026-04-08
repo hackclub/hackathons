@@ -22,7 +22,7 @@ export default ({ showAll = false, sx = {} }) => (
     }}
   >
     {showAll && (
-      <Link href="/" passHref>
+      <Link href="/" passHref legacyBehavior>
         <Card
           as="a"
           variant="primary"
