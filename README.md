@@ -29,8 +29,8 @@ The stack: [Next.js](https://nextjs.org) & [Theme UI](https://theme-ui.com) with
 
 Stuff you need installed ahead of time:
 
-- Git
-- Yarn
+- [Git](https://git-scm.com/)
+- [Bun](https://bun.sh/)
 - An operating system (we hope)
 
 1. Clone it!
@@ -48,13 +48,13 @@ Stuff you need installed ahead of time:
 3. Install dependencies!
 
    ```bash
-   yarn
+   bun i
    ```
 
 4. Run it!
 
    ```bash
-   yarn dev
+   bun run dev
    ```
 
 ### Build and deploy
