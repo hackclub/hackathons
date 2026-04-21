@@ -1,9 +1,18 @@
+const path = require('path')
 const withMDX = require('@next/mdx')({ extension: /\.mdx?$/ })
 
 const nextConfig = {
   trailingSlash: true,
   pageExtensions: ['js', 'jsx', 'mdx'],
-  transpilePackages: ['@theme-ui/mdx'],
+  turbopack: {
+    resolveAlias: {
+      '@theme-ui/mdx': './lib/theme-ui-mdx-stub.js'
+    }
+  },
+  webpack(config) {
+    config.resolve.alias['@theme-ui/mdx'] = path.resolve(__dirname, 'lib/theme-ui-mdx-stub.js')
+    return config
+  },
   async redirects() {
     return [
       {
