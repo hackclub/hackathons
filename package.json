@@ -15,7 +15,7 @@
     "@emotion/styled": "^11.10.5",
     "@hackclub/icons": "^0.2.2",
     "@hackclub/meta": "^1.1.32",
-    "@hackclub/theme": "^0.3.3",
+    "@hackclub/theme": "^1.1.0",
     "@mdx-js/loader": "^3.1.1",
     "@mdx-js/react": "^3.1.1",
     "@next/mdx": "^16.2.2",
