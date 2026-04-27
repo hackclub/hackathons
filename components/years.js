@@ -17,14 +17,14 @@ Object.entries(palette).map(([name, bg], i) => {
 const Years = ({ showAll = false }) => (
   <Grid columns={[1, 2, showAll ? 7 : 6]} gap={[3, 4]}>
     {showAll && (
-      <Link href="/" passHref legacyBehavior>
+      <Link href="/" passHref>
         <Card as="a" variant="nav" sx={{ bg: 'elevated', color: 'primary' }}>
           All Events
         </Card>
       </Link>
     )}
     {years.map(year => (
-      <Link href={`/years/${year}`} passHref legacyBehavior key={year}>
+      <Link href={`/years/${year}`} passHref key={year}>
         <Card as="a" variant="nav" sx={{ ...rainbow, color: 'white' }}>
           {year}
         </Card>

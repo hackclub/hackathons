@@ -29,7 +29,7 @@ const NavButton = ({ sx, ...props }) => (
 )
 
 const BackButton = ({ to = '/', text = 'All Hackathons' }) => (
-  <Link href={to} passHref legacyBehavior>
+  <Link href={to} passHref>
     <NavButton
       as="a"
       title={to === '/' ? 'Back to homepage' : 'Back'}

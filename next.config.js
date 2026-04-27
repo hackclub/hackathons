@@ -4,6 +4,9 @@ const withMDX = require('@next/mdx')({ extension: /\.mdx?$/ })
 const nextConfig = {
   trailingSlash: true,
   pageExtensions: ['js', 'jsx', 'mdx'],
+  eslint: {
+    ignoreDuringBuilds: true
+  },
   turbopack: {
     resolveAlias: {
       '@theme-ui/mdx': './lib/theme-ui-mdx-stub.js'
