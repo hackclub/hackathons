@@ -31,7 +31,7 @@
     "vanilla-tilt": "^1.8.1"
   },
   "devDependencies": {
-    "eslint": "<9.0.0",
+    "eslint": "<11.0.0",
     "eslint-config-next": "14.0.3",
     "eslint-config-prettier": "^8.8.0"
   }
