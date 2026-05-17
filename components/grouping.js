@@ -102,7 +102,7 @@ export default ({
         <Announcement
           copyLogo="https://cdn.hackclub.com/019dab4d-10e8-7269-ae5c-3c650522af2f/horizons.svg"
           logoImageMaxWidth="400px"
-          href="REPLACE_ME_LINK_URL"
+          href="https://horizons.hackclub.com/?ref=hackathons"
           caption="7 countries, 7 hackathons, the adventure of a lifetime."
           cta="click to see more"
           virtual={false}
