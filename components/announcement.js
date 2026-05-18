@@ -9,6 +9,7 @@ const unfold = keyframes({
 
 const Announcement = ({
   caption,
+  cta,
   copy,
   iconLeft,
   iconRight,
@@ -87,19 +88,37 @@ const Announcement = ({
         variant="caption"
         color={captionColor}
         sx={{
-          backgroundColor: '#01AAF9',
-          borderRadius: 5,
-          px: 1,
-          py: 1,
-          display: 'inline-block'
+          display: 'block',
+          mt: 1,
+          fontWeight: 'bold',
+          textShadow: '0 1px 4px rgba(255,255,255,0.85)',
+          whiteSpace: 'pre-line'
         }}
       >
-        {' '}
         {caption}
       </Text>
     )}
   </Text>
 	{iconRight && <Icon glyph={iconRight} sx={{ ml: [2, 3], color }} />}
+	{cta && (
+	  <Text
+		as="span"
+		sx={{
+		  position: 'absolute',
+		  left: 0,
+		  right: 0,
+		  bottom: 10,
+		  textAlign: 'center',
+		  color: captionColor,
+		  fontWeight: 'bold',
+		  fontSize: 1,
+		  textShadow: '0 1px 4px rgba(255,255,255,0.85)',
+		  pointerEvents: 'none'
+		}}
+	  >
+		{cta}
+	  </Text>
+	)}
   </Card>
 )
 
