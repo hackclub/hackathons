@@ -22,25 +22,24 @@ export default ({ showAll = false, sx = {} }) => (
     }}
   >
     {showAll && (
-      <Link href="/" passHref>
-        <Card
-          as="a"
-          variant="primary"
-          sx={{
-            bg: 'elevated',
-            color: 'primary',
-            display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'center',
-            alignItems: 'center',
-            textDecoration: 'none',
-            fontSize: 3,
-            fontWeight: 'bold'
-          }}
-        >
-          All Events
-        </Card>
-      </Link>
+      <Card
+        as={Link}
+        href="/"
+        variant="primary"
+        sx={{
+          bg: 'elevated',
+          color: 'primary',
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'center',
+          alignItems: 'center',
+          textDecoration: 'none',
+          fontSize: 3,
+          fontWeight: 'bold'
+        }}
+      >
+        All Events
+      </Card>
     )}
     {Object.entries(regions).map(([name, url]) => (
       <Card

@@ -1,5 +1,5 @@
 import React, { useRef, useEffect, useState } from 'react';
-import mapboxgl from 'mapbox-gl'; // eslint-disable-line import/no-webpack-loader-syntax
+import mapboxgl from 'mapbox-gl';
 import Head from 'next/head'
 import Meta from '@hackclub/meta'
 import { useColorMode, Box, Link } from 'theme-ui'
@@ -89,8 +89,8 @@ export default function App({events, citiesThisPastYear}) {
 			    backgroundColor: 'sunken',
 				color: 'text'
 			  }}>
-		  	This past year, we've had a high-school hackathon in {" "}
-		  	<b>{citiesThisPastYear.length} cities around the world</b>. Can't find one in your hometown? <Link href="https://hackclub.com/how-to-organize-a-hackathon/">Start one</Link>.
+		  	This past year, we&apos;ve had a high-school hackathon in {" "}
+		  	<b>{citiesThisPastYear.length} cities around the world</b>. Can&apos;t find one in your hometown? <Link href="https://hackclub.com/how-to-organize-a-hackathon/">Start one</Link>.
 		  </Box>
 	  </div>
 	  <style>

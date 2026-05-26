@@ -1,4 +1,4 @@
-import { Card, Text, Badge } from 'theme-ui'
+import { Card, Text, Badge, Image } from 'theme-ui'
 import { keyframes } from '@emotion/react'
 import Icon from './icon'
 
@@ -79,7 +79,7 @@ const Announcement = ({
     sx={{ flex: '1 1 auto', strong: { display: ['inline', 'block'] }, color: copyColor }}
   >
 		  {copyLogo && (
-      <img src={copyLogo} alt="Copy Logo" style={{ maxWidth: logoImageMaxWidth, display: ['inline', 'block'] }} />
+      <Image src={copyLogo} alt="Copy Logo" sx={{ maxWidth: logoImageMaxWidth, display: ['inline', 'block'] }} />
     )}
     <strong>{copy}</strong>
     {caption && (
