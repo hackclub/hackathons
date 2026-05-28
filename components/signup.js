@@ -64,7 +64,7 @@ export default ({ initialLocation, stats = {} }) => {
     }
   }
   return (
-    <Card sx={{ maxWidth: 'narrowPlus', mx: 'auto', mt: [3, 4] }}>
+    <Card sx={{ maxWidth: '700px', mx: 'auto', mt: [3, 4] }}>
       <Heading as="h2" variant="subheadline" sx={{ mb: 1 }}>
         Want to hear when in-person events are added in your area?
       </Heading>
