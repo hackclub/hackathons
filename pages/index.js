@@ -37,9 +37,38 @@ export default ({ stats, emailStats, events, header }) => (
             events
           )}`}
         />
-        <Heading as="h1" variant="title" sx={{ color: 'primary', textShadow: 'elevated' }}>
-          Upcoming High School Hackathons{' '}
-          in {new Date().getFullYear()}
+        <Heading
+          as="h1"
+          variant="title"
+          sx={{
+            color: 'primary',
+            textShadow: 'elevated',
+            fontWeight: 700,
+            letterSpacing: '-0.02em'
+          }}
+        >
+          Hackathons for{' '}
+          <Box
+            as="span"
+            title="For high-schoolers"
+            sx={{
+              display: 'inline-block',
+              background:
+                'repeating-linear-gradient(105deg, #ec3750 0%, #ff8c37 16%, #f1c40f 32%, #33d6a6 48%, #338eda 64%, #a633d6 80%, #ec3750 100%)',
+              backgroundSize: '200% 100%',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              backgroundClip: 'text',
+              animation: 'teens-gradient 6s linear infinite',
+              '@keyframes teens-gradient': {
+                '0%': { backgroundPosition: '0% 50%' },
+                '50%': { backgroundPosition: '100% 50%' },
+                '100%': { backgroundPosition: '0% 50%' }
+              }
+            }}
+          >
+            teens
+          </Box>
         </Heading>
         <Text as="p" variant="subtitle" sx={{ my: 3, color: 'white', textShadow: 'text'  }}>
           A curated list of high school hackathons with
@@ -64,7 +93,6 @@ export default ({ stats, emailStats, events, header }) => (
       </section>
     }
     useFilter
-    
   >
     <Box mb={[3, 3, 4]}>
       <Signup />
