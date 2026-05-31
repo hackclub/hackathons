@@ -1,8 +1,9 @@
 import Grouping from '../components/grouping'
-import { Box, Heading, Text, Link, Container } from 'theme-ui'
+import { Box, Heading, Text, Link, Container, Grid } from 'theme-ui'
 import Head from 'next/head'
 import Meta from '@hackclub/meta'
 import Signup from '../components/signup'
+import Announcement from '../components/announcement'
 import Years from '../components/years'
 import Regions from '../components/regions'
 import EventCard from '../components/event-card'
@@ -19,7 +20,7 @@ const eventsPreview = events =>
     )
     .join('')
 
-export default ({ stats, emailStats, events, header }) => (
+export default ({ stats, emailStats, events, officialEvents, header }) => (
   <Grouping
     backgroundImage={header}
     includeMeta={false}
@@ -37,9 +38,38 @@ export default ({ stats, emailStats, events, header }) => (
             events
           )}`}
         />
-        <Heading as="h1" variant="title" sx={{ color: 'primary', textShadow: 'elevated' }}>
-          Upcoming High School Hackathons{' '}
-          in {new Date().getFullYear()}
+        <Heading
+          as="h1"
+          variant="title"
+          sx={{
+            color: 'primary',
+            textShadow: 'elevated',
+            fontWeight: 700,
+            letterSpacing: '-0.02em'
+          }}
+        >
+          Hackathons for{' '}
+          <Box
+            as="span"
+            title="For high-schoolers"
+            sx={{
+              display: 'inline-block',
+              background:
+                'repeating-linear-gradient(105deg, #ec3750 0%, #ff8c37 16%, #f1c40f 32%, #33d6a6 48%, #338eda 64%, #a633d6 80%, #ec3750 100%)',
+              backgroundSize: '200% 100%',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              backgroundClip: 'text',
+              animation: 'teens-gradient 6s linear infinite',
+              '@keyframes teens-gradient': {
+                '0%': { backgroundPosition: '0% 50%' },
+                '50%': { backgroundPosition: '100% 50%' },
+                '100%': { backgroundPosition: '0% 50%' }
+              }
+            }}
+          >
+            teens
+          </Box>
         </Heading>
         <Text as="p" variant="subtitle" sx={{ my: 3, color: 'white', textShadow: 'text'  }}>
           A curated list of high school hackathons with
@@ -64,10 +94,44 @@ export default ({ stats, emailStats, events, header }) => (
       </section>
     }
     useFilter
-    
   >
-    <Box mb={[3, 3, 4]}>
+    <Box>
       <Signup />
+    </Box>
+    <Announcement
+      copyLogo="https://cdn.hackclub.com/019dab4d-10e8-7269-ae5c-3c650522af2f/horizons.svg"
+      logoImageMaxWidth="400px"
+      href="https://horizons.hackclub.com/?ref=hackathons"
+      caption="7 countries, 7 hackathons, the adventure of a lifetime."
+      cta="click to see more"
+      virtual={false}
+      color="primary"
+      backgroundImage="https://cdn.hackclub.com/019e370c-04ad-7943-b6b6-5ec4c3409ce8/horizons-bg-with-ferrets-and-lines.png"
+      copyColor="#ededed"
+      captionColor="black"
+      sx={{
+        backgroundSize: 'auto 100%',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
+        backgroundColor: '#f3e6cd',
+        minHeight: ['200px', '260px', '320px'],
+        alignItems: 'flex-start',
+        pt: [3, 4],
+        pb: [5, 6],
+        maxWidth: 'wide',
+        width: '75%',
+        mt: [3, 4]
+      }}
+    />
+    <Box mb={[3, 3, 4]}>
+      <Heading variant="headline" sx={{ mt: [3, 4], mb: [2, 3], textAlign: 'left' }}>
+        Hack Club Official Hackathons
+      </Heading>
+      <Grid columns={[1, 2, 3]} gap={[3, 4]}>
+        {officialEvents.map(event => (
+          <EventCard key={event.id} id={event.id} {...event} useFilter={false} />
+        ))}
+      </Grid>
     </Box>
   </Grouping>
 )
@@ -106,7 +170,8 @@ export const getStaticProps = async () => {
     countryCode: '',
     virtual: false,
     hybrid: false,
-    mlhAssociated: false
+    mlhAssociated: false,
+    hack_club_event: true
   }
 
   // Sort upcoming events by start date
@@ -120,5 +185,10 @@ export const getStaticProps = async () => {
     'desc'
   )
 
-  return { props: { events: [ ...upcomingEvents, ...previousEvents ], stats, emailStats, header: headerImages[Math.floor(Math.random() * headerImages.length)] }, revalidate: 1 }
+  const officialEvents = orderBy(
+    filter(upcomingEvents, e => e.hack_club_event),
+    'start'
+  )
+
+   return { props: { events: [ ...upcomingEvents, ...previousEvents ], officialEvents, stats, emailStats, header: headerImages[Math.floor(Math.random() * headerImages.length)] }, revalidate: 1 }
 }

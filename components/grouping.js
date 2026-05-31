@@ -3,7 +3,6 @@ import Header from '../components/header'
 import EventCard from '../components/event-card'
 import { useState } from 'react'
 import FilterButton from './filter-button'
-import Announcement from './announcement'
 
 export default ({
   title,
@@ -99,30 +98,6 @@ export default ({
             </FilterButton>
           </Box>
         ) : null}
-        <Announcement
-          copyLogo="https://cdn.hackclub.com/019dab4d-10e8-7269-ae5c-3c650522af2f/horizons.svg"
-          logoImageMaxWidth="400px"
-          href="https://horizons.hackclub.com/?ref=hackathons"
-          caption="7 countries, 7 hackathons, the adventure of a lifetime."
-          cta="click to see more"
-          virtual={false}
-          color="primary"
-          backgroundImage="https://cdn.hackclub.com/019e370c-04ad-7943-b6b6-5ec4c3409ce8/horizons-bg-with-ferrets-and-lines.png"
-          copyColor="#ededed"
-          captionColor="black"
-          sx={{
-            backgroundSize: 'auto 100%',
-            backgroundPosition: 'center',
-            backgroundRepeat: 'no-repeat',
-            backgroundColor: '#f3e6cd',
-            minHeight: ['200px', '260px', '320px'],
-            alignItems: 'flex-start',
-            pt: [3, 4],
-            pb: [5, 6],
-            maxWidth: 'wide',
-            width: '75%'
-          }}
-        />
         <Grid
           columns={[1, 2, 3]}
           gap={[3, 4]}

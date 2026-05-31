@@ -7,11 +7,6 @@ const nextConfig = {
   eslint: {
     ignoreDuringBuilds: true
   },
-  turbopack: {
-    resolveAlias: {
-      '@theme-ui/mdx': './lib/theme-ui-mdx-stub.js'
-    }
-  },
   webpack(config) {
     config.resolve.alias['@theme-ui/mdx'] = path.resolve(__dirname, 'lib/theme-ui-mdx-stub.js')
     return config
