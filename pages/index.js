@@ -1,5 +1,5 @@
 import Grouping from '../components/grouping'
-import { Box, Heading, Text, Link, Container } from 'theme-ui'
+import { Box, Heading, Text, Link, Container, Grid } from 'theme-ui'
 import Head from 'next/head'
 import Meta from '@hackclub/meta'
 import Signup from '../components/signup'
@@ -19,7 +19,7 @@ const eventsPreview = events =>
     )
     .join('')
 
-export default ({ stats, emailStats, events, header }) => (
+export default ({ stats, emailStats, events, officialEvents, header }) => (
   <Grouping
     backgroundImage={header}
     includeMeta={false}
@@ -94,8 +94,18 @@ export default ({ stats, emailStats, events, header }) => (
     }
     useFilter
   >
-    <Box mb={[3, 3, 4]}>
+    <Box>
       <Signup />
+    </Box>
+    <Box mb={[3, 3, 4]}>
+      <Heading variant="headline" sx={{ mt: [3, 4], mb: [2, 3], textAlign: 'left' }}>
+        Hack Club Official Hackathons
+      </Heading>
+      <Grid columns={[1, 2, 3]} gap={[3, 4]}>
+        {officialEvents.map(event => (
+          <EventCard key={event.id} id={event.id} {...event} useFilter={false} />
+        ))}
+      </Grid>
     </Box>
   </Grouping>
 )
@@ -134,7 +144,8 @@ export const getStaticProps = async () => {
     countryCode: '',
     virtual: false,
     hybrid: false,
-    mlhAssociated: false
+    mlhAssociated: false,
+    hack_club_event: true
   }
 
   // Sort upcoming events by start date
@@ -148,5 +159,10 @@ export const getStaticProps = async () => {
     'desc'
   )
 
-  return { props: { events: [ ...upcomingEvents, ...previousEvents ], stats, emailStats, header: headerImages[Math.floor(Math.random() * headerImages.length)] }, revalidate: 1 }
+  const officialEvents = orderBy(
+    filter(upcomingEvents, e => e.hack_club_event),
+    'start'
+  )
+
+   return { props: { events: [ ...upcomingEvents, ...previousEvents ], officialEvents, stats, emailStats, header: headerImages[Math.floor(Math.random() * headerImages.length)] }, revalidate: 1 }
 }
