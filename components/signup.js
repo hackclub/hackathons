@@ -65,7 +65,7 @@ export default ({ initialLocation, stats = {} }) => {
   }
   return (
     <Card sx={{ maxWidth: '700px', mx: 'auto', mt: [3, 4] }}>
-      <Heading as="h2" variant="subheadline" sx={{ mb: 1 }}>
+      <Heading as="h2" variant="subheadline" sx={{ mb: 0, fontFamily: 'phantomSans' }}>
         Want to hear when in-person events are added in your area?
       </Heading>
       <Text sx={{ color: 'muted' }}>
@@ -82,7 +82,8 @@ export default ({ initialLocation, stats = {} }) => {
           gridTemplateColumns: [null, '1fr 1fr auto'],
           textAlign: 'left',
           alignItems: 'end',
-          input: { bg: 'sunken' }
+          input: { bg: 'sunken' },
+          label: { fontFamily: 'phantomSans' }
         }}
       >
         <div>
