@@ -180,7 +180,7 @@ export default function App({events, citiesThisPastYear}) {
   );
 }
 
-export const getStaticProps = async () => {
+export const getServerSideProps = async () => {
   let { events } = await getGroupingData()
   // Sort upcoming events by start date
   let upcomingEvents = orderBy(
@@ -197,5 +197,5 @@ export const getStaticProps = async () => {
   	'start',
 	'desc'
   ), ...upcomingEvents].map(x => x.city))
-  return { props: { events: [ ...upcomingEvents, ...previousEvents ], citiesThisPastYear }, revalidate: 1 }
+  return { props: { events: [ ...upcomingEvents, ...previousEvents ], citiesThisPastYear } }
 }

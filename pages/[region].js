@@ -108,19 +108,13 @@ let regions = [
 ]
 regions = map(regions, region => ({ id: kebabCase(region.name), ...region }))
 
-export const getStaticPaths = () => {
-  const paths = map(map(regions, 'id'), id => ({
-    params: { region: `list-of-hackathons-in-${id}` }
-  }))
-  return { paths, fallback: false }
-}
-
-export const getStaticProps = async ({ params }) => {
+export const getServerSideProps = async ({ params }) => {
   let { region } = params
   region = find(regions, ['id', region.replace('list-of-hackathons-in-', '')])
+  if (!region) return { notFound: true }
   let { name } = region
   let { events, emailStats } = await getGroupingData()
   events = events.filter(event => region.filter(event))
   events = orderBy(events, 'start', 'desc')
-  return { props: { name, events, emailStats }, revalidate: 10 }
+  return { props: { name, events, emailStats } }
 }

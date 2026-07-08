@@ -1,7 +1,7 @@
 import Error from 'next/error'
 import Grouping from '../../components/grouping'
 import Years from '../../components/years'
-import { map, filter, orderBy, startsWith, split, first, uniq } from 'lodash'
+import { filter, orderBy, startsWith } from 'lodash'
 import { getEvents } from '../../lib/data'
 
 export default ({ year, events }) => {
@@ -19,19 +19,11 @@ export default ({ year, events }) => {
   )
 }
 
-export const getStaticPaths = async () => {
-  let events = await getEvents()
-  let starts = map(events, 'start')
-  starts = map(starts, (start) => first(split(start, '-')))
-  let years = uniq(starts)
-  const paths = map(years, (year) => ({ params: { year } }))
-  return { paths, fallback: false }
-}
-
-export const getStaticProps = async ({ params }) => {
+export const getServerSideProps = async ({ params }) => {
   const { year } = params
   let events = await getEvents()
   events = filter(events, (e) => startsWith(e.start, year))
+  if (events.length === 0) return { notFound: true }
   events = orderBy(events, 'start')
-  return { props: { year, events }, revalidate: 10 }
+  return { props: { year, events } }
 }
