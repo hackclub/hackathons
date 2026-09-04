@@ -92,6 +92,7 @@ const Announcement = ({
           mt: 1,
           fontWeight: 'bold',
           textShadow: '0 1px 4px rgba(255,255,255,0.85)',
+		  fontSize: 3,
           whiteSpace: 'pre-line'
         }}
       >
@@ -111,7 +112,7 @@ const Announcement = ({
 		  textAlign: 'center',
 		  color: captionColor,
 		  fontWeight: 'bold',
-		  fontSize: 1,
+		  fontSize: 2,
 		  textShadow: '0 1px 4px rgba(255,255,255,0.85)',
 		  pointerEvents: 'none'
 		}}

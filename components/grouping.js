@@ -100,24 +100,25 @@ export default ({
           </Box>
         ) : null}
         <Announcement
-          copyLogo="https://cdn.hackclub.com/019dab4d-10e8-7269-ae5c-3c650522af2f/horizons.svg"
-          logoImageMaxWidth="400px"
-          href="https://horizons.hackclub.com/?ref=hackathons"
-          caption="7 countries, 7 hackathons, the adventure of a lifetime."
+          copyLogo="https://cdn.hackclub.com/01a0686a-014e-7fc7-9126-9d93991b676c/logo.png"
+          logoImageMaxWidth="240px"
+          href="https://haven.hackclub.com/?ref=hackathons"
+          caption={'Game jams in 200+ cities worldwide\nFind one in your city!'}
           cta="click to see more"
           virtual={false}
           color="primary"
-          backgroundImage="https://cdn.hackclub.com/019e370c-04ad-7943-b6b6-5ec4c3409ce8/horizons-bg-with-ferrets-and-lines.png"
+          backgroundImage="https://cdn.hackclub.com/01a06871-efc5-7f9b-80cd-dc1102904a42/haven-hero-bg-cropped.webp"
           copyColor="#ededed"
-          captionColor="black"
+          captionColor="white"
           sx={{
-            backgroundSize: 'auto 100%',
+            backgroundSize: 'cover',
             backgroundPosition: 'center',
             backgroundRepeat: 'no-repeat',
             backgroundColor: '#f3e6cd',
             minHeight: ['200px', '260px', '320px'],
-            alignItems: 'flex-start',
-            pt: [3, 4],
+            alignItems: 'center',
+            justifyContent: 'center',
+            pt: [4, 5],
             pb: [5, 6],
             maxWidth: 'wide',
             width: '75%'
