@@ -47,11 +47,11 @@ export default ({ events, emailStats }) => {
   )
 }
 
-export const getStaticProps = async (req, res) => {
+export const getServerSideProps = async () => {
   let events = await getEvents()
   // events where the field apac = true
   events = filter(events, 'apac')
   // upcoming events first
   events = orderBy(events, 'start', 'desc')
-  return { props: { events }, revalidate: 10 }
+  return { props: { events } }
 }

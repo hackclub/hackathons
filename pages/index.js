@@ -72,7 +72,7 @@ export default ({ stats, emailStats, events, header }) => (
   </Grouping>
 )
 
-export const getStaticProps = async () => {
+export const getServerSideProps = async () => {
   let { events, emailStats } = await getGroupingData()
   let headerImages = [
     "/header.jpg"
@@ -120,5 +120,5 @@ export const getStaticProps = async () => {
     'desc'
   )
 
-  return { props: { events: [ ...upcomingEvents, ...previousEvents ], stats, emailStats, header: headerImages[Math.floor(Math.random() * headerImages.length)] }, revalidate: 1 }
+  return { props: { events: [ ...upcomingEvents, ...previousEvents ], stats, emailStats, header: headerImages[Math.floor(Math.random() * headerImages.length)] } }
 }

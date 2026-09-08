@@ -29,16 +29,15 @@ const NavButton = ({ sx, ...props }) => (
 )
 
 const BackButton = ({ to = '/', text = 'All Hackathons' }) => (
-  <Link href={to} passHref>
-    <NavButton
-      as="a"
-      title={to === '/' ? 'Back to homepage' : 'Back'}
-      sx={{ display: 'flex', width: 'auto', pr: 2 }}
-    >
-      <ArrowLeft />
-      {text}
-    </NavButton>
-  </Link>
+  <NavButton
+    as={Link}
+    href={to}
+    title={to === '/' ? 'Back to homepage' : 'Back'}
+    sx={{ display: 'flex', width: 'auto', pr: 2 }}
+  >
+    <ArrowLeft />
+    {text}
+  </NavButton>
 )
 
 const Flag = () => (
